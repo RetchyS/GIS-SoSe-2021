@@ -1,0 +1,101 @@
+
+body{
+    background-image: url(hintergrundLinien.png);
+    font-family: Arial, Helvetica, sans-serif;
+    
+}
+#footerhome a{
+    color: white;
+    padding: 8px;
+    background-color: black;
+    background-size: contain; 
+    text-decoration: none;
+}
+.Navigation a.active {
+    background-color:greenyellow;
+    color:black;
+}
+.Navigation a:hover {
+    background-color:seagreen;
+    color: black;
+}
+
+
+#artikelhome p{
+    color: blue;
+    text-decoration: underline;
+}
+#prepre{
+    overflow: auto;
+    width: 400px;
+}
+.portfolio{
+    width: 800px;
+
+}
+img{
+    width: 800px;
+}
+input[type=text] {
+    display: block;
+    width: 20%;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 4px;
+    box-sizing:border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: horizontal;
+  }
+ textarea {
+    display: block;
+    width: 40%;
+    padding: 12px;
+    border: 1px solid white;
+    border-radius: 4px;
+    box-sizing:border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: horizontal;
+  }
+  input[type=submit] {
+    
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  input[type=submit]:hover {
+    background-color: green;
+  }
+  .formular {
+    border-radius: 5px;
+    padding: 20px;
+  }
+
+
+ul {   
+    position: fixed;
+    top:0;
+    right: 200px;
+    list-style-type:none;
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-size: 20px;
+   
+}
+li{
+    display:inline;
+}
+
+li a{
+    float:left;
+    text-align: center;
+    padding:20px 20px 10px 10px;
+    background-color: black;
+    text-decoration: none;
+    color: white;
+}
+
