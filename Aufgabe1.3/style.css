@@ -32,6 +32,22 @@ body{
     width: 800px;
 
 }
+.fa-instagram {
+    background: #125688;
+    color: white;
+  }
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    
+    text-align: center;
+    text-decoration: none;
+    
+  }
+  .fa:hover{
+      opacity: 0.5;
+  }
+
 img{
     width: 800px;
 }
