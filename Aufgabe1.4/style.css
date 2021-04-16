@@ -43,14 +43,16 @@ p{
     background-color: green;
 }
 
-img{
+td > img{
     display:flex;
     float: left;
     border-radius: 5px;
-    max-width:800px;
-    height: 150px;
+    max-width:200px;
+    height: auto;
     padding-left: 5px;
 }
+
+
 
 input[type=text] {
     display: block;
@@ -133,41 +135,49 @@ input[type=text] {
     color:black;
 }
 
+
+h1{
+    transition-property: background-color;
+    transition-duration: 1s;
+    transition-timing-function: linear;
+    width: 800px;
+}
+h1:hover{
+    background-color: red;
+    width: 800px;
+}
+
+
+
+
 h2 ~ img{
+    display:flex;
+    float:left;
+    width: 200px;
     display: block;
     padding-top:5px;
     border-radius: 15px;
     overflow:hidden;
-    
+  
+      
 
 }
 
-/* Transition*/
-img {
-    width: 100px;
-    height: 100px;
-    transition: width 2s, height 2s;
-  }
-  
-  img:hover {
-    width: 60%;
-    height: auto;
-  }
-
-
+/* Mein Bild*/
 strong + img{
+    float:left;
     border-radius: 15px;
     max-width:100px;
     height: auto;
 
 }
 
-div > p::first-letter {
+p::first-letter {
     color: #ff0000;
     font-size: xx-large;
   }
   
- div > p::first-line {
+ p::first-line {
     color: yellow;
     font-variant: small-caps;
   }
@@ -178,20 +188,19 @@ div > p::first-letter {
 
 @media screen and (max-width: 1024px) {
 
-    main,footer,div{
-        width: 100%;
-        
-        font-size: 10px;
+    main,footer,div,p{
+        width: 100%;     
+        font-size: 15px;
         margin:0;
     }  
     main,footer{
         background-color:rgb(77, 73, 73);
     }
-    img{
-        max-width: 50%;
-        max-height:auto;
+    h2 ~ img{
 
+        width: 50%;
     }
+
 
 }
 
@@ -201,7 +210,7 @@ div > p::first-letter {
 
 @media screen and (max-width:600px) {
 
-    main,footer,div{
+    main,footer,div,p{
         width: 100%;
     
         font-size: 10px;
@@ -210,10 +219,9 @@ div > p::first-letter {
     main,footer{
         background-color:rgb(41, 34, 34);
     }
-    img{
-        max-width: 50%;
-        max-height:auto;
+    h2 ~ img{
 
+        width: 100%;
     }
-    
+     
 }
