@@ -10,8 +10,6 @@ header,main,footer{
     margin: auto;
     width: 800px;
     
-    
-     
 }
 div{
     margin: auto;
@@ -158,8 +156,6 @@ h2 ~ img{
     padding-top:5px;
     border-radius: 15px;
     overflow:hidden;
-  
-      
 
 }
 
@@ -181,8 +177,6 @@ p::first-letter {
     color: yellow;
     font-variant: small-caps;
   }
-
-
 
 
 
