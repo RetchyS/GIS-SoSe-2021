@@ -245,11 +245,11 @@ let rauten: string = "";
 schachbrett(schachbrettlänge - 1);
 
 function schachbrett(schachbrettgröße: number): void {
-for (let x: number = 0; x < schachbrettgröße + 1; x++) {
-    for ( let e: number = 0; e < schachbrettgröße + 1; e++) {
+for (let x: number = 0; x < schachbrettgröße + 1; x++) {//Legt die Zeilen fest
+    for ( let e: number = 0; e < schachbrettgröße + 1; e++) {//Legt die Reihen fest
 
 
-        if (x == 0 || x % 2 == 0) {
+        if (x == 0 || x % 2 == 0) { // Wenn in einer Zeile mit Ungerade zahl
         if (e % 2 == 0 && e != schachbrettgröße || e == 0) {
             rauten += " ";
         } else if (e % 2 != 0 && e != schachbrettgröße || e == 1) {
@@ -257,7 +257,7 @@ for (let x: number = 0; x < schachbrettgröße + 1; x++) {
         } else {
             rauten += "\n";
         }
-    } else if (x == 1 || x % 2 != 0 ) {
+    } else if (x == 1 || x % 2 != 0 ) {// Wenn in einer Zeile mit einer Geraden zahl
 
 
         if (e % 2 == 0 && e != schachbrettgröße || e == 0) {
