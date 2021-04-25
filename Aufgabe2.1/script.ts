@@ -238,11 +238,11 @@ function fizzbuzz2( anfangb: number, endeb: number): void {
         }
         }
     }
-//6d
+//6d+e
 
 let schachbrettlänge: number = 8;
 let rauten: string = "";
-schachbrett(schachbrettlänge);
+schachbrett(schachbrettlänge - 1);
 
 function schachbrett(schachbrettgröße: number): void {
 for (let x: number = 0; x < schachbrettgröße + 1; x++) {

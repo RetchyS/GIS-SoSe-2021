@@ -187,10 +187,10 @@ function fizzbuzz2(anfangb, endeb) {
         }
     }
 }
-//6d
+//6d+e
 let schachbrettlänge = 8;
 let rauten = "";
-schachbrett(schachbrettlänge);
+schachbrett(schachbrettlänge - 1);
 function schachbrett(schachbrettgröße) {
     for (let x = 0; x < schachbrettgröße + 1; x++) {
         for (let e = 0; e < schachbrettgröße + 1; e++) {
