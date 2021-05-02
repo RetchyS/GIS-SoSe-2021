@@ -240,7 +240,7 @@ function fizzbuzz2( anfangb: number, endeb: number): void {
     }
 //6d+e
 
-let schachbrettlänge: number = 8;
+let schachbrettlänge: number = 20;
 let rauten: string = "";
 schachbrett(schachbrettlänge - 1);
 
@@ -250,7 +250,7 @@ for (let x: number = 0; x < schachbrettgröße + 1; x++) {//Legt die Zeilen fest
 
 
         if (x == 0 || x % 2 == 0) { // Wenn in einer Zeile mit Ungerade zahl
-        if (e % 2 == 0 && e != schachbrettgröße || e == 0) {
+        if (e % 2 == 0 && e != schachbrettgröße || e == 0) { 
             rauten += " ";
         } else if (e % 2 != 0 && e != schachbrettgröße || e == 1) {
             rauten += "#";

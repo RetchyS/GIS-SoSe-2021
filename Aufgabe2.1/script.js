@@ -188,7 +188,7 @@ function fizzbuzz2(anfangb, endeb) {
     }
 }
 //6d+e
-let schachbrettlänge = 8;
+let schachbrettlänge = 20;
 let rauten = "";
 schachbrett(schachbrettlänge - 1);
 function schachbrett(schachbrettgröße) {
