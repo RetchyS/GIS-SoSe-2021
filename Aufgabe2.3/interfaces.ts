@@ -1,32 +1,32 @@
-namespace Chimera {
+namespace Tischpflanze {
 
-    export interface Kopf {
-        _radius: number;
-        _haircolor: string;
+    export interface Pflanze {
+        
+        pflanzen: string;
   
     
     } 
     
-    export interface Körper {
+    export interface Topf {
     
-        _skincolor: string;
-        _körperlänge: number;
+        skincolor: string;
+        körperlänge: number;
     
     
     }
     
     
-    export interface Füße {
-        _skincolor: string;
-        _anzahlfüße: number;
-        _fußlänge: number;
+    export interface Tisch {
+        skincolor: string;
+        anzahlfüße: number;
+        fußlänge: number;
     
     }
     
-    export interface Chimerading {
-        _füße: Füße;
-        _körper: Körper;
-        _kopf: Kopf;
+    export interface PflanzemitTisch {
+        füße: Pflanze;
+        körper: Topf;
+        kopf: Tisch;
     
     }
     

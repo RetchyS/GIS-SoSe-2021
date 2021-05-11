@@ -1,22 +1,17 @@
+namespace Tischpflanze {
 
-
-namespace Chimera {
-
-    export let _x: Kopf[] = [{
-        _radius: 5,
-        _haircolor: "green"
+    export let pflanze: Pflanze[] = [{
+         pflanzen: "./Bilder/Pflanze/Pflanze1.png"
        
     }, {
-        _radius: 3,
-        _haircolor: "red"
+        pflanzen: "./Bilder/Pflanze/Pflanze2.png"
   
     }, {
-        _radius: 1, 
-        _haircolor: "blue"
+        pflanzen: "./Bilder/Pflanze/Pflanze3.png"
 
     }];
-
-    export let _y: Körper[] = [{
+    /*
+    export let _topf: Topf[] = [{
 
         _skincolor: "blue",
         _körperlänge: 10
@@ -31,7 +26,7 @@ namespace Chimera {
         _körperlänge: 6
     }];
 
-    export let _z: Füße [] = [{
+    export let _tisch: Tisch [] = [{
         _skincolor: "green", 
         _anzahlfüße: 4,
         _fußlänge: 15
@@ -40,14 +35,12 @@ namespace Chimera {
         _anzahlfüße: 1,
         _fußlänge:   10 
         
-
-
     }, {
         _skincolor: "blue",
         _anzahlfüße: 3,
         _fußlänge: 12
 
-    }];
+    }];*/
 
 
 
