@@ -18,6 +18,7 @@ var TischMitPflanzex;
         let query = new URLSearchParams(localStorage);
         _url = _url + "?" + query.toString();
         let response = await fetch(url);
+        console.log(response);
         if (response.ok) {
             console.log("Alles gut angekommen");
         }

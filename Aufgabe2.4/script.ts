@@ -38,6 +38,7 @@ namespace TischMitPflanzex {
         let query: URLSearchParams = new URLSearchParams(<any>localStorage);
         _url = _url + "?" + query.toString();
         let response: Response = await fetch(url);
+        console.log(response);
         if ( response.ok) {
             console.log("Alles gut angekommen");
         }
