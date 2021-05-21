@@ -1,7 +1,5 @@
 "use strict";
-var TischMitPflanze;
-(function (TischMitPflanze) {
-    TischMitPflanze.tischmitpflanzen = `{
+let tischmitpflanzen = `{
     
         "pflanzen": [
             {
@@ -53,5 +51,4 @@ var TischMitPflanze;
         ]
     } 
     `;
-})(TischMitPflanze || (TischMitPflanze = {}));
 //# sourceMappingURL=data.js.map

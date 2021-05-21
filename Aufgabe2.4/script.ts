@@ -1,6 +1,43 @@
 namespace TischMitPflanze {
-    // JSON Parse
-    let alleObjekte: PflanzemitTisch = JSON.parse(tischmitpflanzen);
+
+
+    //Interfaces
+    interface Bilddata {
+
+        imagepath: string;
+        imagename: string;
+        imagenummer: number;
+
+
+    }
+    interface PflanzemitTisch {
+        pflanzen: Bilddata[];
+        töpfe: Bilddata[];
+        tische: Bilddata[];
+    }
+
+
+    //JSON Data fetch Function
+    let url: string = "http://127.0.0.1:5500/Aufgabe2.4/data.json";
+    let alleObjekte: PflanzemitTisch = null;
+    let dataresponse: Response = null;
+
+    async function fetchData(_url: string): Promise<void> {
+    dataresponse = await fetch (_url);
+    let datajson: PflanzemitTisch = await dataresponse.json();
+    alleObjekte = datajson;
+    }
+
+    //Data fetch
+    fetchData(url);
+
+
+    //Aufgabe 3c
+    let url3c: string = "https://gis-communication.herokuapp.com";
+    async function errorMessage (_url: string) {
+
+    }
+
 
     //Header
     let header: HTMLElement = document.createElement("header");
@@ -95,17 +132,17 @@ namespace TischMitPflanze {
     //div Container für Endergebnis
     let divEndergebnis = document.createElement("div");
     let divEndergebnisID = document.createAttribute("id");
-    
+
 
     divEndergebnisID.value = "ImagesEndergebnis";
     divEndergebnis.setAttributeNode(divEndergebnisID);
     divEndergebnis.style.width = "200px";
     divEndergebnis.style.display = "block";
     divEndergebnis.style.float = "left";
-    
+
     mainDivImages.appendChild(divEndergebnis);
     let divEndergebnisselection = document.querySelector("#ImagesEndergebnis");
-    
+
 
 
     //Funktion für Images kreieren
@@ -122,11 +159,11 @@ namespace TischMitPflanze {
         let img2: HTMLImageElement = document.createElement("img");
         let imgindex2 = document.createAttribute("indexnumber");
         let imgsrc2 = document.createAttribute("src");
-        let imgclass2 = document.createAttribute("class");
+        let imgID2 = document.createAttribute("id");
         let index: number = parseInt(localStorage.getItem("Bildernummer"));
         imgindex2.value = localStorage.getItem("Bildernummer");
         let classTest: string = localStorage.getItem("Bildername");
-      
+
         //Speichern für das Endergebnis
         if (classTest == "pflanze") {
             localStorage.setItem("Bildernamepflanze", classTest);
@@ -138,29 +175,55 @@ namespace TischMitPflanze {
             localStorage.setItem("Bildernametopf", classTest);
             localStorage.setItem("Bildernummertopf", index.toString());
         }
+        //"Speicher" für ausgewählte Images
+        let pflanzenauswahl = document.querySelector("#ausgewähltPflanze");
+        let tischauswahl = document.querySelector("#ausgewähltTisch");
+        let topfauswahl = document.querySelector("#ausgewähltTopf");
+
+
+        //War n Test, den ich vllt noch verwende. Noch net ausgereift xD
+        /*
+        if (document.getElementById("ausgewähltPflanze") != null) {
+            pflanzenauswahl.remove();
+        }
+        if (document.getElementById("ausgewähltTisch") != null) {
+            tischauswahl.remove();
+        }
+        if (document.getElementById("ausgewähltTopf") != null) {
+            topfauswahl.remove();
+        }
+        */
 
         // Um den Pfad vom Bild zu bekommen, da man irgendwie den Imagepath im local storage net abspeichern kann, zumindest net rausgefunden wie
         if (classTest == "pflanze") {
+
+            imgID2.value = "ausgewähltPflanze";
             imgsrc2.value = alleObjekte.pflanzen[index].imagepath;
         } else if (classTest == "tisch") {
+
+            imgID2.value = "ausgewähltTisch";
             imgsrc2.value = alleObjekte.tische[index].imagepath;
         } else if (classTest == "topf") {
+
+            imgID2.value = "ausgewähltTopf";
             imgsrc2.value = alleObjekte.töpfe[index].imagepath;
         }
+
+
         img2.setAttributeNode(imgsrc2);
-        img2.setAttributeNode(imgclass2);
+        img2.setAttributeNode(imgID2);
         img2.setAttributeNode(imgindex2);
 
-      
+
         imgAuswahlDiv2.appendChild(img2);
     }
 
     //Funktion Endergebnis
-    function endergebnis (): void {
+    function endergebnis(): void {
         let imgpflanze: HTMLImageElement = document.createElement("img");
         let imgtisch: HTMLImageElement = document.createElement("img");
         let imgtopf: HTMLImageElement = document.createElement("img");
-        
+
         let indexpflanze: number = parseInt(localStorage.getItem("Bildernummerpflanze"));
         let indextisch: number = parseInt(localStorage.getItem("Bildernummertisch"));
         let indextopf: number = parseInt(localStorage.getItem("Bildernummertopf"));
@@ -219,20 +282,23 @@ namespace TischMitPflanze {
     //Funktion für Mausclick auf die Bilder zum Speichern
     function bildauswahl(_event: Event): void {
         let imagetarget: HTMLImageElement = <HTMLImageElement>_event.target;
-        
+
         let imagename: string = imagetarget.getAttribute("class");
         let imagenummer: string = imagetarget.getAttribute("indexnumber");
-       
+
         localStorage.setItem("Bildername", imagename);
         localStorage.setItem("Bildernummer", imagenummer);
-        
+
         console.log(localStorage.getItem("Bildername"));
         console.log(localStorage.getItem("Bildernummer"));
 
-        
+
         createStorageImages();
 
     }
+
+
+    
 
 
 

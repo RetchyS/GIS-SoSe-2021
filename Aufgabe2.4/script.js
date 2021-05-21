@@ -1,8 +1,21 @@
 "use strict";
 var TischMitPflanze;
 (function (TischMitPflanze) {
-    // JSON Parse
-    let alleObjekte = JSON.parse(TischMitPflanze.tischmitpflanzen);
+    //JSON Data fetch Function
+    let url = "http://127.0.0.1:5500/Aufgabe2.4/data.json";
+    let alleObjekte = null;
+    let dataresponse = null;
+    async function fetchData(_url) {
+        dataresponse = await fetch(_url);
+        let datajson = await dataresponse.json();
+        alleObjekte = datajson;
+    }
+    //Data fetch
+    fetchData(url);
+    //Aufgabe 3c
+    let url3c = "https://gis-communication.herokuapp.com";
+    async function errorMessage(_url) {
+    }
     //Header
     let header = document.createElement("header");
     let headerid = document.createAttribute("id");
@@ -99,7 +112,7 @@ var TischMitPflanze;
         let img2 = document.createElement("img");
         let imgindex2 = document.createAttribute("indexnumber");
         let imgsrc2 = document.createAttribute("src");
-        let imgclass2 = document.createAttribute("class");
+        let imgID2 = document.createAttribute("id");
         let index = parseInt(localStorage.getItem("Bildernummer"));
         imgindex2.value = localStorage.getItem("Bildernummer");
         let classTest = localStorage.getItem("Bildername");
@@ -116,18 +129,37 @@ var TischMitPflanze;
             localStorage.setItem("Bildernametopf", classTest);
             localStorage.setItem("Bildernummertopf", index.toString());
         }
+        //"Speicher" für ausgewählte Images
+        let pflanzenauswahl = document.querySelector("#ausgewähltPflanze");
+        let tischauswahl = document.querySelector("#ausgewähltTisch");
+        let topfauswahl = document.querySelector("#ausgewähltTopf");
+        //War n Test, den ich vllt noch verwende. Noch net ausgereift xD
+        /*
+        if (document.getElementById("ausgewähltPflanze") != null) {
+            pflanzenauswahl.remove();
+        }
+        if (document.getElementById("ausgewähltTisch") != null) {
+            tischauswahl.remove();
+        }
+        if (document.getElementById("ausgewähltTopf") != null) {
+            topfauswahl.remove();
+        }
+        */
         // Um den Pfad vom Bild zu bekommen, da man irgendwie den Imagepath im local storage net abspeichern kann, zumindest net rausgefunden wie
         if (classTest == "pflanze") {
+            imgID2.value = "ausgewähltPflanze";
             imgsrc2.value = alleObjekte.pflanzen[index].imagepath;
         }
         else if (classTest == "tisch") {
+            imgID2.value = "ausgewähltTisch";
             imgsrc2.value = alleObjekte.tische[index].imagepath;
         }
         else if (classTest == "topf") {
+            imgID2.value = "ausgewähltTopf";
             imgsrc2.value = alleObjekte.töpfe[index].imagepath;
         }
         img2.setAttributeNode(imgsrc2);
-        img2.setAttributeNode(imgclass2);
+        img2.setAttributeNode(imgID2);
         img2.setAttributeNode(imgindex2);
         imgAuswahlDiv2.appendChild(img2);
     }
