@@ -1,4 +1,4 @@
-namespace TischMitPflanze {
+namespace TischMitPflanzex {
 
 
     //Interfaces
@@ -32,10 +32,19 @@ namespace TischMitPflanze {
     fetchData(url);
 
 
-    //Aufgabe 3c
+    //Aufgabe 2.5 3c
     let url3c: string = "https://gis-communication.herokuapp.com";
-    async function errorMessage (_url: string) {
-
+    async function fetchErrorMessage (_url: string) {
+        let query: URLSearchParams = new URLSearchParams(<any>localStorage);
+        _url = _url + "?" + query.toString();
+        let response: Response = await fetch(url);
+        if ( response.ok) {
+            console.log("Alles gut angekommen");
+        }
+        if ( !response.ok) {
+            throw Error(response.statusText + " - " + response.url);
+        }
+   
     }
 
 
@@ -213,7 +222,7 @@ namespace TischMitPflanze {
         img2.setAttributeNode(imgsrc2);
         img2.setAttributeNode(imgID2);
         img2.setAttributeNode(imgindex2);
-
+        
 
         imgAuswahlDiv2.appendChild(img2);
     }
@@ -238,7 +247,7 @@ namespace TischMitPflanze {
 
         document.getElementById("auswahlimages").innerHTML = "";
         document.getElementById("ausgewählteimages").innerHTML = "";
-
+        fetchErrorMessage(url3c);
         divEndergebnisselection.appendChild(imgpflanze);
         divEndergebnisselection.appendChild(imgtopf);
         divEndergebnisselection.appendChild(imgtisch);
@@ -289,8 +298,8 @@ namespace TischMitPflanze {
         localStorage.setItem("Bildername", imagename);
         localStorage.setItem("Bildernummer", imagenummer);
 
-        console.log(localStorage.getItem("Bildername"));
-        console.log(localStorage.getItem("Bildernummer"));
+        //console.log(localStorage.getItem("Bildername"));
+        //console.log(localStorage.getItem("Bildernummer"));
 
 
         createStorageImages();

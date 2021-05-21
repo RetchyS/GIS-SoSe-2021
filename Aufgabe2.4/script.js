@@ -1,6 +1,6 @@
 "use strict";
-var TischMitPflanze;
-(function (TischMitPflanze) {
+var TischMitPflanzex;
+(function (TischMitPflanzex) {
     //JSON Data fetch Function
     let url = "http://127.0.0.1:5500/Aufgabe2.4/data.json";
     let alleObjekte = null;
@@ -12,9 +12,18 @@ var TischMitPflanze;
     }
     //Data fetch
     fetchData(url);
-    //Aufgabe 3c
+    //Aufgabe 2.5 3c
     let url3c = "https://gis-communication.herokuapp.com";
-    async function errorMessage(_url) {
+    async function fetchErrorMessage(_url) {
+        let query = new URLSearchParams(localStorage);
+        _url = _url + "?" + query.toString();
+        let response = await fetch(url);
+        if (response.ok) {
+            console.log("Alles gut angekommen");
+        }
+        if (!response.ok) {
+            throw Error(response.statusText + " - " + response.url);
+        }
     }
     //Header
     let header = document.createElement("header");
@@ -179,6 +188,7 @@ var TischMitPflanze;
         imgtopf.src = imgsrctopf;
         document.getElementById("auswahlimages").innerHTML = "";
         document.getElementById("ausgewählteimages").innerHTML = "";
+        fetchErrorMessage(url3c);
         divEndergebnisselection.appendChild(imgpflanze);
         divEndergebnisselection.appendChild(imgtopf);
         divEndergebnisselection.appendChild(imgtisch);
@@ -218,9 +228,9 @@ var TischMitPflanze;
         let imagenummer = imagetarget.getAttribute("indexnumber");
         localStorage.setItem("Bildername", imagename);
         localStorage.setItem("Bildernummer", imagenummer);
-        console.log(localStorage.getItem("Bildername"));
-        console.log(localStorage.getItem("Bildernummer"));
+        //console.log(localStorage.getItem("Bildername"));
+        //console.log(localStorage.getItem("Bildernummer"));
         createStorageImages();
     }
-})(TischMitPflanze || (TischMitPflanze = {}));
+})(TischMitPflanzex || (TischMitPflanzex = {}));
 //# sourceMappingURL=script.js.map
