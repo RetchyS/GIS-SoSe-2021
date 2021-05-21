@@ -18,7 +18,7 @@ namespace TischMitPflanzex {
 
 
     //JSON Data fetch Function
-    let url: string = "http://127.0.0.1:5500/Aufgabe2.4/data.json";
+    let url: string = "https://retchys.github.io/GIS-SoSe-2021/Aufgabe2.4/data.json";
     let alleObjekte: PflanzemitTisch = null;
     let dataresponse: Response = null;
 

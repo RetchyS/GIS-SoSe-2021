@@ -2,7 +2,7 @@
 var TischMitPflanzex;
 (function (TischMitPflanzex) {
     //JSON Data fetch Function
-    let url = "http://127.0.0.1:5500/Aufgabe2.4/data.json";
+    let url = "https://retchys.github.io/GIS-SoSe-2021/Aufgabe2.4/data.json";
     let alleObjekte = null;
     let dataresponse = null;
     async function fetchData(_url) {
