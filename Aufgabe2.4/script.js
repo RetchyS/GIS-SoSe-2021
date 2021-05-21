@@ -17,7 +17,8 @@ var TischMitPflanzex;
     async function fetchErrorMessage(_url) {
         let query = new URLSearchParams(localStorage);
         _url = _url + "?" + query.toString();
-        let response = await fetch(url);
+        let response = await fetch(_url);
+        console.log(await fetch(_url));
         console.log(response);
         if (response.ok) {
             console.log("Alles gut angekommen");

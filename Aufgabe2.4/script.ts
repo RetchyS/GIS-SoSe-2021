@@ -37,8 +37,10 @@ namespace TischMitPflanzex {
     async function fetchErrorMessage (_url: string) {
         let query: URLSearchParams = new URLSearchParams(<any>localStorage);
         _url = _url + "?" + query.toString();
-        let response: Response = await fetch(url);
+        let response: Response = await fetch(_url);
+        console.log(await fetch(_url));
         console.log(response);
+
         if ( response.ok) {
             console.log("Alles gut angekommen");
         }
