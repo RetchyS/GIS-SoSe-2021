@@ -47,16 +47,19 @@ namespace TischMitPflanzex {
 
         console.log(await fetch(_url));
         console.log(response);
+        let antwort: HTMLElement = document.getElementById("anzeige");
 
 
         //Message
         if ( serverantwort.message != undefined) {
-            console.log(serverantwort.message);
+            antwort.textContent = serverantwort.message;
+            antwort.classList.add("message");
         }
 
         //Error
         if ( serverantwort.error != undefined) {
-            console.log(serverantwort.error);
+            antwort.textContent = serverantwort.error;
+            antwort.classList.add("error");
         }
    
     }

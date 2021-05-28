@@ -36,3 +36,10 @@ img {
     padding-left: 5px;
     background-color: rgb(61, 55, 55);
 }
+.error{
+    color: red;
+
+}
+.message{
+    color: green;
+}
