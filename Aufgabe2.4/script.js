@@ -18,13 +18,16 @@ var TischMitPflanzex;
         let query = new URLSearchParams(localStorage);
         _url = _url + "?" + query.toString();
         let response = await fetch(_url);
+        let serverantwort = await response.json();
         console.log(await fetch(_url));
         console.log(response);
-        if (response.ok) {
-            console.log("Alles gut angekommen");
+        //Message
+        if (serverantwort.message != undefined) {
+            console.log(serverantwort.message);
         }
-        if (!response.ok) {
-            throw Error(response.statusText + " - " + response.url);
+        //Error
+        if (serverantwort.error != undefined) {
+            console.log(serverantwort.error);
         }
     }
     //Header

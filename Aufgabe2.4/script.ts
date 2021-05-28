@@ -15,6 +15,10 @@ namespace TischMitPflanzex {
         töpfe: Bilddata[];
         tische: Bilddata[];
     }
+    interface ServerAntwort {
+        error: string;
+        message: string;
+    }
 
 
     //JSON Data fetch Function
@@ -35,17 +39,24 @@ namespace TischMitPflanzex {
     //Aufgabe 2.5 3c
     let url3c: string = "https://gis-communication.herokuapp.com";
     async function fetchErrorMessage (_url: string) {
-        let query: URLSearchParams = new URLSearchParams(<any>localStorage);
+
+        let query: URLSearchParams = new URLSearchParams(localStorage);
         _url = _url + "?" + query.toString();
         let response: Response = await fetch(_url);
+        let serverantwort: ServerAntwort = await response.json();
+
         console.log(await fetch(_url));
         console.log(response);
 
-        if ( response.ok) {
-            console.log("Alles gut angekommen");
+
+        //Message
+        if ( serverantwort.message != undefined) {
+            console.log(serverantwort.message);
         }
-        if ( !response.ok) {
-            throw Error(response.statusText + " - " + response.url);
+
+        //Error
+        if ( serverantwort.error != undefined) {
+            console.log(serverantwort.error);
         }
    
     }
