@@ -17,4 +17,4 @@ async function formData() {
     let antwort = document.getElementById("serverantwort");
     antwort.innerText = responsetext;
 }
-//# sourceMappingURL=scriptformular.js.map
+//# sourceMappingURL=formular.js.map

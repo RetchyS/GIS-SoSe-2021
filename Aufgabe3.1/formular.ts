@@ -1,5 +1,6 @@
+
 // Damit der Button des Formulars die FormData function ausführt
-let button: HTMLButtonElement = <HTMLButtonElement> document.getElementById("senden");
+let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("senden");
 button.addEventListener("click", formData);
 
 async function formData(): Promise<void> {                        // Neue Funktion da await nur mit asyn funktioniert
@@ -11,7 +12,7 @@ async function formData(): Promise<void> {                        // Neue Funkti
         console.log("value: " + entry[1]);
     }
 
-    let query: URLSearchParams = new URLSearchParams(<any> FormData);    //any weil Javascript Formdata net kennt
+    let query: URLSearchParams = new URLSearchParams(<any>FormData);    //any weil Javascript Formdata net kennt
     let url: RequestInfo = "https://piikachu.herokuapp.com/";
     url = url + "?" + query.toString();
     let response: Response = await fetch(url);
