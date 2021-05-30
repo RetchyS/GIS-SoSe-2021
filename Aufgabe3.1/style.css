@@ -8,7 +8,6 @@ body{
 
 
 main {
-    max-width: 800px;
     background-color: rgb(61, 55, 55);
     margin: auto;
     width: 800px;
@@ -52,7 +51,7 @@ input[type=text] {
   }
 
 
-  .formular {
+  form {
     
     padding:5px;
     max-width:99%;
