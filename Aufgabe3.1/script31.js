@@ -1,14 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Aufgabe31 = void 0;
-const Http = require("http");
+const _Aufgabe31 = void 0;
+export { _Aufgabe31 as Aufgabe31 };
+import { createServer } from "http";
 var Aufgabe31;
 (function (Aufgabe31) {
     console.log("Starting server");
     let port = Number(process.env.PORT); // Holt sich den Port aus dem User Environment. Rückgabe ist ein String und wird mit nem Cast zur Zahl
     if (!port) // Falls kein Port hinterlegt ist bzw. die Variable Port undefined ist                
         port = 8100;
-    let server = Http.createServer(); // Server wird erstellt um listener hinzufügen zu können
+    let server = createServer(); // Server wird erstellt um listener hinzufügen zu können
     server.addListener("request", handleRequest); // Request/Anfragenhandler für den Server
     server.addListener("listening", handleListen); // Listenerhandler für den Server
     server.listen(port);
@@ -40,5 +41,5 @@ var Aufgabe31;
         let antwort = document.getElementById("serverantwort");
         antwort.innerText = responsetext;
     }
-})(Aufgabe31 = exports.Aufgabe31 || (exports.Aufgabe31 = {}));
+})(Aufgabe31 = _Aufgabe31 || (exports.Aufgabe31 = {}));
 //# sourceMappingURL=script31.js.map
