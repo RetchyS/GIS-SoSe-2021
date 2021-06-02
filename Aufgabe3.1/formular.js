@@ -9,7 +9,7 @@ async function formData() {
         console.log("name: " + entry[0]);
         console.log("value: " + entry[1]);
     }
-    let query = new URLSearchParams(FormData); //any weil Javascript Formdata net kennt
+    let query = new URLSearchParams(formular); //any weil Javascript Formdata net kennt
     let url = "https://piikachu.herokuapp.com/";
     url = url + "?" + query.toString();
     let response = await fetch(url);

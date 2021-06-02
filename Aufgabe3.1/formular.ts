@@ -4,7 +4,7 @@ let button: HTMLButtonElement = <HTMLButtonElement>document.getElementById("send
 button.addEventListener("click", formData);
 
 async function formData(): Promise<void> {                        // Neue Funktion da await nur mit asyn funktioniert
-    let formular: FormData = new FormData(document.forms[0]); // Holt sich die Information des ersten Formulars, in dem Fall 0, und packt es in die Variable formular
+    let formular: FormData = new FormData(document.forms[0]);       // Holt sich die Information des ersten Formulars, in dem Fall 0, und packt es in die Variable formular
 
     for (let entry of formular) {
         console.log(entry);
@@ -12,7 +12,7 @@ async function formData(): Promise<void> {                        // Neue Funkti
         console.log("value: " + entry[1]);
     }
 
-    let query: URLSearchParams = new URLSearchParams(<any>FormData);    //any weil Javascript Formdata net kennt
+    let query: URLSearchParams = new URLSearchParams(<any> formular);    //any weil Javascript Formdata net kennt
     let url: RequestInfo = "https://piikachu.herokuapp.com/";
     url = url + "?" + query.toString();
     let response: Response = await fetch(url);
