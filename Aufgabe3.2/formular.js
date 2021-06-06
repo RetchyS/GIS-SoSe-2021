@@ -14,8 +14,8 @@ async function formDataHTML() {
         console.log("value: " + entry[1]);
     }*/
     let query = new URLSearchParams(formular); //any weil Javascript Formdata net kennt
-    //let url: RequestInfo = "https://piikachu.herokuapp.com/";
-    let url = "http://127.0.0.1:5500/Aufgabe3.2/";
+    let url = "https://piikachu.herokuapp.com/";
+    //let url: RequestInfo = "http://127.0.0.1:5500/Aufgabe3.2/";
     url += "/html";
     url = url + "?" + query.toString();
     let response = await fetch(url);
@@ -30,8 +30,8 @@ async function formDataJSON() {
         console.log("value: " + entry[1]);
     }*/
     let query = new URLSearchParams(formular);
-    //let url: RequestInfo = "https://piikachu.herokuapp.com/";
-    let url = "http://127.0.0.1:5500/Aufgabe3.2/";
+    let url = "https://piikachu.herokuapp.com/";
+    //let url: RequestInfo = "http://127.0.0.1:5500/Aufgabe3.2/";
     url += "/json";
     url = url + "?" + query.toString();
     let response = await fetch(url);

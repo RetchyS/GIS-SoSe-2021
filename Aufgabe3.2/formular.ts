@@ -20,8 +20,8 @@ async function formDataHTML(): Promise<void> {                        // Neue Fu
     }*/
 
     let query: URLSearchParams = new URLSearchParams(<any> formular);    //any weil Javascript Formdata net kennt
-    //let url: RequestInfo = "https://piikachu.herokuapp.com/";
-    let url: RequestInfo = "http://127.0.0.1:5500/Aufgabe3.2/";
+    let url: RequestInfo = "https://piikachu.herokuapp.com/";
+    //let url: RequestInfo = "http://127.0.0.1:5500/Aufgabe3.2/";
     url += "/html";
     url = url + "?" + query.toString();
     let response: Response = await fetch(url);
@@ -42,8 +42,8 @@ async function formDataJSON(): Promise<void> {
     }*/
 
     let query: URLSearchParams = new URLSearchParams(<any> formular);    
-    //let url: RequestInfo = "https://piikachu.herokuapp.com/";
-    let url: RequestInfo = "http://127.0.0.1:5500/Aufgabe3.2/";
+    let url: RequestInfo = "https://piikachu.herokuapp.com/";
+    //let url: RequestInfo = "http://127.0.0.1:5500/Aufgabe3.2/";
     url += "/json";
     url = url + "?" + query.toString();
     let response: Response = await fetch(url);
