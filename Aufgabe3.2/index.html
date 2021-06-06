@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="formular.js" defer></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div class="Formular">
+            <form>
+                <label for="fname">Vorname</label>
+                <input type="text" id="fname" name="Vorname" placeholder="Dein Vorname...">
+
+                <label for="lname">Nachname</label>
+                <input type="text" id="lname" name="Nachname" placeholder="Dein Nachname...">
+
+                <label for="email">E-mail</label>
+                <input type="text" id="email" name="E-mail" placeholder="Deine E-Mail...">
+
+                <label for="nachricht">Nachricht</label>
+                <textarea name="Nachricht" id="nachricht" cols="30" rows="10"
+                    placeholder="Deine Nachricht..."></textarea>
+                <input type="button" value="AbsendenHTML" id="sendenHTML">
+                <input type="button" value="AbsendenJSON" id="sendenJSON">
+            </form>
+            <h1 id="serverantwort"></h1>
+        </div>
+    </main>
+</body>
+</html>
