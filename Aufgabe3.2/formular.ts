@@ -48,5 +48,21 @@ async function formDataJSON(): Promise<void> {
     url = url + "?" + query.toString();
     let response: Response = await fetch(url);
     let responsetext: string = await response.text();       // Serverantwort in Text kovertieren
-    antwort.innerHTML = responsetext;
+    let responseJson: Data = JSON.parse(responsetext);
+    generateData(responseJson);
 }
+
+function generateData(_responsejson: Data): void {
+    console.log(_responsejson.vorname);
+    console.log(_responsejson.nachname);
+    console.log(_responsejson.email);
+    console.log(_responsejson.nachricht);
+}
+
+interface Data {
+    vorname: string;
+    nachname: string;
+    email: string;
+    nachricht: string;
+}
+

@@ -25,15 +25,17 @@ export namespace Aufgabe31Server {
 
 
         if (_request.url) {
-            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);        //Url muss man parsen um es bearbeiten zu
 
+            //Url muss man parsen um es bearbeiten zu. Genauso wie im Video gemacht aber es scheint als wäre es veraltet
+            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); 
+                   
 
-            let path: string = url.pathname; // Pathname entweder html oder json
+            let path: string = url.pathname; // Pathname entweder /html oder /json
 
             if (path == "/json") {
-                let sentObject: string = JSON.stringify(url.query);         
-                console.log(sentObject);                            // Gibt das Object des JSOn in der Konsole aus
-                _response.write(sentObject);
+                let jsonstring: string = JSON.stringify(url.query);         
+                console.log(jsonstring);                            // Gibt das Object des JSOn in der Konsole aus
+                _response.write(jsonstring);
                 
             }
 

@@ -22,12 +22,13 @@ var Aufgabe31Server;
         _response.setHeader("Access-Control-Allow-Origin", "*");
         _response.write(_request.url);
         if (_request.url) {
-            let url = Url.parse(_request.url, true); //Url muss man parsen um es bearbeiten zu
-            let path = url.pathname; // Pathname entweder html oder json
+            //Url muss man parsen um es bearbeiten zu. Genauso wie im Video gemacht aber es scheint als wäre es veraltet
+            let url = Url.parse(_request.url, true);
+            let path = url.pathname; // Pathname entweder /html oder /json
             if (path == "/json") {
-                let sentObject = JSON.stringify(url.query);
-                console.log(sentObject); // Gibt das Object des JSOn in der Konsole aus
-                _response.write(sentObject);
+                let jsonstring = JSON.stringify(url.query);
+                console.log(jsonstring); // Gibt das Object des JSOn in der Konsole aus
+                _response.write(jsonstring);
             }
             if (path == "/html") {
                 for (let key in url.query) { //Iterieren von dem query der URL

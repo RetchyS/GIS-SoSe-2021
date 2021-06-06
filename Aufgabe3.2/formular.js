@@ -36,6 +36,13 @@ async function formDataJSON() {
     url = url + "?" + query.toString();
     let response = await fetch(url);
     let responsetext = await response.text(); // Serverantwort in Text kovertieren
-    antwort.innerHTML = responsetext;
+    let responseJson = JSON.parse(responsetext);
+    generateData(responseJson);
+}
+function generateData(_responsejson) {
+    console.log(_responsejson.vorname);
+    console.log(_responsejson.nachname);
+    console.log(_responsejson.email);
+    console.log(_responsejson.nachricht);
 }
 //# sourceMappingURL=formular.js.map
