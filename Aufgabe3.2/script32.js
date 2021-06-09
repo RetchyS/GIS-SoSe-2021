@@ -34,7 +34,7 @@ var Aufgabe31Server;
             if (path == "/html") {
                 _response.setHeader("content-type", "text/html; charset=utf-8");
                 for (let key in url.query) { //Iterieren von dem query der URL
-                    _response.write(key + ":" + url.query[key]); // Schreib alles in die Response was gefunden wurde
+                    _response.write("<p>" + key + ":" + url.query[key] + "</p>"); // Schreib alles in die Response was gefunden wurde
                 }
             }
         }

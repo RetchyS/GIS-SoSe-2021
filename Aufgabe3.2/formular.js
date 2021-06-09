@@ -36,8 +36,9 @@ async function formDataJSON() {
     url = url + "?" + query.toString();
     let response = await fetch(url);
     let responsetext = await response.json(); // Serverantwort in Text kovertieren
-    let responseJson = JSON.parse(responsetext);
-    generateData(responseJson);
+    console.log(responsetext);
+    //let responseJson: Data = JSON.parse(responsetext);
+    //generateData(responseJson);
 }
 function generateData(_responsejson) {
     console.log(_responsejson.vorname);
