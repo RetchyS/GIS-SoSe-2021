@@ -16,21 +16,23 @@ var Aufgabe31Server;
     function handleListen() {
         console.log("Listening");
     }
+    let antwort = document.getElementById("serverantwort");
     function handleRequest(_request, _response) {
         console.log("I hear voices!"); // Serverlog
-        _response.setHeader("content-type", "text/html; charset=utf-8");
+        //_response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
-        _response.write(_request.url);
         if (_request.url) {
             //Url muss man parsen um es bearbeiten zu. Genauso wie im Video gemacht aber es scheint als wäre es veraltet
             let url = Url.parse(_request.url, true);
             let path = url.pathname; // Pathname entweder /html oder /json
             if (path == "/json") {
+                _response.setHeader("content-type", "application/json");
                 let jsonstring = JSON.stringify(url.query);
                 console.log(jsonstring); // Gibt das Object des JSOn in der Konsole aus
                 _response.write(jsonstring);
             }
             if (path == "/html") {
+                _response.setHeader("content-type", "text/html; charset=utf-8");
                 for (let key in url.query) { //Iterieren von dem query der URL
                     _response.write(key + ":" + url.query[key]); // Schreib alles in die Response was gefunden wurde
                 }

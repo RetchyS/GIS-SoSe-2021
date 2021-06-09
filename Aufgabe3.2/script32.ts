@@ -15,15 +15,13 @@ export namespace Aufgabe31Server {
     function handleListen(): void {                     // Die Funktion von listener
         console.log("Listening");
     }
-
+    let antwort: HTMLElement = document.getElementById("serverantwort");
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {      // Die funktion von Request
-        console.log("I hear voices!");                  // Serverlog
-        _response.setHeader("content-type", "text/html; charset=utf-8");
+        console.log("I hear voices!");                                                                  // Serverlog
+        //_response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
-        _response.write(_request.url);
-
-
+        
         if (_request.url) {
 
             //Url muss man parsen um es bearbeiten zu. Genauso wie im Video gemacht aber es scheint als wäre es veraltet
@@ -33,6 +31,7 @@ export namespace Aufgabe31Server {
             let path: string = url.pathname; // Pathname entweder /html oder /json
 
             if (path == "/json") {
+                _response.setHeader("content-type", "application/json");
                 let jsonstring: string = JSON.stringify(url.query);         
                 console.log(jsonstring);                            // Gibt das Object des JSOn in der Konsole aus
                 _response.write(jsonstring);
@@ -40,9 +39,10 @@ export namespace Aufgabe31Server {
             }
 
             if (path == "/html") {
-
+                _response.setHeader("content-type", "text/html; charset=utf-8");
                 for (let key in url.query) {                                //Iterieren von dem query der URL
                     _response.write(key + ":" + url.query[key]);            // Schreib alles in die Response was gefunden wurde
+                    
                 }
             }
             
