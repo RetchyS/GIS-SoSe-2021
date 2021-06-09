@@ -15,7 +15,7 @@ export namespace Aufgabe31Server {
     function handleListen(): void {                     // Die Funktion von listener
         console.log("Listening");
     }
-    let antwort: HTMLElement = document.getElementById("serverantwort");
+    //let antwort: HTMLElement = document.getElementById("serverantwort");
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {      // Die funktion von Request
         console.log("I hear voices!");                                                                  // Serverlog

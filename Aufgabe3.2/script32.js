@@ -16,7 +16,7 @@ var Aufgabe31Server;
     function handleListen() {
         console.log("Listening");
     }
-    let antwort = document.getElementById("serverantwort");
+    //let antwort: HTMLElement = document.getElementById("serverantwort");
     function handleRequest(_request, _response) {
         console.log("I hear voices!"); // Serverlog
         //_response.setHeader("content-type", "text/html; charset=utf-8");
