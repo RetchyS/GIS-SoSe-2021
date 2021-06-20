@@ -14,7 +14,9 @@ main {
 }
 h1{
   display:block;
-  width: 90%;
+  resize: horizontal;
+  max-width: 800px;
+  overflow: scroll;
 }
 
 input[type=text] {
