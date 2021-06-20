@@ -13,7 +13,8 @@ main {
     width: 800px;
 }
 h1{
-  max-width: 800px;
+  display:block;
+  width: 90%;
 }
 
 input[type=text] {
