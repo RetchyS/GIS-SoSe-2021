@@ -13,7 +13,7 @@ main {
     width: 800px;
 }
 h1{
-  max-width: fit-content;
+  max-width: 800px;
 }
 
 input[type=text] {
