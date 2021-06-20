@@ -48,7 +48,7 @@ async function formDataJSON(): Promise<void> {
     url += "/abfragen";
     url = url + "?" + query.toString();
     let response: Response = await fetch(url);
-    let responsetext: string  = await response.json();    // Serverantwort in Text kovertieren
+    let responsetext: string  = await response.json();    
     antwort.innerText = responsetext;
 
     //let responseJson: Data = JSON.parse(responsetext);
