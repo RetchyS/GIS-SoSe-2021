@@ -33,7 +33,7 @@ var Aufgabe34Server;
         console.log("Listening");
     }
     //let antwort: HTMLElement = document.getElementById("serverantwort");
-    function handleRequest(_request, _response) {
+    async function handleRequest(_request, _response) {
         console.log("I hear voices!"); // Serverlog
         //_response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -50,7 +50,8 @@ var Aufgabe34Server;
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata = orders.find();
-                _response.write(JSON.stringify(answerdata));
+                let answerarray = await answerdata.toArray();
+                _response.write(JSON.stringify(answerarray));
             }
         }
         _response.end();

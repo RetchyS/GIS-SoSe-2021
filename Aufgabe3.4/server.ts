@@ -49,7 +49,7 @@ export namespace Aufgabe34Server {
     }
     //let antwort: HTMLElement = document.getElementById("serverantwort");
 
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {      // Die funktion von Request
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise <void> {      // Die funktion von Request
         console.log("I hear voices!");                                                                  // Serverlog
         //_response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -73,9 +73,9 @@ export namespace Aufgabe34Server {
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata: Mongo.Cursor = orders.find();
-
+                let answerarray: Datenbankinfo [] = await answerdata.toArray();
                 
-                _response.write(JSON.stringify(answerdata));
+                _response.write(JSON.stringify(answerarray));
 
             }
 
