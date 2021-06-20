@@ -72,8 +72,9 @@ export namespace Aufgabe34Server {
 
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
-                let jsonstring: string = JSON.stringify(orders.find());
-                _response.write(jsonstring);
+                let answerdata: Mongo.Cursor = orders.find();
+                
+                _response.write(answerdata);
 
             }
 

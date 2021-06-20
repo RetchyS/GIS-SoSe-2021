@@ -49,8 +49,8 @@ var Aufgabe34Server;
             }
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
-                let jsonstring = JSON.stringify(orders.find());
-                _response.write(jsonstring);
+                let answerdata = orders.find();
+                _response.write(answerdata);
             }
         }
         _response.end();
