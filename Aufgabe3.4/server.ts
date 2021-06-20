@@ -73,8 +73,9 @@ export namespace Aufgabe34Server {
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata: Mongo.Cursor = orders.find();
+
                 
-                _response.write(answerdata);
+                _response.write(JSON.stringify(answerdata));
 
             }
 
@@ -83,6 +84,13 @@ export namespace Aufgabe34Server {
     }
     function storeOrder(_order: Order): void {
         orders.insert(_order);
+    }
+    interface Datenbankinfo {
+        vorname: string;
+        nachname: string;
+        email: string;
+        nachricht: string;
+
     }
 
 

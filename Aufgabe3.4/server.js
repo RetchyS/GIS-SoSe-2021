@@ -50,7 +50,7 @@ var Aufgabe34Server;
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata = orders.find();
-                _response.write(answerdata);
+                _response.write(JSON.stringify(answerdata));
             }
         }
         _response.end();
