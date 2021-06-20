@@ -10,7 +10,7 @@ var Aufgabe34Server;
     let port = Number(process.env.PORT); // Holt sich den Port aus dem User Environment. Rückgabe ist ein String und wird mit nem Cast zur Zahl
     if (!port) // Falls kein Port hinterlegt ist bzw. die Variable Port undefined ist                
         port = 8001;
-    let databaseUrl = "mongodb+srv://<Test>:<HpWagAcguk85HEcW>@piikachu.ai2p4.mongodb.net/Test?retryWrites=true&w=majority";
+    let databaseUrl = "mongodb+srv://Test:HpWagAcguk85HEcW@piikachu.ai2p4.mongodb.net/Test?retryWrites=true&w=majority";
     //mongod://localhost:27017
     //mongodb+srv://<Test>:<HpWagAcguk85HEcW>@piikachu.ai2p4.mongodb.net/Test?retryWrites=true&w=majority
     startServer(port);
