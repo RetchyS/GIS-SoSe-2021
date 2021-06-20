@@ -12,6 +12,9 @@ main {
     margin: auto;
     width: 800px;
 }
+h1{
+  max-width: fit-content;
+}
 
 input[type=text] {
     display: block;
