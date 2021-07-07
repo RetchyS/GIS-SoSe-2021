@@ -29,6 +29,7 @@ var Memory;
         for (let x = 0; x < 8; x++) {
             randomindex = Math.floor((Math.random() * responsetext.length) + 0);
             let srcstring = responsetext[randomindex].Bilderlink;
+            spielkartensrc.push(srcstring);
             spielkartensrc.forEach(srcstring => {
                 duplicatenumber++;
             });

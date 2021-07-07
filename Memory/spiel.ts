@@ -35,7 +35,8 @@ namespace Memory {
         for (let x: number = 0; x < 8; x++) {
             randomindex = Math.floor((Math.random() * responsetext.length) + 0);
             let srcstring: string = responsetext[randomindex].Bilderlink;
-
+            spielkartensrc.push(srcstring);
+            
             spielkartensrc.forEach(srcstring => {
                 duplicatenumber++;
                 
