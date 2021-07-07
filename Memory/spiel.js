@@ -29,11 +29,6 @@ var Memory;
         }
     }
     //Karten für die Datenbank
-    let kartendatenbank = document.createElement("img");
-    let kartendatenbanksrc = document.createAttribute("src");
-    let kartendatenbankid = document.createAttribute("id");
-    kartendatenbank.setAttributeNode(kartendatenbankid);
-    kartendatenbankid.value = "card";
     async function bildereinsehen() {
         let formular = new FormData(document.forms[0]);
         let query = new URLSearchParams(formular);
@@ -45,13 +40,18 @@ var Memory;
         console.log(responsetext.length);
         console.log(responsetext);
         for (let i = 0; i < responsetext.length; i++) {
+            let kartendatenbank = document.createElement("img");
+            let kartendiv = document.createElement("div");
+            let kartendatenbanksrc = document.createAttribute("src");
+            let kartendatenbankid = document.createAttribute("id");
             console.log(responsetext[i].Bilderlink);
             kartendatenbanksrc.value = responsetext[i].Bilderlink;
             kartendatenbankid.value = "card" + i;
             console.log(kartendatenbanksrc);
-            kartendatenbank.setAttributeNode(kartendatenbankid);
+            kartendiv.setAttributeNode(kartendatenbankid);
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
-            bilderantwort.appendChild(kartendatenbank);
+            bilderantwort.appendChild(kartendiv);
+            kartendiv.appendChild(kartendatenbank);
             i++;
         }
     }
