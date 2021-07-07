@@ -29,10 +29,12 @@ var Memory;
         for (let x = 0; x < 8; x++) {
             randomindex = Math.floor((Math.random() * responsetext.length) + 0);
             let srcstring = responsetext[randomindex].Bilderlink;
-            for (let z = 0; z < spielkartensrc.length; z++) {
-                let vergleich = spielkartensrc[z];
-                if (vergleich == srcstring) {
-                    duplicatenumber++;
+            if (spielkartensrc != null) {
+                for (let z = 0; z < spielkartensrc.length; z++) {
+                    let vergleich = spielkartensrc[z];
+                    if (vergleich == srcstring) {
+                        duplicatenumber++;
+                    }
                 }
             }
             if (duplicatenumber < 2) {

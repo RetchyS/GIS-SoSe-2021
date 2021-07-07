@@ -36,13 +36,16 @@ namespace Memory {
         for (let x: number = 0; x < 8; x++) {
             randomindex = Math.floor((Math.random() * responsetext.length) + 0);
             let srcstring: string = responsetext[randomindex].Bilderlink;
-            
-            for (let z: number = 0; z < spielkartensrc.length; z++) {
-                let vergleich: string = spielkartensrc[z];
-                if (vergleich == srcstring) {
-                    duplicatenumber++;
-                }
 
+
+            if (spielkartensrc != null) {
+                for (let z: number = 0; z < spielkartensrc.length; z++) {
+                    let vergleich: string = spielkartensrc[z];
+                    if (vergleich == srcstring) {
+                        duplicatenumber++;
+                    }
+
+                }
             }
 
 
@@ -60,20 +63,20 @@ namespace Memory {
         }
 
         //Karten hinzufügen
-        let benutztekarten: number [];
+        let benutztekarten: number[];
         let counterzwei: number = 0;
         for (let i: number = 0; i < 16; i++) { // 16 für die Kartenanzahl
             bilderposi += i;
             randomindex = Math.floor((Math.random() * 7) + 0); //7 da 0 dazu zählt, für 8 verschiedene karten
             benutztekarten.push(randomindex);
-            benutztekarten.forEach( countindex => {
+            benutztekarten.forEach(countindex => {
                 countindex = randomindex;
                 counterzwei++;
-                
+
             });
 
             let src: string = spielkartensrc[randomindex];
-            
+
             if (counterzwei < 3) {
                 kartehinzufügen(src, bilderposi);
                 counterzwei = 0;
