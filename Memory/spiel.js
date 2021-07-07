@@ -29,10 +29,12 @@ var Memory;
         for (let x = 0; x < 8; x++) {
             randomindex = Math.floor((Math.random() * responsetext.length) + 0);
             let srcstring = responsetext[randomindex].Bilderlink;
-            spielkartensrc.push(srcstring);
-            spielkartensrc.forEach(srcstring => {
-                duplicatenumber++;
-            });
+            for (let z = 0; z < spielkartensrc.length; z++) {
+                let vergleich = spielkartensrc[z];
+                if (vergleich == srcstring) {
+                    duplicatenumber++;
+                }
+            }
             if (duplicatenumber < 2) {
                 spielkartensrc.push(srcstring);
                 duplicatenumber = 0;
@@ -42,16 +44,17 @@ var Memory;
             }
         }
         //Karten hinzufügen
+        let benutztekarten;
         let counterzwei = 0;
         for (let i = 0; i < 16; i++) { // 16 für die Kartenanzahl
             bilderposi += i;
             randomindex = Math.floor((Math.random() * 7) + 0); //7 da 0 dazu zählt, für 8 verschiedene karten
-            let src = spielkartensrc[randomindex];
-            duplicatezwei.push(src);
-            duplicatezwei.forEach(src => {
+            benutztekarten.push(randomindex);
+            benutztekarten.forEach(countindex => {
+                countindex = randomindex;
                 counterzwei++;
-                console.log(counterzwei);
             });
+            let src = spielkartensrc[randomindex];
             if (counterzwei < 3) {
                 kartehinzufügen(src, bilderposi);
                 counterzwei = 0;
