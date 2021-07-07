@@ -41,7 +41,7 @@ var Memory;
             console.log(responsetext[i].Bilderlink);
             kartensrc.value = responsetext[i].Bilderlink;
             kartenbild.setAttributeNode(kartensrc);
-            antwort.appendChild(kartenbild);
+            bilderantwort.appendChild(kartenbild);
             i++;
         }
     }
