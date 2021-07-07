@@ -45,8 +45,8 @@ namespace Memory {
         url += "/abfragen";
         url = url + "?" + query.toString();
         let response: Response = await fetch(url);
-        let responsetext: Data = await response.json();
-        console.log(responsetext);
+        let responsetext: Data [] = await response.json();
+        console.log(responsetext[0].Bilderlink);
         /* bilderdata = responsetext;
         for (let i: number = 0; i < bilderdata.namesrc.length; i++) {
             kartensrc.value = bilderdata.namesrc[i];
@@ -56,8 +56,9 @@ namespace Memory {
     }
 
     interface Data {
-        name: string[];
-        namesrc: string[];
+        Object: string;
+        Bildername: string;
+        Bilderlink: string;
     }
 
 
