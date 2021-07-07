@@ -89,6 +89,9 @@ var Memory;
                 spielkartensrc.push(srcstring);
                 duplicatenumber = 0;
             }
+            else {
+                x--;
+            }
         }
         //Karten hinzufügen
         let counterzwei = 0;
@@ -99,10 +102,14 @@ var Memory;
             duplicatezwei.push(src);
             duplicatezwei.forEach(src => {
                 counterzwei++;
+                console.log(counterzwei);
             });
             if (counterzwei < 3) {
                 kartehinzufügen(src, bilderposi);
                 counterzwei = 0;
+            }
+            else {
+                i--;
             }
         }
     }

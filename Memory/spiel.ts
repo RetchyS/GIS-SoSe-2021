@@ -118,6 +118,7 @@ namespace Memory {
 
             spielkartensrc.forEach(srcstring => {
                 duplicatenumber++;
+                
             });
 
             if (duplicatenumber < 2) {
@@ -126,6 +127,8 @@ namespace Memory {
 
                 duplicatenumber = 0;
 
+            } else {
+                x--;
             }
         }
 
@@ -139,10 +142,13 @@ namespace Memory {
             duplicatezwei.push(src);
             duplicatezwei.forEach(src => {
                 counterzwei++;
+                console.log(counterzwei);
             });
             if (counterzwei < 3) {
                 kartehinzufügen(src, bilderposi);
                 counterzwei = 0;
+            } else {
+                i--;
             }
         }
     }
