@@ -4,7 +4,7 @@
   "description": "Alle Aufgaben aus dem Modul GIS",
   "main": "index.js",
   "scripts": {
-    "start": "node Aufgabe3.4/server.js "
+    "start": "node Memory/server.js "
   },
   "repository": {
     "type": "git",
