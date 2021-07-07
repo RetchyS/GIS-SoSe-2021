@@ -15,7 +15,7 @@ namespace Memory {
     let bilderantwort: HTMLElement = document.getElementById("bilderantwort");
     let buttonzeigen: HTMLButtonElement = <HTMLButtonElement>document.getElementById("bilderzeigen");
     buttonzeigen.addEventListener("click", bildereinsehen);
-
+    bilderantwort.addEventListener("click", bildereinsehen);
     let bilderdata: Data = null;
 
 

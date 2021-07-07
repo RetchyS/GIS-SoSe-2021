@@ -14,6 +14,7 @@ var Memory;
     let bilderantwort = document.getElementById("bilderantwort");
     let buttonzeigen = document.getElementById("bilderzeigen");
     buttonzeigen.addEventListener("click", bildereinsehen);
+    bilderantwort.addEventListener("click", bildereinsehen);
     let bilderdata = null;
     async function bildspeichern() {
         let url = "https://piikachu.herokuapp.com";
