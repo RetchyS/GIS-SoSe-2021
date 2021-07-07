@@ -41,12 +41,16 @@ main {
     color: #eee;
 }
 img {
+  
   width: 150px;
   height: 250px;
 }
 
 
-
+#bilderantwort {
+  display: block;
+  margin: auto;
+}
 
 
 input[type=text] {

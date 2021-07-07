@@ -43,6 +43,8 @@ namespace Memory {
     
     let kartendatenbanksrc = document.createAttribute("src");
     let kartendatenbankid = document.createAttribute("id");
+    kartendatenbank.setAttributeNode(kartendatenbankid);
+    kartendatenbankid.value = "card";
 
     async function bildereinsehen(): Promise<void> {
 
@@ -61,7 +63,9 @@ namespace Memory {
         for (let i: number = 0; i < responsetext.length; i++) {
             console.log(responsetext[i].Bilderlink);
             kartendatenbanksrc.value = responsetext[i].Bilderlink;
+            kartendatenbankid.value = "card" + i;
             console.log(kartendatenbanksrc);
+            kartendatenbank.setAttributeNode(kartendatenbankid);
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
             bilderantwort.appendChild(kartendatenbank);
             i++;
