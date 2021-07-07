@@ -42,17 +42,20 @@ main {
 }
 
 
-.karte {
-  display: inline;
-  margin: auto;
-  border-radius: 10%;
-
-}
-img {
-  margin: auto;
-  width: 150px;
+.kartencontainer {
+  padding: 5px;
+  display: inline-block;
   height: 250px;
+  width: 150px;
+  border-radius: 10%;
+  cursor: pointer;
+  
+}
 
+.kartecontainer img{
+  padding: 5px;
+  height: 250px;
+  width: 150px;
 }
 
 
