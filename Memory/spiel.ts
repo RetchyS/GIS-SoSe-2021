@@ -71,7 +71,7 @@ namespace Memory {
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
             bilderantwort.appendChild(kartendiv);
             kartendiv.appendChild(kartendatenbank);
-            i++;
+            
         }
     }
 

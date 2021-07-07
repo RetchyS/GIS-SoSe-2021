@@ -40,11 +40,17 @@ main {
     background-color: olivedrab;
     color: #eee;
 }
-img {
-  
+
+
+.karte {
+  display: inline-block;
+  margin: auto;
+  border-radius: 10%;
   width: 150px;
   height: 250px;
+
 }
+
 
 
 #bilderantwort {
