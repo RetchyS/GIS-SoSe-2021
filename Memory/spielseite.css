@@ -1,0 +1,97 @@
+body {
+    background-image: url(Bilder/hintergrundessen.jpg);
+    height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+main {
+    padding: 10px;
+    margin: auto;
+    display: block;
+    max-height: fit-content;
+    max-width:40%;
+   
+}
+
+.optionen {
+margin: auto;
+text-align: center;
+}
+
+.optionen button {
+    background-color: #98af4c;
+    border-radius: 10px;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.optionen h1 {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+
+
+.row {   
+    text-align: center;
+    margin: auto;
+ 
+
+}
+.karte {
+    
+    background-color: rgb(0, 0, 255);
+    padding: 5px;
+    display: inline-block;
+    height: 250px;
+    width: 150px;
+    border-radius: 10%;
+    cursor: pointer;
+    
+}
+
+.karte img{
+    opacity: 0.0;
+    padding: 5px;
+    height: 250px;
+    width: 150px;
+}
+
+.navibar {
+    list-style-type: none;
+    margin: auto;
+    padding: 0px;
+    width: 20%;
+    background-color: rgb(255, 255, 255);
+    height: auto;
+    overflow: auto;
+    border-radius: 10px;
+    text-align: center;
+}
+    
+.navibar a {
+        display: inline;
+        font-weight: bold;
+        font-size: larger;
+        color: #000;
+        padding: 8px 16px;
+        text-decoration: none;
+}
+
+.navibar a:hover {
+    background-color: olivedrab;
+    color: #eee;
+}

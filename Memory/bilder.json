@@ -1,0 +1,44 @@
+{
+
+    "bilder":[
+    {
+    "imagepath": "./Bilder/ballons.png",
+    "imagename": "pflanze"
+   
+},
+{
+    "imagepath": "./Bilder/bed.png",
+    "imagename": "pflanze"
+    
+},
+{
+    "imagepath": "./Bilder/bus.png",
+    "imagename": "pflanze"
+    
+},
+{
+    "imagepath": "./Bilder/crown.png",
+    "imagename": "pflanze"
+    
+},
+{
+    "imagepath": "./Bilder/fish.png",
+    "imagename": "pflanze"
+    
+},
+{
+    "imagepath": "./Bilder/friends.png",
+    "imagename": "pflanze"
+    
+},
+{
+    "imagepath": "./Bilder/school.png",
+    "imagename": "pflanze"
+    
+}
+
+
+
+
+]
+}
