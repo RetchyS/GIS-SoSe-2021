@@ -13,7 +13,7 @@ namespace Memory {
     let antwort: HTMLElement = document.getElementById("serverantwort");
     let buttonzeigen: HTMLButtonElement = <HTMLButtonElement>document.getElementById("bilderzeigen");
     buttonzeigen.addEventListener("click", bildereinsehen);
-    
+
     let bilderdata: Data = null;
 
 
@@ -46,12 +46,13 @@ namespace Memory {
         url = url + "?" + query.toString();
         let response: Response = await fetch(url);
         let responsetext: Data = await response.json();
-        bilderdata = responsetext;
+        console.log(responsetext);
+        /* bilderdata = responsetext;
         for (let i: number = 0; i < bilderdata.namesrc.length; i++) {
             kartensrc.value = bilderdata.namesrc[i];
             kartenbild.setAttributeNode(kartensrc);
             antwort.appendChild(kartenbild);
-        }
+        } */
     }
 
     interface Data {

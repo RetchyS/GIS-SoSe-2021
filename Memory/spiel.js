@@ -36,12 +36,13 @@ var Memory;
         url = url + "?" + query.toString();
         let response = await fetch(url);
         let responsetext = await response.json();
-        bilderdata = responsetext;
-        for (let i = 0; i < bilderdata.namesrc.length; i++) {
+        console.log(responsetext);
+        /* bilderdata = responsetext;
+        for (let i: number = 0; i < bilderdata.namesrc.length; i++) {
             kartensrc.value = bilderdata.namesrc[i];
             kartenbild.setAttributeNode(kartensrc);
             antwort.appendChild(kartenbild);
-        }
+        } */
     }
     //------------Spiel-------------------------------------
     //Spielfeld generieren
