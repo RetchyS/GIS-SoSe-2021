@@ -44,7 +44,7 @@ var Memory;
                 console.log(jsonstring);
                 storeOrder(url.query);
             }
-            if (path == "/suchen") {
+            if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata = karten.find();
                 let answerarray = await answerdata.toArray();

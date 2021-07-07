@@ -59,7 +59,7 @@ export namespace Memory {
 
             }
 
-            if (path == "/suchen") {
+            if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata: Mongo.Cursor = karten.find();
                 let answerarray: Datenbankinfo[] = await answerdata.toArray();
