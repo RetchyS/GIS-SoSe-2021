@@ -37,9 +37,12 @@ var Memory;
         url = url + "?" + query.toString();
         let response = await fetch(url);
         let responsetext = await response.json();
+        console.log(responsetext.length);
+        console.log(responsetext);
         for (let i = 0; i < responsetext.length; i++) {
             console.log(responsetext[i].Bilderlink);
             kartensrc.value = responsetext[i].Bilderlink;
+            console.log(kartensrc);
             kartenbild.setAttributeNode(kartensrc);
             bilderantwort.appendChild(kartenbild);
             i++;
