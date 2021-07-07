@@ -28,6 +28,7 @@ namespace Memory {
         url += "/speichern";
         url = url + "?" + query.toString();
         let response: Response = await fetch(url);
+        antwort.innerHTML = "";
         if (response == undefined) {
             antwort.innerHTML = "Konnte nicht gespeichert werden";
         } else {
@@ -54,6 +55,8 @@ namespace Memory {
         let responsetext: Data[] = await response.json();
         console.log(responsetext.length);
         console.log(responsetext);
+
+        bilderantwort.innerHTML = "";
 
         for (let i: number = 0; i < responsetext.length; i++) {
             let kartendatenbank = document.createElement("img");

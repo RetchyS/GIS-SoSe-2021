@@ -21,6 +21,7 @@ var Memory;
         url += "/speichern";
         url = url + "?" + query.toString();
         let response = await fetch(url);
+        antwort.innerHTML = "";
         if (response == undefined) {
             antwort.innerHTML = "Konnte nicht gespeichert werden";
         }
@@ -39,6 +40,7 @@ var Memory;
         let responsetext = await response.json();
         console.log(responsetext.length);
         console.log(responsetext);
+        bilderantwort.innerHTML = "";
         for (let i = 0; i < responsetext.length; i++) {
             let kartendatenbank = document.createElement("img");
             let kartendiv = document.createElement("div");
