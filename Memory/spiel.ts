@@ -58,17 +58,21 @@ namespace Memory {
         for (let i: number = 0; i < responsetext.length; i++) {
             let kartendatenbank = document.createElement("img");
             let kartendiv = document.createElement("div");
-
+            let kartenclass = document.createAttribute("class");
+            
             let kartendatenbanksrc = document.createAttribute("src");
             let kartendatenbankid = document.createAttribute("id");
 
             console.log(responsetext[i].Bilderlink);
             kartendatenbanksrc.value = responsetext[i].Bilderlink;
             kartendatenbankid.value = "card" + i;
+            kartenclass.value = "kartencontainer";
             console.log(kartendatenbanksrc);
 
             kartendiv.setAttributeNode(kartendatenbankid);
+            kartendiv.setAttributeNode(kartenclass);
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
+
             bilderantwort.appendChild(kartendiv);
             kartendiv.appendChild(kartendatenbank);
             

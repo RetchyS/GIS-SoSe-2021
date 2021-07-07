@@ -43,9 +43,13 @@ main {
 
 
 .karte {
-  display: inline-block;
+  display: inline;
   margin: auto;
   border-radius: 10%;
+
+}
+img {
+  margin: auto;
   width: 150px;
   height: 250px;
 
