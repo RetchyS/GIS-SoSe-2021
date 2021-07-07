@@ -1,10 +1,19 @@
 "use strict";
 var Memory;
 (function (Memory) {
+    //Karte
+    let kartenbild = document.createElement("img");
+    kartenbild.addEventListener("click", match);
+    let kartensrc = document.createAttribute("src");
+    let kartenid = document.createAttribute("id");
+    kartenbild.setAttributeNode(kartensrc);
     //-----------------Admin---------------
     let buttonspeichern = document.getElementById("datenspeichern");
     buttonspeichern.addEventListener("click", bildspeichern);
     let antwort = document.getElementById("serverantwort");
+    let buttonzeigen = document.getElementById("bilderzeigen");
+    buttonzeigen.addEventListener("click", bildereinsehen);
+    let bilderdata = null;
     async function bildspeichern() {
         let url = "https://piikachu.herokuapp.com";
         let formular = new FormData(document.forms[0]);
@@ -26,18 +35,15 @@ var Memory;
         url += "/abfragen";
         url = url + "?" + query.toString();
         let response = await fetch(url);
-        let responsetext = await response.text();
-        antwort.innerText = responsetext;
-        //let responseJson: Data = JSON.parse(responsetext);
-        //generateData(responseJson);
+        let responsetext = await response.json();
+        bilderdata = responsetext;
+        for (let i = 0; i < bilderdata.namesrc.length; i++) {
+            kartensrc.value = bilderdata.namesrc[i];
+            kartenbild.setAttributeNode(kartensrc);
+            antwort.appendChild(kartenbild);
+        }
     }
     //------------Spiel-------------------------------------
-    //Karte
-    let kartenbild = document.createElement("img");
-    kartenbild.addEventListener("click", match);
-    let kartensrc = document.createAttribute("src");
-    let kartenid = document.createAttribute("id");
-    kartenbild.setAttributeNode(kartensrc);
     //Spielfeld generieren
     let aktuellekarte;
     let cardid = "cardid";
