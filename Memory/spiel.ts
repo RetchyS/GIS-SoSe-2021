@@ -28,8 +28,8 @@ namespace Memory {
         console.log(responsetext);
 
         //Auswahl der Karten
-        let duplicatezwei: string[] = null;
-        let spielkartensrc: string[] = null;         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
+        let duplicatezwei: string[];
+        let spielkartensrc: string[];         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
         let duplicatenumber: number = 0;            //Keiner der 8 dürfen gleich sein
         let randomindex: number = 0;
 

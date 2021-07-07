@@ -22,8 +22,8 @@ var Memory;
         console.log(responsetext.length);
         console.log(responsetext);
         //Auswahl der Karten
-        let duplicatezwei = null;
-        let spielkartensrc = null; //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
+        let duplicatezwei;
+        let spielkartensrc; //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
         let duplicatenumber = 0; //Keiner der 8 dürfen gleich sein
         let randomindex = 0;
         for (let x = 0; x < 8; x++) {
