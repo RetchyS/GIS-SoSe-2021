@@ -40,6 +40,10 @@ main {
     background-color: olivedrab;
     color: #eee;
 }
+img {
+  width: 150px;
+  height: 250px;
+}
 
 
 

@@ -11,6 +11,7 @@ var Memory;
     let buttonspeichern = document.getElementById("datenspeichern");
     buttonspeichern.addEventListener("click", bildspeichern);
     let antwort = document.getElementById("serverantwort");
+    let bilderantwort = document.getElementById("bilderantwort");
     let buttonzeigen = document.getElementById("bilderzeigen");
     buttonzeigen.addEventListener("click", bildereinsehen);
     let bilderdata = null;
@@ -36,11 +37,12 @@ var Memory;
         url = url + "?" + query.toString();
         let response = await fetch(url);
         let responsetext = await response.json();
-        console.log(responsetext[0].Bilderlink);
         for (let i = 0; i < responsetext.length; i++) {
+            console.log(responsetext[i].Bilderlink);
             kartensrc.value = responsetext[i].Bilderlink;
             kartenbild.setAttributeNode(kartensrc);
             antwort.appendChild(kartenbild);
+            i++;
         }
     }
     //------------Spiel-------------------------------------

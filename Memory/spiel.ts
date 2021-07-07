@@ -10,7 +10,9 @@ namespace Memory {
     //-----------------Admin---------------
     let buttonspeichern: HTMLButtonElement = <HTMLButtonElement>document.getElementById("datenspeichern");
     buttonspeichern.addEventListener("click", bildspeichern);
+    
     let antwort: HTMLElement = document.getElementById("serverantwort");
+    let bilderantwort: HTMLElement = document.getElementById("bilderantwort");
     let buttonzeigen: HTMLButtonElement = <HTMLButtonElement>document.getElementById("bilderzeigen");
     buttonzeigen.addEventListener("click", bildereinsehen);
 
@@ -38,7 +40,7 @@ namespace Memory {
     async function bildereinsehen(): Promise<void> {
 
         let formular: FormData = new FormData(document.forms[0]);
-
+         
 
         let query: URLSearchParams = new URLSearchParams(<any>formular);
         let url: RequestInfo = "https://piikachu.herokuapp.com";
@@ -46,13 +48,14 @@ namespace Memory {
         url = url + "?" + query.toString();
         let response: Response = await fetch(url);
         let responsetext: Data [] = await response.json();
-        console.log(responsetext[0].Bilderlink);
+        
         
         for (let i: number = 0; i < responsetext.length; i++) {
-
+            console.log(responsetext[i].Bilderlink);
             kartensrc.value = responsetext[i].Bilderlink;
             kartenbild.setAttributeNode(kartensrc);
             antwort.appendChild(kartenbild);
+            i++;
         }
     }
 
