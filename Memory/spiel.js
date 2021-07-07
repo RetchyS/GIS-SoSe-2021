@@ -6,7 +6,6 @@ var Memory;
     kartenbild.addEventListener("click", match);
     let kartensrc = document.createAttribute("src");
     let kartenid = document.createAttribute("id");
-    kartenbild.setAttributeNode(kartensrc);
     //-----------------Admin---------------
     let buttonspeichern = document.getElementById("datenspeichern");
     buttonspeichern.addEventListener("click", bildspeichern);
@@ -29,6 +28,10 @@ var Memory;
             antwort.innerHTML = "Angaben wurden gespeichert";
         }
     }
+    //Karten für die Datenbank
+    let kartendatenbank = document.createElement("img");
+    let kartendatenbanksrc = document.createAttribute("src");
+    let kartendatenbankid = document.createAttribute("id");
     async function bildereinsehen() {
         let formular = new FormData(document.forms[0]);
         let query = new URLSearchParams(formular);
@@ -41,10 +44,10 @@ var Memory;
         console.log(responsetext);
         for (let i = 0; i < responsetext.length; i++) {
             console.log(responsetext[i].Bilderlink);
-            kartensrc.value = responsetext[i].Bilderlink;
-            console.log(kartensrc);
-            kartenbild.setAttributeNode(kartensrc);
-            bilderantwort.appendChild(kartenbild);
+            kartendatenbanksrc.value = responsetext[i].Bilderlink;
+            console.log(kartendatenbanksrc);
+            kartendatenbank.setAttributeNode(kartendatenbanksrc);
+            bilderantwort.appendChild(kartendatenbank);
             i++;
         }
     }
