@@ -28,38 +28,27 @@ namespace Memory {
         console.log(responsetext);
 
         //Auswahl der Karten
-        let duplicatezwei: string[];
         let spielkartensrc: string[];         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
-        let duplicatenumber: number = 0;            //Keiner der 8 dürfen gleich sein
+        let benutzterindex: number[];
         let randomindex: number = 0;
+        let doppel: boolean = false;
 
         for (let x: number = 0; x < 8; x++) {
             randomindex = Math.floor((Math.random() * responsetext.length) + 0);
-            let srcstring: string = responsetext[randomindex].Bilderlink;
-
-
-            if (spielkartensrc != null) {
-                for (let z: number = 0; z < spielkartensrc.length; z++) {
-                    let vergleich: string = spielkartensrc[z];
-                    if (vergleich == srcstring) {
-                        duplicatenumber++;
-                    }
-
+            for (let i: number = 0; i < benutzterindex.length; i++) {
+                if (benutzterindex[i] == randomindex ) {
+                    doppel = true;
+                    x--;
                 }
             }
-
-            if (duplicatenumber < 2) {
-
-                spielkartensrc.push(srcstring);
-
-                duplicatenumber = 0;
-
+            if (!doppel) {
+                spielkartensrc[x] = responsetext[randomindex].Bilderlink;
             } else {
-                x--;
-            }
+                doppel = false;
+            }     
         }
-
-        //Karten hinzufügen
+        console.log(spielkartensrc);
+        /* //Karten hinzufügen
         let benutztekarten: number[];
         let counterzwei: number = 0;
         for (let i: number = 0; i < 16; i++) { // 16 für die Kartenanzahl
@@ -80,7 +69,7 @@ namespace Memory {
             } else {
                 i--;
             }
-        }
+        } */
     }
     function kartehinzufügen(_src: string, _bilderposi: string): void {
         let img = document.createElement("img");
@@ -93,6 +82,9 @@ namespace Memory {
         imgcontainer.appendChild(img);
 
 
+
+    }
+    function kartenaussuche(_karten: Data[]){
 
     }
 

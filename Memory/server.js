@@ -51,6 +51,12 @@ var Memory;
                 console.log(jsonstring);
                 scoreHighscore(url.query);
             }
+            if (path == "/highscoreabfragen") {
+                console.log("Datenbank wird abgefragt");
+                let answerdata = highscore.find();
+                let answerarray = await answerdata.toArray();
+                _response.write(JSON.stringify(answerarray));
+            }
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata = karten.find();

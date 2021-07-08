@@ -22,49 +22,48 @@ var Memory;
         console.log(responsetext.length);
         console.log(responsetext);
         //Auswahl der Karten
-        let duplicatezwei;
         let spielkartensrc; //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
-        let duplicatenumber = 0; //Keiner der 8 dürfen gleich sein
+        let benutzterindex;
         let randomindex = 0;
+        let doppel = false;
         for (let x = 0; x < 8; x++) {
             randomindex = Math.floor((Math.random() * responsetext.length) + 0);
-            let srcstring = responsetext[randomindex].Bilderlink;
-            if (spielkartensrc != null) {
-                for (let z = 0; z < spielkartensrc.length; z++) {
-                    let vergleich = spielkartensrc[z];
-                    if (vergleich == srcstring) {
-                        duplicatenumber++;
-                    }
+            for (let i = 0; i < benutzterindex.length; i++) {
+                if (benutzterindex[i] == randomindex) {
+                    doppel = true;
+                    x--;
                 }
             }
-            if (duplicatenumber < 2) {
-                spielkartensrc.push(srcstring);
-                duplicatenumber = 0;
+            if (!doppel) {
+                spielkartensrc[x] = responsetext[randomindex].Bilderlink;
             }
             else {
-                x--;
+                doppel = false;
             }
         }
-        //Karten hinzufügen
-        let benutztekarten;
-        let counterzwei = 0;
-        for (let i = 0; i < 16; i++) { // 16 für die Kartenanzahl
+        console.log(spielkartensrc);
+        /* //Karten hinzufügen
+        let benutztekarten: number[];
+        let counterzwei: number = 0;
+        for (let i: number = 0; i < 16; i++) { // 16 für die Kartenanzahl
             bilderposi += i;
             randomindex = Math.floor((Math.random() * 7) + 0); //7 da 0 dazu zählt, für 8 verschiedene karten
             benutztekarten.push(randomindex);
             benutztekarten.forEach(countindex => {
                 countindex = randomindex;
                 counterzwei++;
+
             });
-            let src = spielkartensrc[randomindex];
+
+            let src: string = spielkartensrc[randomindex];
+
             if (counterzwei < 3) {
                 kartehinzufügen(src, bilderposi);
                 counterzwei = 0;
-            }
-            else {
+            } else {
                 i--;
             }
-        }
+        } */
     }
     function kartehinzufügen(_src, _bilderposi) {
         let img = document.createElement("img");
@@ -73,6 +72,8 @@ var Memory;
         imgsrc.value = _src;
         img.setAttributeNode(imgsrc);
         imgcontainer.appendChild(img);
+    }
+    function kartenaussuche(_karten) {
     }
 })(Memory || (Memory = {}));
 //schaut nach einem match
