@@ -35,6 +35,7 @@ export namespace Memory {
         karten = mongoClient.db("Karten").collection("allekarten");
         highscore = mongoClient.db("Karten").collection("Highscores");
         console.log("Database connection ", karten != undefined);
+        console.log("Database connection ", highscore != undefined);
     }
 
     function handleListen(): void {                     // Die Funktion von listener
@@ -49,6 +50,7 @@ export namespace Memory {
 
             //Url muss man parsen um es bearbeiten zu. Genauso wie im Video gemacht aber es scheint als wäre es veraltet
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+            
 
 
             let path: string = url.pathname; // Pathname entweder /html oder /json
@@ -66,6 +68,7 @@ export namespace Memory {
                 console.log(jsonstring);
                 scoreHighscore(url.query);
             }
+
             if ( path == "/highscoreabfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata: Mongo.Cursor = highscore.find();
@@ -73,6 +76,7 @@ export namespace Memory {
 
                 _response.write(JSON.stringify(answerarray));
             }
+
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata: Mongo.Cursor = karten.find();

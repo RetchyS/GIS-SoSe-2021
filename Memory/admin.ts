@@ -20,20 +20,17 @@
         url += "/speichern";
         url = url + "?" + query.toString();
         let response: Response = await fetch(url);
-        antwort.innerHTML = "";
+
+        antwort.innerHTML = "Benötigte Zeit" + localStorage.getItem("");
         if (response == undefined) {
             antwort.innerHTML = "Konnte nicht gespeichert werden";
         } else {
             antwort.innerHTML = "Angaben wurden gespeichert";
         }
-
-
     }
 
 
     //Karten für die Datenbank
-
-
     async function bildereinsehen(): Promise<void> {
 
         let formular: FormData = new FormData(document.forms[0]);

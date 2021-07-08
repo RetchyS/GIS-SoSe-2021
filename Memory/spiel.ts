@@ -28,8 +28,10 @@ namespace Memory {
         console.log(responsetext);
 
         //Auswahl der Karten
-        let spielkartensrc: string[];         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
-        let benutzterindex: number[];
+        let spielkartensrc: string[] = null;         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
+        spielkartensrc.length = 7;
+        let benutzterindex: number[] = null;
+        benutzterindex.length = 7;
         let randomindex: number = 0;
         let doppel: boolean = false;
         if (response != undefined) {

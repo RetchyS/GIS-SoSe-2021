@@ -13,7 +13,7 @@ async function bildspeichern() {
     url += "/speichern";
     url = url + "?" + query.toString();
     let response = await fetch(url);
-    antwort.innerHTML = "";
+    antwort.innerHTML = "Benötigte Zeit" + localStorage.getItem("");
     if (response == undefined) {
         antwort.innerHTML = "Konnte nicht gespeichert werden";
     }

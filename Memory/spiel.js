@@ -22,8 +22,10 @@ var Memory;
         console.log(responsetext.length);
         console.log(responsetext);
         //Auswahl der Karten
-        let spielkartensrc; //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
-        let benutzterindex;
+        let spielkartensrc = null; //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
+        spielkartensrc.length = 7;
+        let benutzterindex = null;
+        benutzterindex.length = 7;
         let randomindex = 0;
         let doppel = false;
         if (response != undefined) {

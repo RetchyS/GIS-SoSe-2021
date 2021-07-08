@@ -28,6 +28,7 @@ var Memory;
         karten = mongoClient.db("Karten").collection("allekarten");
         highscore = mongoClient.db("Karten").collection("Highscores");
         console.log("Database connection ", karten != undefined);
+        console.log("Database connection ", highscore != undefined);
     }
     function handleListen() {
         console.log("Listening");
