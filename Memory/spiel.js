@@ -26,23 +26,25 @@ var Memory;
         let benutzterindex;
         let randomindex = 0;
         let doppel = false;
-        for (let x = 0; x < 8; x++) {
-            randomindex = Math.floor((Math.random() * responsetext.length) + 0);
-            for (let i = 0; i < benutzterindex.length; i++) {
-                if (benutzterindex[i] == randomindex) {
-                    doppel = true;
-                    x--; //Bei doppelt, die for-schleife wird um eins verringert, da es sonst zu wenig karten wäre
+        if (response != undefined) {
+            for (let x = 0; x < 8; x++) {
+                randomindex = Math.floor((Math.random() * responsetext.length) + 0);
+                for (let i = 0; i < benutzterindex.length; i++) {
+                    if (benutzterindex[i] == randomindex) {
+                        doppel = true;
+                        x--; //Bei doppelt, die for-schleife wird um eins verringert, da es sonst zu wenig karten wäre
+                    }
+                }
+                if (!doppel) {
+                    spielkartensrc[x] = responsetext[randomindex].Bilderlink;
+                }
+                else {
+                    doppel = false;
                 }
             }
-            if (!doppel) {
-                spielkartensrc[x] = responsetext[randomindex].Bilderlink;
-            }
-            else {
-                doppel = false;
-            }
+            console.log(benutzterindex);
+            console.log(spielkartensrc);
         }
-        console.log(benutzterindex);
-        console.log(spielkartensrc);
         /* //Karten hinzufügen
         let benutztekarten: number[];
         let counterzwei: number = 0;

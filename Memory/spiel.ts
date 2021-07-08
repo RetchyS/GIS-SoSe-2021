@@ -32,7 +32,7 @@ namespace Memory {
         let benutzterindex: number[];
         let randomindex: number = 0;
         let doppel: boolean = false;
-
+        if (response != undefined) {
         for (let x: number = 0; x < 8; x++) {
             randomindex = Math.floor((Math.random() * responsetext.length) + 0);
             for (let i: number = 0; i < benutzterindex.length; i++) {
@@ -50,6 +50,7 @@ namespace Memory {
         console.log(benutzterindex);
 
         console.log(spielkartensrc);
+    }
         /* //Karten hinzufügen
         let benutztekarten: number[];
         let counterzwei: number = 0;
