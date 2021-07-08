@@ -31,7 +31,7 @@ var Memory;
             for (let i = 0; i < benutzterindex.length; i++) {
                 if (benutzterindex[i] == randomindex) {
                     doppel = true;
-                    x--;
+                    x--; //Bei doppelt, die for-schleife wird um eins verringert, da es sonst zu wenig karten wäre
                 }
             }
             if (!doppel) {
@@ -41,6 +41,7 @@ var Memory;
                 doppel = false;
             }
         }
+        console.log(benutzterindex);
         console.log(spielkartensrc);
         /* //Karten hinzufügen
         let benutztekarten: number[];
