@@ -7,6 +7,7 @@ const Mongo = require("mongodb");
 var Memory;
 (function (Memory) {
     let karten;
+    let highscore;
     let port = Number(process.env.PORT); // Holt sich den Port aus dem User Environment. Rückgabe ist ein String und wird mit nem Cast zur Zahl
     if (!port) // Falls kein Port hinterlegt ist bzw. die Variable Port undefined ist                
         port = 8001;
@@ -25,6 +26,7 @@ var Memory;
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         karten = mongoClient.db("Karten").collection("allekarten");
+        highscore = mongoClient.db("Karten").collection("Highscores");
         console.log("Database connection ", karten != undefined);
     }
     function handleListen() {
@@ -44,6 +46,11 @@ var Memory;
                 console.log(jsonstring);
                 storeOrder(url.query);
             }
+            if (path == "/speichernhighscore") {
+                let jsonstring = JSON.stringify(url.query);
+                console.log(jsonstring);
+                scoreHighscore(url.query);
+            }
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata = karten.find();
@@ -55,6 +62,9 @@ var Memory;
     }
     function storeOrder(_karte) {
         karten.insert(_karte);
+    }
+    function scoreHighscore(_karte) {
+        highscore.insert(_karte);
     }
 })(Memory = exports.Memory || (exports.Memory = {}));
 //# sourceMappingURL=server.js.map

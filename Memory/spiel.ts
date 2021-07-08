@@ -48,9 +48,6 @@ namespace Memory {
                 }
             }
 
-
-
-
             if (duplicatenumber < 2) {
 
                 spielkartensrc.push(srcstring);

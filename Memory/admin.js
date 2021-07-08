@@ -28,6 +28,7 @@ async function bildereinsehen() {
     let url = "https://piikachu.herokuapp.com";
     url += "/abfragen";
     url = url + "?" + query.toString();
+    console.log(url);
     let response = await fetch(url);
     let responsetext = await response.json();
     console.log(responsetext.length);

@@ -43,8 +43,10 @@
         let url: RequestInfo = "https://piikachu.herokuapp.com";
         url += "/abfragen";
         url = url + "?" + query.toString();
+        console.log(url);
         let response: Response = await fetch(url);
         let responsetext: Data[] = await response.json();
+
         console.log(responsetext.length);
         console.log(responsetext);
 

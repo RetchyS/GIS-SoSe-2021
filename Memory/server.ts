@@ -8,6 +8,7 @@ export namespace Memory {
 
 
     let karten: Mongo.Collection;
+    let highscore: Mongo.Collection;
 
     let port: number = Number(process.env.PORT);    // Holt sich den Port aus dem User Environment. Rückgabe ist ein String und wird mit nem Cast zur Zahl
     if (!port)                                      // Falls kein Port hinterlegt ist bzw. die Variable Port undefined ist                
@@ -32,6 +33,7 @@ export namespace Memory {
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         karten = mongoClient.db("Karten").collection("allekarten");
+        highscore = mongoClient.db("Karten").collection("Highscores");
         console.log("Database connection ", karten != undefined);
     }
 
@@ -59,6 +61,12 @@ export namespace Memory {
 
             }
 
+            if ( path == "/speichernhighscore") {
+                let jsonstring: string = JSON.stringify(url.query);
+                console.log(jsonstring);
+                scoreHighscore(url.query);
+            }
+
             if (path == "/abfragen") {
                 console.log("Datenbank wird abgefragt");
                 let answerdata: Mongo.Cursor = karten.find();
@@ -73,6 +81,9 @@ export namespace Memory {
     }
     function storeOrder(_karte: Bilder): void {
         karten.insert(_karte);
+    }
+    function scoreHighscore (_karte: Bilder): void {
+        highscore.insert(_karte);
     }
     interface Bilder {
         [type: string]: string | string[];
