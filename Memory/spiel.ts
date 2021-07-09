@@ -34,46 +34,22 @@ namespace MemorySpiel {
 
         for (let i: number = 0; i < 8; i++) {
             spielkarte = _response[i].Bilderlink;
-
-            for (let x: number = 0; x < 8; x++) {
-                if (spielkarten[x] != undefined) {                          //Für die leeren Stellen im Array, damit das übersprungen wird.
-                    if (spielkarten[x] == spielkarte) {                     //geht durch die gespeicherten Spielkarten und schaut nach doppelten Karten
-                        doppel = true;                                      // Wenn Doppel, dann den zähler i reduzieren, da sonst zu wenig karten genommen werden
-                        i--;
-                    }
-                }
-            }
-            if (!doppel) {
-                spielkarten[i] = spielkarte;
-                console.log(spielkarte);
-            }
-
+            spielkarten[i] = spielkarte;
+            
         }
-
+        console.log(spielkarten);
         let counter: number;
 
         for (let i: number = 0; i < 16; i++) {
-            randomindex = Math.floor((Math.random() * 8) + 0);
-
-            for (let x: number = 0; x < 16; x++) {
-                if (randomindexe[x] != undefined) {
-                    if (randomindexe[x] == randomindex) {
-                        counter++;
-                    }
-                }
-            }
-            if (counter > 2) {
-                i--;
-            } else {
-
+            
                 let kartendatenbank = document.createElement("img");
                 let kartenclass = document.createAttribute("class");
                 let kartendatenbanksrc = document.createAttribute("src");
 
 
-                console.log(spielkarten[randomindex]);
+                
 
-                kartendatenbanksrc.value = spielkarten[randomindex];
+                kartendatenbanksrc.value = spielkarten[i];
 
                 kartenclass.value = "karte";
                 console.log(kartendatenbanksrc);
@@ -82,7 +58,7 @@ namespace MemorySpiel {
                 kartendatenbank.setAttributeNode(kartendatenbanksrc);
 
                 kartendiv.appendChild(kartendatenbank);
-            }
+            
 
         }
 
