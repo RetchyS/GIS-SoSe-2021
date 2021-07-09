@@ -58,14 +58,14 @@ var MemorySpiel;
             doppelwerte = false;
         }
         let allezahlenpaare = randomzahlenkopie.concat(randomzahlen);
-        allezahlenpaare = shuffle(allezahlenpaare);
         console.log("randomindex " + allezahlenpaare);
+        allezahlenpaare = shuffle(allezahlenpaare);
         return allezahlenpaare;
     }
     function shuffle(_allezahlenpaare) {
         let currentIndex = _allezahlenpaare.length, randomIndex;
         // While there remain elements to shuffle...
-        while (0 != currentIndex) {
+        while (0 <= currentIndex) {
             // Pick a remaining element...
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
