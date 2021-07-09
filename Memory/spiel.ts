@@ -36,7 +36,7 @@ namespace MemorySpiel {
            
             kartenclass.value = "karte";
             console.log(kartendatenbanksrc);
-            let kartendiv = document.getElementById("card" + i);
+            let kartendiv = document.getElementById("cardid" + i);
 
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
 
