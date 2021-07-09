@@ -21,24 +21,26 @@ namespace MemorySpiel {
     //Spielfeld generieren
 
     //Spielkarten
-    
+
 
     function kartenhinzufügen(_response: Data[]): void {
-        let spielkarten: string [];
+        let spielkarten: string[];
         spielkarten.length = 8;
         let spielkarte: string;
         let randomindex: number;
-        let randomindexe: number [];
+        let randomindexe: number[];
         randomindexe.length = 16;
         let doppel: boolean = false;
 
         for (let i: number = 0; i < 8; i++) {
             spielkarte = _response[i].Bilderlink;
 
-            for ( let x: number = 0; x < 8; x++ ) {
-                if (spielkarten[x] == spielkarte) {                     //geht durch die gespeicherten Spielkarten und schaut nach doppelten Karten
-                    doppel = true;                                      // Wenn Doppel, dann den zähler i reduzieren, da sonst zu wenig karten genommen werden
-                    i--;
+            for (let x: number = 0; x < 8; x++) {
+                if (spielkarten[x] != undefined) {                          //Für die leeren Stellen im Array, damit das übersprungen wird.
+                    if (spielkarten[x] == spielkarte) {                     //geht durch die gespeicherten Spielkarten und schaut nach doppelten Karten
+                        doppel = true;                                      // Wenn Doppel, dann den zähler i reduzieren, da sonst zu wenig karten genommen werden
+                        i--;
+                    }
                 }
             }
             if (!doppel) {
@@ -53,32 +55,34 @@ namespace MemorySpiel {
         for (let i: number = 0; i < 16; i++) {
             randomindex = Math.floor((Math.random() * 8) + 0);
 
-            for (let x: number = 0; x < randomindexe.length; x++) {
-                if (randomindexe[x] == randomindex) {
-                    counter++;
+            for (let x: number = 0; x < 16; x++) {
+                if (randomindexe[x] != undefined) {
+                    if (randomindexe[x] == randomindex) {
+                        counter++;
+                    }
                 }
-              
             }
             if (counter > 2) {
-                    i--;
+                i--;
             } else {
 
-            let kartendatenbank = document.createElement("img");
-            let kartenclass = document.createAttribute("class");
-            let kartendatenbanksrc = document.createAttribute("src");
+                let kartendatenbank = document.createElement("img");
+                let kartenclass = document.createAttribute("class");
+                let kartendatenbanksrc = document.createAttribute("src");
 
 
-            console.log(spielkarten[randomindex]);
+                console.log(spielkarten[randomindex]);
 
-            kartendatenbanksrc.value = spielkarten[randomindex];
-           
-            kartenclass.value = "karte";
-            console.log(kartendatenbanksrc);
-            let kartendiv = document.getElementById("cardid" + i);
+                kartendatenbanksrc.value = spielkarten[randomindex];
 
-            kartendatenbank.setAttributeNode(kartendatenbanksrc);
+                kartenclass.value = "karte";
+                console.log(kartendatenbanksrc);
+                let kartendiv = document.getElementById("cardid" + i);
 
-            kartendiv.appendChild(kartendatenbank);}
+                kartendatenbank.setAttributeNode(kartendatenbanksrc);
+
+                kartendiv.appendChild(kartendatenbank);
+            }
 
         }
 

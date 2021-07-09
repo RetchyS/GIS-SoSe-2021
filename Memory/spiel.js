@@ -19,9 +19,11 @@ var MemorySpiel;
         for (let i = 0; i < 8; i++) {
             spielkarte = _response[i].Bilderlink;
             for (let x = 0; x < 8; x++) {
-                if (spielkarten[x] == spielkarte) { //geht durch die gespeicherten Spielkarten und schaut nach doppelten Karten
-                    doppel = true; // Wenn Doppel, dann den zähler i reduzieren, da sonst zu wenig karten genommen werden
-                    i--;
+                if (spielkarten[x] != undefined) { //Für die leeren Stellen im Array, damit das übersprungen wird.
+                    if (spielkarten[x] == spielkarte) { //geht durch die gespeicherten Spielkarten und schaut nach doppelten Karten
+                        doppel = true; // Wenn Doppel, dann den zähler i reduzieren, da sonst zu wenig karten genommen werden
+                        i--;
+                    }
                 }
             }
             if (!doppel) {
@@ -32,9 +34,11 @@ var MemorySpiel;
         let counter;
         for (let i = 0; i < 16; i++) {
             randomindex = Math.floor((Math.random() * 8) + 0);
-            for (let x = 0; x < randomindexe.length; x++) {
-                if (randomindexe[x] == randomindex) {
-                    counter++;
+            for (let x = 0; x < 16; x++) {
+                if (randomindexe[x] != undefined) {
+                    if (randomindexe[x] == randomindex) {
+                        counter++;
+                    }
                 }
             }
             if (counter > 2) {
