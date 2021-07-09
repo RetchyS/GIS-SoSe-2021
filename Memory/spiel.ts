@@ -89,6 +89,9 @@ namespace MemorySpiel {
                 randomzahlen[x] = randomzahl;
                 randomzahlenkopie[x] = randomzahl;
             }
+            if (doppelwerte == true) {
+                x--;
+            }
             doppelwerte = false;
         }
         console.log("randomzahlen" + randomzahlen);
@@ -101,10 +104,10 @@ namespace MemorySpiel {
     }
 
     function shuffle (_allezahlenpaare: number[]) {                 //  von https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-        let currentIndex: number = _allezahlenpaare.length + 1, randomIndex;
+        let currentIndex: number = _allezahlenpaare.length, randomIndex;
 
         // While there remain elements to shuffle...
-        while (-1 < currentIndex) {
+        while ( 0 !== currentIndex) {
 
             // Pick a remaining element...
             randomIndex = Math.floor((Math.random() * currentIndex) + 0);

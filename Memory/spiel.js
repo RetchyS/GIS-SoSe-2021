@@ -55,6 +55,9 @@ var MemorySpiel;
                 randomzahlen[x] = randomzahl;
                 randomzahlenkopie[x] = randomzahl;
             }
+            if (doppelwerte == true) {
+                x--;
+            }
             doppelwerte = false;
         }
         console.log("randomzahlen" + randomzahlen);
@@ -65,9 +68,9 @@ var MemorySpiel;
         return allezahlenpaare;
     }
     function shuffle(_allezahlenpaare) {
-        let currentIndex = _allezahlenpaare.length + 1, randomIndex;
+        let currentIndex = _allezahlenpaare.length, randomIndex;
         // While there remain elements to shuffle...
-        while (-1 < currentIndex) {
+        while (0 !== currentIndex) {
             // Pick a remaining element...
             randomIndex = Math.floor((Math.random() * currentIndex) + 0);
             currentIndex--;

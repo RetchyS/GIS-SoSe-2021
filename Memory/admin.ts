@@ -43,6 +43,7 @@
         console.log(url);
         let response: Response = await fetch(url);
         let responsetext: Data[] = await response.json();
+        
 
         console.log(responsetext.length);
         console.log(responsetext);
