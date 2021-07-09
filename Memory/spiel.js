@@ -49,7 +49,7 @@ var MemorySpiel;
     }
     function randomindexarray(_srcarray) {
         for (let x = 0; x < 8; x++) {
-            randomzahl = Math.floor((Math.random() * _srcarray) + 1);
+            randomzahl = Math.floor((Math.random() * _srcarray) + 0);
             doppelwerte = randomzahlen.includes(randomzahl);
             if (doppelwerte == false) {
                 randomzahlen[x] = randomzahl;
@@ -57,6 +57,8 @@ var MemorySpiel;
             }
             doppelwerte = false;
         }
+        console.log("randomzahlen" + randomzahlen);
+        console.log("randomzahlen" + randomzahlenkopie);
         let allezahlenpaare = randomzahlenkopie.concat(randomzahlen);
         console.log("randomindex " + allezahlenpaare);
         allezahlenpaare = shuffle(allezahlenpaare);
@@ -67,7 +69,7 @@ var MemorySpiel;
         // While there remain elements to shuffle...
         while (-1 < currentIndex) {
             // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
+            randomIndex = Math.floor((Math.random() * currentIndex) + 0);
             currentIndex--;
             // And swap it with the current element.
             [_allezahlenpaare[currentIndex], _allezahlenpaare[randomIndex]] = [

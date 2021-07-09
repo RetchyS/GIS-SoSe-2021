@@ -82,7 +82,7 @@ namespace MemorySpiel {
 
 
         for (let x: number = 0; x < 8; x++) {
-            randomzahl = Math.floor((Math.random() * _srcarray) + 1);
+            randomzahl = Math.floor((Math.random() * _srcarray) + 0);
             doppelwerte = randomzahlen.includes(randomzahl);
 
             if (doppelwerte == false) {
@@ -91,6 +91,8 @@ namespace MemorySpiel {
             }
             doppelwerte = false;
         }
+        console.log("randomzahlen" + randomzahlen);
+        console.log("randomzahlen" + randomzahlenkopie);
         let allezahlenpaare: number[] = randomzahlenkopie.concat(randomzahlen);
         console.log("randomindex " + allezahlenpaare);
         allezahlenpaare = shuffle(allezahlenpaare);
@@ -105,7 +107,7 @@ namespace MemorySpiel {
         while (-1 < currentIndex) {
 
             // Pick a remaining element...
-            randomIndex = Math.floor(Math.random() * currentIndex);
+            randomIndex = Math.floor((Math.random() * currentIndex) + 0);
             currentIndex--;
 
             // And swap it with the current element.
