@@ -21,7 +21,18 @@ namespace Memory {
     //Spielfeld generieren
 
     //Spielkarten
+    let benutzteindexe: number [];
+    function randomindex(_responselength: number): number {
+        let randomindex: number = Math.floor((Math.random() * _responselength) + 0);
+        for ( let i: number = 0; i < benutzteindexe.length; i++){
+            if (benutzteindexe[i] == randomindex) {
+                randomindex = Math.floor((Math.random() * _responselength) + 0);
+                i--;
+            }
+        }
+        return randomindex;
 
+    }
 
     async function spielfeld(): Promise<void> {
 
@@ -34,10 +45,18 @@ namespace Memory {
         url = url + "?" + query.toString();
         let response: Response = await fetch(url);
         let responsetext: Data[] = await response.json();
-        let randomindex: number = Math.floor((Math.random() * responsetext.length) + 0);
-        let karte1: string = responsetext[randomindex].Bilderlink;
+        let responselength: number = responsetext.length;
+        
+        let karte1: string = responsetext[randomindex(responselength)].Bilderlink;
+        let karte2: string = responsetext[randomindex(responselength)].Bilderlink;
+        let karte3: string = responsetext[randomindex(responselength)].Bilderlink;
+        let karte4: string = responsetext[randomindex(responselength)].Bilderlink;
+        let karte5: string = responsetext[randomindex(responselength)].Bilderlink;
+        let karte6: string = responsetext[randomindex(responselength)].Bilderlink;
+        let karte7: string = responsetext[randomindex(responselength)].Bilderlink;
+        let karte8: string = responsetext[randomindex(responselength)].Bilderlink;
 
-        console.log(karte1);
+        console.log(karte1 + "///" + karte2 + "///" + karte3 + "///" + karte4 + "///" + karte5 + "///" + karte6 + "///" + karte7 + "///" + karte8);
         console.log(responsetext.length);
         console.log(responsetext);
 

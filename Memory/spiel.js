@@ -8,6 +8,17 @@ var Memory;
     buttonstart.addEventListener("click", spielfeld);
     //Spielfeld generieren
     //Spielkarten
+    let benutzteindexe;
+    function randomindex(_responselength) {
+        let randomindex = Math.floor((Math.random() * _responselength) + 0);
+        for (let i = 0; i < benutzteindexe.length; i++) {
+            if (benutzteindexe[i] == randomindex) {
+                randomindex = Math.floor((Math.random() * _responselength) + 0);
+                i--;
+            }
+        }
+        return randomindex;
+    }
     async function spielfeld() {
         let formular = new FormData(document.forms[0]);
         let bilderposi = "card";
@@ -18,9 +29,16 @@ var Memory;
         url = url + "?" + query.toString();
         let response = await fetch(url);
         let responsetext = await response.json();
-        let randomindex = Math.floor((Math.random() * responsetext.length) + 0);
-        let karte1 = responsetext[randomindex].Bilderlink;
-        console.log(karte1);
+        let responselength = responsetext.length;
+        let karte1 = responsetext[randomindex(responselength)].Bilderlink;
+        let karte2 = responsetext[randomindex(responselength)].Bilderlink;
+        let karte3 = responsetext[randomindex(responselength)].Bilderlink;
+        let karte4 = responsetext[randomindex(responselength)].Bilderlink;
+        let karte5 = responsetext[randomindex(responselength)].Bilderlink;
+        let karte6 = responsetext[randomindex(responselength)].Bilderlink;
+        let karte7 = responsetext[randomindex(responselength)].Bilderlink;
+        let karte8 = responsetext[randomindex(responselength)].Bilderlink;
+        console.log(karte1 + "///" + karte2 + "///" + karte3 + "///" + karte4 + "///" + karte5 + "///" + karte6 + "///" + karte7 + "///" + karte8);
         console.log(responsetext.length);
         console.log(responsetext);
         //Auswahl der Karten
