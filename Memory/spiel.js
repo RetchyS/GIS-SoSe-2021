@@ -22,7 +22,7 @@ var Memory;
         console.log(responsetext.length);
         console.log(responsetext);
         //Auswahl der Karten
-        let spielkartensrc = null; //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
+        let spielkartensrc = responsetext; //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
         spielkartensrc.length = 7;
         let benutzterindex = null;
         benutzterindex.length = 7;
@@ -31,7 +31,7 @@ var Memory;
         if (response != undefined) {
             for (let x = 0; x < 8; x++) {
                 randomindex = Math.floor((Math.random() * responsetext.length) + 0);
-                spielkartensrc[x] = responsetext[randomindex].Bilderlink;
+                spielkartensrc[x].Bilderlink = responsetext[randomindex].Bilderlink;
             }
             console.log(benutzterindex);
             console.log(spielkartensrc);
