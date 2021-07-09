@@ -31,18 +31,7 @@ var Memory;
         if (response != undefined) {
             for (let x = 0; x < 8; x++) {
                 randomindex = Math.floor((Math.random() * responsetext.length) + 0);
-                for (let i = 0; i < benutzterindex.length; i++) {
-                    if (benutzterindex[i] == randomindex) {
-                        doppel = true;
-                        x--; //Bei doppelt, die for-schleife wird um eins verringert, da es sonst zu wenig karten wäre
-                    }
-                }
-                if (!doppel) {
-                    spielkartensrc[x] = responsetext[randomindex].Bilderlink;
-                }
-                else {
-                    doppel = false;
-                }
+                spielkartensrc[x] = responsetext[randomindex].Bilderlink;
             }
             console.log(benutzterindex);
             console.log(spielkartensrc);

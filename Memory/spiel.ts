@@ -35,24 +35,19 @@ namespace Memory {
         let randomindex: number = 0;
         let doppel: boolean = false;
         if (response != undefined) {
-        for (let x: number = 0; x < 8; x++) {
-            randomindex = Math.floor((Math.random() * responsetext.length) + 0);
-            for (let i: number = 0; i < benutzterindex.length; i++) {
-                if (benutzterindex[i] == randomindex ) {
-                    doppel = true;
-                    x--;                        //Bei doppelt, die for-schleife wird um eins verringert, da es sonst zu wenig karten wäre
-                }
-            }
-            if (!doppel) {
+            for (let x: number = 0; x < 8; x++) {
+                randomindex = Math.floor((Math.random() * responsetext.length) + 0);
                 spielkartensrc[x] = responsetext[randomindex].Bilderlink;
-            } else {
-                doppel = false;
-            }     
-        }
-        console.log(benutzterindex);
 
-        console.log(spielkartensrc);
-    }
+            }
+            console.log(benutzterindex);
+
+            console.log(spielkartensrc);
+
+
+
+
+        }
         /* //Karten hinzufügen
         let benutztekarten: number[];
         let counterzwei: number = 0;
@@ -89,7 +84,7 @@ namespace Memory {
 
 
     }
-    function kartenaussuche(_karten: Data[]){
+    function kartenaussuche(_karten: Data[]) {
 
     }
 
