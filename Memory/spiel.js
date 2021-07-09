@@ -11,7 +11,7 @@ var MemorySpiel;
     let randomzahlen = [0, 0, 0, 0, 0, 0, 0, 0]; //length 8
     let randomzahlenkopie = [0, 0, 0, 0, 0, 0, 0, 0]; //length 8
     let doppelwerte = false;
-    let spielkartenarrayzahlen = [0, 0, 0, 0, 0, 0, 0, 0];
+    let spielkartenarrayzahlen = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     //Spielkarten
     async function spielfeld() {
         let formular = new FormData(document.forms[0]);

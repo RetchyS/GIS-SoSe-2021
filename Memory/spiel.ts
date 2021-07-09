@@ -25,7 +25,7 @@ namespace MemorySpiel {
 
     let doppelwerte: boolean = false;
 
-    let spielkartenarrayzahlen: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
+    let spielkartenarrayzahlen: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     //Spielkarten
     async function spielfeld(): Promise<void> {
 
