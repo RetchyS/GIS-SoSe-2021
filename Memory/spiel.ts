@@ -20,10 +20,10 @@ namespace MemorySpiel {
 
     //Spielfeld generieren
     let randomzahl: number;
-    let randomzahlen: number[] = [ 0, 0, 0, 0, 0, 0, 0, 0];          //length 8
-    let randomzahlenkopie: number [] = [0, 0, 0, 0, 0, 0, 0, 0];    //length 8
-  
-    let doppelwerte: boolean;
+    let randomzahlen: number[] = [0, 0, 0, 0, 0, 0, 0, 0];          //length 8
+    let randomzahlenkopie: number[] = [0, 0, 0, 0, 0, 0, 0, 0];    //length 8
+
+    let doppelwerte: boolean = false;
 
     let spielkartenarrayzahlen: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
     //Spielkarten
@@ -79,20 +79,39 @@ namespace MemorySpiel {
 
     }
     function randomindexarray(_srcarray: number): number[] {
-        randomzahl = Math.floor((Math.random() * _srcarray) + 0);
+
 
         for (let x: number = 0; x < 8; x++) {
             randomzahl = Math.floor((Math.random() * _srcarray) + 0);
             doppelwerte = randomzahlen.includes(randomzahl);
 
-            if (!doppelwerte) {
+            if (doppelwerte == false) {
                 randomzahlen[x] = randomzahl;
                 randomzahlenkopie[x] = randomzahl;
             }
             doppelwerte = false;
         }
-        let allezahlenpaare: number [] = randomzahlenkopie.concat(randomzahlen);
+        let allezahlenpaare: number[] = randomzahlenkopie.concat(randomzahlen);
+        allezahlenpaare = shuffle(allezahlenpaare);
         return allezahlenpaare;
+    }
+
+    function shuffle (_allezahlenpaare: number[]) {                 //  von https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+        let currentIndex: number = _allezahlenpaare.length, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 != currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex--;
+
+            // And swap it with the current element.
+            [_allezahlenpaare[currentIndex], _allezahlenpaare[randomIndex]] = [
+                _allezahlenpaare[randomIndex], _allezahlenpaare[currentIndex]];
+        }
+
+        return _allezahlenpaare;
     }
 }
 
