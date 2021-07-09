@@ -30,15 +30,13 @@ namespace MemorySpiel {
             let kartenclass = document.createAttribute("class");
             let kartendatenbanksrc = document.createAttribute("src");
 
-            let kartendatenbankid = document.createAttribute("id");
-
             console.log(_response[i].Bilderlink);
 
             kartendatenbanksrc.value = _response[i].Bilderlink;
-            kartendatenbankid.value = "card" + i;
+           
             kartenclass.value = "karte";
             console.log(kartendatenbanksrc);
-            let kartendiv = document.getElementById(kartendatenbankid.value);
+            let kartendiv = document.getElementById("card" + i);
 
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
 
