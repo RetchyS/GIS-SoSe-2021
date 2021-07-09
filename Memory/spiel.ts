@@ -33,7 +33,7 @@ namespace MemorySpiel {
         for (let i: number = 0; i < 8; i++) {
             spielkarte = _response[i].Bilderlink;
 
-            for ( let x: number = 0; x < spielkarten.length; x++ ) {
+            for ( let x: number = 0; x < 8; x++ ) {
                 if (spielkarten[x] == spielkarte) {                     //geht durch die gespeicherten Spielkarten und schaut nach doppelten Karten
                     doppel = true;                                      // Wenn Doppel, dann den zähler i reduzieren, da sonst zu wenig karten genommen werden
                     i--;
