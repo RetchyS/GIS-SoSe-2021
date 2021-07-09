@@ -38,7 +38,11 @@ var MemorySpiel;
             return response.json();
         }).then(responsejson => {
             responsetext = responsejson;
-            kartenhinzufügen(responsetext);
+            return responsetext;
+        }).then(srcarray => {
+            console.log(srcarray.length);
+            console.log(srcarray);
+            kartenhinzufügen(srcarray);
         });
         /*  for (let i: number = 0; i < 16; i++) {
  
@@ -62,8 +66,6 @@ var MemorySpiel;
              kartendiv.appendChild(kartendatenbank);
  
          } */
-        console.log(responsetext.length);
-        console.log(responsetext);
         //Auswahl der Karten
         /*  let spielkartensrc: Data[] =  responsetext;         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
          spielkartensrc.length = 7;

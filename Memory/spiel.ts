@@ -66,35 +66,38 @@ namespace MemorySpiel {
             return response.json();
         }).then(responsejson => {
             responsetext = responsejson;
-            kartenhinzufügen(responsetext);
+            return responsetext;
 
+        }).then(srcarray => {
+            console.log(srcarray.length);
+            console.log(srcarray);
+            kartenhinzufügen(srcarray);
         });
 
-       /*  for (let i: number = 0; i < 16; i++) {
+        /*  for (let i: number = 0; i < 16; i++) {
+ 
+ 
+             let kartendatenbank = document.createElement("img");
+             let kartenclass = document.createAttribute("class");
+             let kartendatenbanksrc = document.createAttribute("src");
+ 
+             let kartendatenbankid = document.createAttribute("id");
+ 
+             console.log(responsetext[i].Bilderlink);
+ 
+             kartendatenbanksrc.value = responsetext[i].Bilderlink;
+             kartendatenbankid.value = "card" + i;
+             kartenclass.value = "karte";
+             console.log(kartendatenbanksrc);
+             let kartendiv = document.getElementById(kartendatenbankid.value);
+ 
+             kartendatenbank.setAttributeNode(kartendatenbanksrc);
+ 
+             kartendiv.appendChild(kartendatenbank);
+ 
+         } */
 
 
-            let kartendatenbank = document.createElement("img");
-            let kartenclass = document.createAttribute("class");
-            let kartendatenbanksrc = document.createAttribute("src");
-
-            let kartendatenbankid = document.createAttribute("id");
-
-            console.log(responsetext[i].Bilderlink);
-
-            kartendatenbanksrc.value = responsetext[i].Bilderlink;
-            kartendatenbankid.value = "card" + i;
-            kartenclass.value = "karte";
-            console.log(kartendatenbanksrc);
-            let kartendiv = document.getElementById(kartendatenbankid.value);
-
-            kartendatenbank.setAttributeNode(kartendatenbanksrc);
-
-            kartendiv.appendChild(kartendatenbank);
-
-        } */
-
-        console.log(responsetext.length);
-        console.log(responsetext);
 
         //Auswahl der Karten
 
