@@ -25,9 +25,11 @@ namespace MemorySpiel {
 
     function kartenhinzufügen(_response: Data[]): void {
         let spielkarten: string [];
+        spielkarten.length = 8;
         let spielkarte: string;
         let randomindex: number;
         let randomindexe: number [];
+        randomindexe.length = 16;
         let doppel: boolean = false;
 
         for (let i: number = 0; i < 8; i++) {
