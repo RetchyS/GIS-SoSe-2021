@@ -1,10 +1,15 @@
 namespace Memory {
     //Karte
     let kartenbild = document.createElement("img");
-    kartenbild.addEventListener("click", match);
-    let kartensrc = document.createAttribute("src");
-    let kartenid = document.createAttribute("id");
+    /*  kartenbild.addEventListener("click", match);
+     let kartensrc = document.createAttribute("src");
+     let kartenid = document.createAttribute("id"); */
 
+    interface Data {
+        Object: string;
+        Bildername: string;
+        Bilderlink: string;
+    }
 
 
 
@@ -12,23 +17,32 @@ namespace Memory {
     //------------Spiel-------------------------------------
     let buttonstart: HTMLButtonElement = <HTMLButtonElement>document.getElementById("start");
     buttonstart.addEventListener("click", spielfeld);
+
     //Spielfeld generieren
+
+    //Spielkarten
+
+
     async function spielfeld(): Promise<void> {
 
         let formular: FormData = new FormData(document.forms[0]);
         let bilderposi: string = "card";
-
+        let spielkartensrc: string[];
         let query: URLSearchParams = new URLSearchParams(<any>formular);
         let url: RequestInfo = "https://piikachu.herokuapp.com";
         url += "/abfragen";
         url = url + "?" + query.toString();
         let response: Response = await fetch(url);
         let responsetext: Data[] = await response.json();
+        let randomindex: number = Math.floor((Math.random() * responsetext.length) + 0);
+        let karte1: string = responsetext[randomindex].Bilderlink;
+
+        console.log(karte1);
         console.log(responsetext.length);
         console.log(responsetext);
 
         //Auswahl der Karten
-        let spielkartensrc: Data[] = responsetext;         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
+        /* let spielkartensrc: Data[] =  responsetext;         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
         spielkartensrc.length = 7;
         let benutzterindex: number[] = null;
         benutzterindex.length = 7;
@@ -47,7 +61,7 @@ namespace Memory {
 
 
 
-        }
+        } */
         /* //Karten hinzufügen
         let benutztekarten: number[];
         let counterzwei: number = 0;
@@ -70,30 +84,27 @@ namespace Memory {
                 i--;
             }
         } */
-    }
-    function kartehinzufügen(_src: string, _bilderposi: string): void {
-        let img = document.createElement("img");
-        let imgcontainer = document.getElementById(_bilderposi);
-        let imgsrc = document.createAttribute("src");
-
-        imgsrc.value = _src;
-        img.setAttributeNode(imgsrc);
-
-        imgcontainer.appendChild(img);
-
-
 
     }
-    function kartenaussuche(_karten: Data[]) {
-
-    }
-
+    /*    function kartehinzufügen(_src: string, _bilderposi: string): void {
+           let img = document.createElement("img");
+           let imgcontainer = document.getElementById(_bilderposi);
+           let imgsrc = document.createAttribute("src");
+   
+           imgsrc.value = _src;
+           img.setAttributeNode(imgsrc);
+   
+           imgcontainer.appendChild(img);
+   
+   
+   
+       }
+       function kartenaussuche(_karten: Data[]) {
+   
+       }
+    */
 }
-interface Data {
-    Object: string;
-    Bildername: string;
-    Bilderlink: string;
-}
+
 
 
 
