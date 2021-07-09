@@ -9,17 +9,47 @@ var MemorySpiel;
     //Spielfeld generieren
     //Spielkarten
     function kartenhinzufügen(_response) {
+        let spielkarten;
+        let spielkarte;
+        let randomindex;
+        let randomindexe;
+        let doppel = false;
+        for (let i = 0; i < 8; i++) {
+            spielkarte = _response[i].Bilderlink;
+            for (let x = 0; x < spielkarten.length; x++) {
+                if (spielkarten[x] == spielkarte) { //geht durch die gespeicherten Spielkarten und schaut nach doppelten Karten
+                    doppel = true; // Wenn Doppel, dann den zähler i reduzieren, da sonst zu wenig karten genommen werden
+                    i--;
+                }
+            }
+            if (!doppel) {
+                spielkarten[i] = spielkarte;
+                console.log(spielkarte);
+            }
+        }
+        let counter;
         for (let i = 0; i < 16; i++) {
-            let kartendatenbank = document.createElement("img");
-            let kartenclass = document.createAttribute("class");
-            let kartendatenbanksrc = document.createAttribute("src");
-            console.log(_response[i].Bilderlink);
-            kartendatenbanksrc.value = _response[i].Bilderlink;
-            kartenclass.value = "karte";
-            console.log(kartendatenbanksrc);
-            let kartendiv = document.getElementById("cardid" + i);
-            kartendatenbank.setAttributeNode(kartendatenbanksrc);
-            kartendiv.appendChild(kartendatenbank);
+            randomindex = Math.floor((Math.random() * 8) + 0);
+            for (let x = 0; x < randomindexe.length; x++) {
+                if (randomindexe[x] == randomindex) {
+                    counter++;
+                }
+            }
+            if (counter > 2) {
+                i--;
+            }
+            else {
+                let kartendatenbank = document.createElement("img");
+                let kartenclass = document.createAttribute("class");
+                let kartendatenbanksrc = document.createAttribute("src");
+                console.log(spielkarten[randomindex]);
+                kartendatenbanksrc.value = spielkarten[randomindex];
+                kartenclass.value = "karte";
+                console.log(kartendatenbanksrc);
+                let kartendiv = document.getElementById("cardid" + i);
+                kartendatenbank.setAttributeNode(kartendatenbanksrc);
+                kartendiv.appendChild(kartendatenbank);
+            }
         }
     }
     async function spielfeld() {
@@ -29,7 +59,6 @@ var MemorySpiel;
         let url = "https://piikachu.herokuapp.com";
         url += "/abfragen";
         url = url + "?" + query.toString();
-        let response;
         let responsetext;
         fetch(url).then(response => {
             console.log(response);

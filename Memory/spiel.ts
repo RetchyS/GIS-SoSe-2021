@@ -21,18 +21,54 @@ namespace MemorySpiel {
     //Spielfeld generieren
 
     //Spielkarten
+    
 
     function kartenhinzufügen(_response: Data[]): void {
-        for (let i: number = 0; i < 16; i++) {
+        let spielkarten: string [];
+        let spielkarte: string;
+        let randomindex: number;
+        let randomindexe: number [];
+        let doppel: boolean = false;
 
+        for (let i: number = 0; i < 8; i++) {
+            spielkarte = _response[i].Bilderlink;
+
+            for ( let x: number = 0; x < spielkarten.length; x++ ) {
+                if (spielkarten[x] == spielkarte) {                     //geht durch die gespeicherten Spielkarten und schaut nach doppelten Karten
+                    doppel = true;                                      // Wenn Doppel, dann den zähler i reduzieren, da sonst zu wenig karten genommen werden
+                    i--;
+                }
+            }
+            if (!doppel) {
+                spielkarten[i] = spielkarte;
+                console.log(spielkarte);
+            }
+
+        }
+
+        let counter: number;
+
+        for (let i: number = 0; i < 16; i++) {
+            randomindex = Math.floor((Math.random() * 8) + 0);
+
+            for (let x: number = 0; x < randomindexe.length; x++) {
+                if (randomindexe[x] == randomindex) {
+                    counter++;
+                }
+              
+            }
+            if (counter > 2) {
+                    i--;
+            } else {
 
             let kartendatenbank = document.createElement("img");
             let kartenclass = document.createAttribute("class");
             let kartendatenbanksrc = document.createAttribute("src");
 
-            console.log(_response[i].Bilderlink);
 
-            kartendatenbanksrc.value = _response[i].Bilderlink;
+            console.log(spielkarten[randomindex]);
+
+            kartendatenbanksrc.value = spielkarten[randomindex];
            
             kartenclass.value = "karte";
             console.log(kartendatenbanksrc);
@@ -40,14 +76,12 @@ namespace MemorySpiel {
 
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
 
-            kartendiv.appendChild(kartendatenbank);
+            kartendiv.appendChild(kartendatenbank);}
 
         }
 
     }
     async function spielfeld(): Promise<void> {
-
-
 
         let formular: FormData = new FormData(document.forms[0]);
         let bilderposi: string = "card";
@@ -56,7 +90,6 @@ namespace MemorySpiel {
         let url: RequestInfo = "https://piikachu.herokuapp.com";
         url += "/abfragen";
         url = url + "?" + query.toString();
-        let response: Response;
 
         let responsetext: Data[];
         fetch(url).then(response => {
