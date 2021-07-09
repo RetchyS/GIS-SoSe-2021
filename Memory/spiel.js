@@ -10,11 +10,9 @@ var MemorySpiel;
     //Spielkarten
     function kartenhinzufügen(_response) {
         let spielkarten;
-        spielkarten.length = 8;
         let spielkarte;
         let randomindex;
         let randomindexe;
-        randomindexe.length = 16;
         let doppel = false;
         for (let i = 0; i < 8; i++) {
             spielkarte = _response[i].Bilderlink;
