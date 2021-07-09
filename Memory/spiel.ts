@@ -93,6 +93,7 @@ namespace MemorySpiel {
         }
         let allezahlenpaare: number[] = randomzahlenkopie.concat(randomzahlen);
         allezahlenpaare = shuffle(allezahlenpaare);
+        console.log("randomindex " + allezahlenpaare);
         return allezahlenpaare;
     }
 
@@ -110,7 +111,7 @@ namespace MemorySpiel {
             [_allezahlenpaare[currentIndex], _allezahlenpaare[randomIndex]] = [
                 _allezahlenpaare[randomIndex], _allezahlenpaare[currentIndex]];
         }
-
+        console.log("shuffle " + _allezahlenpaare);
         return _allezahlenpaare;
     }
 }

@@ -59,6 +59,7 @@ var MemorySpiel;
         }
         let allezahlenpaare = randomzahlenkopie.concat(randomzahlen);
         allezahlenpaare = shuffle(allezahlenpaare);
+        console.log("randomindex " + allezahlenpaare);
         return allezahlenpaare;
     }
     function shuffle(_allezahlenpaare) {
@@ -73,6 +74,7 @@ var MemorySpiel;
                 _allezahlenpaare[randomIndex], _allezahlenpaare[currentIndex]
             ];
         }
+        console.log("shuffle " + _allezahlenpaare);
         return _allezahlenpaare;
     }
 })(MemorySpiel || (MemorySpiel = {}));
