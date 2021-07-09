@@ -8,9 +8,10 @@ var MemorySpiel;
     buttonstart.addEventListener("click", spielfeld);
     //Spielfeld generieren
     let randomzahl;
-    let randomzahlen;
+    let randomzahlen = [0, 0, 0, 0, 0, 0, 0, 0]; //length 8
+    let randomzahlenkopie = [0, 0, 0, 0, 0, 0, 0, 0]; //length 8
     let doppelwerte;
-    let spielkartenarrayzahlen;
+    let spielkartenarrayzahlen = [0, 0, 0, 0, 0, 0, 0, 0];
     //Spielkarten
     async function spielfeld() {
         let formular = new FormData(document.forms[0]);
@@ -49,16 +50,16 @@ var MemorySpiel;
     function randomindexarray(_srcarray) {
         randomzahl = Math.floor((Math.random() * _srcarray) + 0);
         for (let x = 0; x < 8; x++) {
+            randomzahl = Math.floor((Math.random() * _srcarray) + 0);
             doppelwerte = randomzahlen.includes(randomzahl);
             if (!doppelwerte) {
-                randomzahlen.push(randomzahl);
-                randomzahlen.push(randomzahl);
+                randomzahlen[x] = randomzahl;
+                randomzahlenkopie[x] = randomzahl;
             }
-            else {
-                x--;
-            }
+            doppelwerte = false;
         }
-        return randomzahlen;
+        let allezahlenpaare = randomzahlenkopie.concat(randomzahlen);
+        return allezahlenpaare;
     }
 })(MemorySpiel || (MemorySpiel = {}));
 //# sourceMappingURL=spiel.js.map

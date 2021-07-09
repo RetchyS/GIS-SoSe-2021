@@ -20,10 +20,12 @@ namespace MemorySpiel {
 
     //Spielfeld generieren
     let randomzahl: number;
-    let randomzahlen: number[];
+    let randomzahlen: number[] = [ 0, 0, 0, 0, 0, 0, 0, 0];          //length 8
+    let randomzahlenkopie: number [] = [0, 0, 0, 0, 0, 0, 0, 0];    //length 8
+  
     let doppelwerte: boolean;
 
-    let spielkartenarrayzahlen: number [];
+    let spielkartenarrayzahlen: number[] = [0, 0, 0, 0, 0, 0, 0, 0];
     //Spielkarten
     async function spielfeld(): Promise<void> {
 
@@ -51,7 +53,7 @@ namespace MemorySpiel {
         });
     }
 
-    function kartenhinzufügen(_response: Data[], _spielkartenzahlen: number []): void {
+    function kartenhinzufügen(_response: Data[], _spielkartenzahlen: number[]): void {
 
         for (let i: number = 0; i < 16; i++) {
 
@@ -76,20 +78,21 @@ namespace MemorySpiel {
         }
 
     }
-    function randomindexarray(_srcarray: number): number [] {
+    function randomindexarray(_srcarray: number): number[] {
         randomzahl = Math.floor((Math.random() * _srcarray) + 0);
 
-
         for (let x: number = 0; x < 8; x++) {
+            randomzahl = Math.floor((Math.random() * _srcarray) + 0);
             doppelwerte = randomzahlen.includes(randomzahl);
+
             if (!doppelwerte) {
-                randomzahlen.push(randomzahl);
-                randomzahlen.push(randomzahl);
-            } else {
-                x--;
+                randomzahlen[x] = randomzahl;
+                randomzahlenkopie[x] = randomzahl;
             }
+            doppelwerte = false;
         }
-        return randomzahlen;
+        let allezahlenpaare: number [] = randomzahlenkopie.concat(randomzahlen);
+        return allezahlenpaare;
     }
 }
 
