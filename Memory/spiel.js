@@ -65,7 +65,7 @@ var MemorySpiel;
     function shuffle(_allezahlenpaare) {
         let currentIndex = _allezahlenpaare.length, randomIndex;
         // While there remain elements to shuffle...
-        while (0 <= currentIndex) {
+        while (-1 < currentIndex) {
             // Pick a remaining element...
             randomIndex = Math.floor(Math.random() * currentIndex);
             currentIndex--;
