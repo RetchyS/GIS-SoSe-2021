@@ -49,7 +49,7 @@ var MemorySpiel;
     }
     function randomindexarray(_srcarray) {
         for (let x = 0; x < 8; x++) {
-            randomzahl = Math.floor((Math.random() * _srcarray) + 0);
+            randomzahl = Math.floor((Math.random() * _srcarray) + 1);
             doppelwerte = randomzahlen.includes(randomzahl);
             if (doppelwerte == false) {
                 randomzahlen[x] = randomzahl;
