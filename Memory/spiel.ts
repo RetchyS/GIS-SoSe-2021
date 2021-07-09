@@ -1,4 +1,4 @@
-namespace Memory {
+namespace MemorySpiel {
     //Karte
     let kartenbild = document.createElement("img");
     /*  kartenbild.addEventListener("click", match);
@@ -21,47 +21,52 @@ namespace Memory {
     //Spielfeld generieren
 
     //Spielkarten
-    let benutzteindexe: number [];
-    function randomindex(_responselength: number): number {
-        let randomindex: number = Math.floor((Math.random() * _responselength) + 0);
-        for ( let i: number = 0; i < benutzteindexe.length; i++){
-            if (benutzteindexe[i] == randomindex) {
-                randomindex = Math.floor((Math.random() * _responselength) + 0);
-                i--;
-            }
-        }
-        return randomindex;
-
-    }
+    
 
     async function spielfeld(): Promise<void> {
 
+
+
         let formular: FormData = new FormData(document.forms[0]);
         let bilderposi: string = "card";
-        let spielkartensrc: string[];
+   
         let query: URLSearchParams = new URLSearchParams(<any>formular);
         let url: RequestInfo = "https://piikachu.herokuapp.com";
         url += "/abfragen";
         url = url + "?" + query.toString();
         let response: Response = await fetch(url);
-        let responsetext: Data[] = await response.json();
-        let responselength: number = responsetext.length;
         
-        let karte1: string = responsetext[randomindex(responselength)].Bilderlink;
-        let karte2: string = responsetext[randomindex(responselength)].Bilderlink;
-        let karte3: string = responsetext[randomindex(responselength)].Bilderlink;
-        let karte4: string = responsetext[randomindex(responselength)].Bilderlink;
-        let karte5: string = responsetext[randomindex(responselength)].Bilderlink;
-        let karte6: string = responsetext[randomindex(responselength)].Bilderlink;
-        let karte7: string = responsetext[randomindex(responselength)].Bilderlink;
-        let karte8: string = responsetext[randomindex(responselength)].Bilderlink;
+        let responsetext: Data[] = await response.json();
+        
+        for (let i: number = 0; i < 16; i++) {
+           
 
-        console.log(karte1 + "///" + karte2 + "///" + karte3 + "///" + karte4 + "///" + karte5 + "///" + karte6 + "///" + karte7 + "///" + karte8);
+            let kartendatenbank = document.createElement("img");      
+            let kartenclass = document.createAttribute("class");
+            let kartendatenbanksrc = document.createAttribute("src");
+
+            let kartendatenbankid = document.createAttribute("id");
+
+            console.log(responsetext[i].Bilderlink);
+
+            kartendatenbanksrc.value = responsetext[i].Bilderlink;
+            kartendatenbankid.value = "card" + i;
+            kartenclass.value = "karte";
+            console.log(kartendatenbanksrc);
+            let kartendiv = document.getElementById(kartendatenbankid.value);
+
+            kartendatenbank.setAttributeNode(kartendatenbanksrc);
+
+            kartendiv.appendChild(kartendatenbank);
+
+        }
+        
         console.log(responsetext.length);
         console.log(responsetext);
 
         //Auswahl der Karten
-        /* let spielkartensrc: Data[] =  responsetext;         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
+        
+       /*  let spielkartensrc: Data[] =  responsetext;         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
         spielkartensrc.length = 7;
         let benutzterindex: number[] = null;
         benutzterindex.length = 7;

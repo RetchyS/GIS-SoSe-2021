@@ -1,6 +1,6 @@
 "use strict";
-var Memory;
-(function (Memory) {
+var MemorySpiel;
+(function (MemorySpiel) {
     //Karte
     let kartenbild = document.createElement("img");
     //------------Spiel-------------------------------------
@@ -8,60 +8,52 @@ var Memory;
     buttonstart.addEventListener("click", spielfeld);
     //Spielfeld generieren
     //Spielkarten
-    let benutzteindexe;
-    function randomindex(_responselength) {
-        let randomindex = Math.floor((Math.random() * _responselength) + 0);
-        for (let i = 0; i < benutzteindexe.length; i++) {
-            if (benutzteindexe[i] == randomindex) {
-                randomindex = Math.floor((Math.random() * _responselength) + 0);
-                i--;
-            }
-        }
-        return randomindex;
-    }
     async function spielfeld() {
         let formular = new FormData(document.forms[0]);
         let bilderposi = "card";
-        let spielkartensrc;
         let query = new URLSearchParams(formular);
         let url = "https://piikachu.herokuapp.com";
         url += "/abfragen";
         url = url + "?" + query.toString();
         let response = await fetch(url);
         let responsetext = await response.json();
-        let responselength = responsetext.length;
-        let karte1 = responsetext[randomindex(responselength)].Bilderlink;
-        let karte2 = responsetext[randomindex(responselength)].Bilderlink;
-        let karte3 = responsetext[randomindex(responselength)].Bilderlink;
-        let karte4 = responsetext[randomindex(responselength)].Bilderlink;
-        let karte5 = responsetext[randomindex(responselength)].Bilderlink;
-        let karte6 = responsetext[randomindex(responselength)].Bilderlink;
-        let karte7 = responsetext[randomindex(responselength)].Bilderlink;
-        let karte8 = responsetext[randomindex(responselength)].Bilderlink;
-        console.log(karte1 + "///" + karte2 + "///" + karte3 + "///" + karte4 + "///" + karte5 + "///" + karte6 + "///" + karte7 + "///" + karte8);
+        for (let i = 0; i < 16; i++) {
+            let kartendatenbank = document.createElement("img");
+            let kartenclass = document.createAttribute("class");
+            let kartendatenbanksrc = document.createAttribute("src");
+            let kartendatenbankid = document.createAttribute("id");
+            console.log(responsetext[i].Bilderlink);
+            kartendatenbanksrc.value = responsetext[i].Bilderlink;
+            kartendatenbankid.value = "card" + i;
+            kartenclass.value = "karte";
+            console.log(kartendatenbanksrc);
+            let kartendiv = document.getElementById(kartendatenbankid.value);
+            kartendatenbank.setAttributeNode(kartendatenbanksrc);
+            kartendiv.appendChild(kartendatenbank);
+        }
         console.log(responsetext.length);
         console.log(responsetext);
         //Auswahl der Karten
-        /* let spielkartensrc: Data[] =  responsetext;         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
-        spielkartensrc.length = 7;
-        let benutzterindex: number[] = null;
-        benutzterindex.length = 7;
-        let randomindex: number = 0;
-        let doppel: boolean = false;
-        if (response != undefined) {
-            for (let x: number = 0; x < 8; x++) {
-                randomindex = Math.floor((Math.random() * responsetext.length) + 0);
-                spielkartensrc[x].Bilderlink = responsetext[randomindex].Bilderlink;
-
-            }
-            console.log(benutzterindex);
-
-            console.log(spielkartensrc);
-
-
-
-
-        } */
+        /*  let spielkartensrc: Data[] =  responsetext;         //Die 8 Karten aus dem Datensatz werden ausgewählt und hier gespeichert
+         spielkartensrc.length = 7;
+         let benutzterindex: number[] = null;
+         benutzterindex.length = 7;
+         let randomindex: number = 0;
+         let doppel: boolean = false;
+         if (response != undefined) {
+             for (let x: number = 0; x < 8; x++) {
+                 randomindex = Math.floor((Math.random() * responsetext.length) + 0);
+                 spielkartensrc[x].Bilderlink = responsetext[randomindex].Bilderlink;
+ 
+             }
+             console.log(benutzterindex);
+ 
+             console.log(spielkartensrc);
+ 
+ 
+ 
+ 
+         } */
         /* //Karten hinzufügen
         let benutztekarten: number[];
         let counterzwei: number = 0;
@@ -102,7 +94,7 @@ var Memory;
    
        }
     */
-})(Memory || (Memory = {}));
+})(MemorySpiel || (MemorySpiel = {}));
 //schaut nach einem match
 function match() {
 }

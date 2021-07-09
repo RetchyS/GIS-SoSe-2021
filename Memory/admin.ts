@@ -1,4 +1,4 @@
-
+    namespace MemoryAdmin {
     //-----------------Admin---------------
     let buttonspeichern: HTMLButtonElement = <HTMLButtonElement>document.getElementById("datenspeichern");
     buttonspeichern.addEventListener("click", bildspeichern);
@@ -78,3 +78,4 @@
         Bildername: string;
         Bilderlink: string;
     }
+}
