@@ -71,7 +71,7 @@ namespace MemorySpiel {
     function bildmatch(_event: Event): void {
         let imagetarget: HTMLImageElement = <HTMLImageElement>_event.target;
 
-
+        console.log(bildcounter);
         if (bildcounter == 0) {
             imagename1 = imagetarget.getAttribute("src");
             imageid1 = imagetarget.getAttribute("id");
@@ -80,6 +80,7 @@ namespace MemorySpiel {
             imagecss1.style.opacity = "1.0";
             bildcounter++;
         }
+        console.log(bildcounter);
         if (bildcounter == 1) {
             imagename2 = imagetarget.getAttribute("src");
             imageid2 = imagetarget.getAttribute("id");
@@ -89,7 +90,7 @@ namespace MemorySpiel {
             imagecss2.style.opacity = "1.0";
             bildcounter++;
         }
-
+        console.log(bildcounter);
         if (bildcounter == 2) {
             let zeit: number = 0;
             for (let x: number = 0; x < 3000; x++) {
