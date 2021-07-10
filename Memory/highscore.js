@@ -32,10 +32,10 @@ async function scoreeinsehen() {
         for (let i = 0; i < 10; i++) {
             let spielername = document.getElementById("name" + i);
             let spielerscore = document.getElementById("punkt" + i);
-            console.log(srcarray[i].spielername);
-            console.log(srcarray[i].spielerscore);
-            spielername.innerHTML = srcarray[i].spielername;
-            spielerscore.innerHTML = srcarray[i].spielerscore;
+            console.log(srcarray[i].Spielername);
+            console.log(srcarray[i].moves);
+            spielername.innerHTML = srcarray[i].Spielername;
+            spielerscore.innerHTML = srcarray[i].moves;
         }
     });
     /* console.log(responsetext.length);
