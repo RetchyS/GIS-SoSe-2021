@@ -112,7 +112,7 @@ var MemorySpiel;
         if (spielpaareanzahl == 8) {
             localStorage.setItem("moves", movecounter.toString());
             console.log(localStorage.getItem("moves"));
-            location.replace("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
+            location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
         }
     }
     async function spielfeld() {
