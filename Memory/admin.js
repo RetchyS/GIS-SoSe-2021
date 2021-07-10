@@ -15,7 +15,6 @@ var MemoryAdmin;
         url += "/speichern";
         url = url + "?" + query.toString();
         let response = await fetch(url);
-        antwort.innerHTML = "Benötigte Zeit" + localStorage.getItem("");
         if (response == undefined) {
             antwort.innerHTML = "Konnte nicht gespeichert werden";
         }

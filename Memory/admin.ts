@@ -21,7 +21,7 @@
         url = url + "?" + query.toString();
         let response: Response = await fetch(url);
 
-        antwort.innerHTML = "Benötigte Zeit" + localStorage.getItem("");
+        
         if (response == undefined) {
             antwort.innerHTML = "Konnte nicht gespeichert werden";
         } else {
