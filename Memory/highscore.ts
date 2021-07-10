@@ -21,14 +21,14 @@ async function speichern(): Promise<void> {
 
     let query: URLSearchParams = new URLSearchParams(<any>formular);
     url += "/speichernhighscore";
-    url = url + "?" + query.toString() + "&score=" + score;
+    url = url + "?" + query.toString() + "&moves=" + score;
     await fetch(url);
-    score = 0;
+    localStorage.setItem("moves", "Keine Moves vorhanden");
     location.reload(); 
 }
 
 async function scoreeinsehen(): Promise<void> {
-    
+
     let url: RequestInfo = "https://piikachu.herokuapp.com";
     url += "/highscoreabfragen";
     url = url + "?";

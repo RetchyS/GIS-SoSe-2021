@@ -12,9 +12,9 @@ var MemoryHighscore;
         let formular = new FormData(document.forms[0]);
         let query = new URLSearchParams(formular);
         url += "/speichernhighscore";
-        url = url + "?" + query.toString() + "&score=" + score;
+        url = url + "?" + query.toString() + "&moves=" + score;
         await fetch(url);
-        score = 0;
+        localStorage.setItem("moves", "Keine Moves vorhanden");
         location.reload();
     }
     async function scoreeinsehen() {
