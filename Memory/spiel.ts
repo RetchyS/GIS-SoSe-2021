@@ -90,10 +90,10 @@ namespace MemorySpiel {
         }
         console.log(bildcounter);
 
-        if (bildcounter == 3) {
+        if (bildcounter == 2) {
 
             console.log("Es sind 3 sekunden verstrichen");
-            setTimeout("test", 3000);
+            setTimeout(warten, 3000);
             if (imagename2 == imagename1) {
                 imagecss2.style.opacity = "0.0";
                 imagecss1.style.opacity = "0.0";
@@ -117,6 +117,9 @@ namespace MemorySpiel {
 
 
         }
+    }
+    function warten {
+        console.log("3 sekunden gewarten");
     }
 
     async function spielfeld(): Promise<void> {
