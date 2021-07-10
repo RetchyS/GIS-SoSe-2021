@@ -50,7 +50,6 @@ var MemorySpiel;
     function bildmatch(_event) {
         let imagetarget = _event.target;
         bildcounter++;
-        movecounter++;
         console.log(bildcounter);
         if (bildcounter == 1) {
             imagename1 = imagetarget.getAttribute("src");
@@ -90,13 +89,14 @@ var MemorySpiel;
         }
         console.log(bildcounter);
         if (bildcounter == 2) {
+            movecounter++;
+            bildcounter = 0;
             setTimeout(function () {
                 if (imagename2 == imagename1) {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
                     imagecontainer1.style.backgroundColor = "white";
                     imagecontainer2.style.backgroundColor = "white";
-                    bildcounter = 0;
                     imagecss1.removeEventListener("click", bildmatch);
                     imagecss2.removeEventListener("click", bildmatch);
                     spielpaareanzahl++;
@@ -106,15 +106,15 @@ var MemorySpiel;
                 else {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
-                    bildcounter = 0;
                 }
             }, 1000);
         }
     }
     function weiterleiten(_spielpaare) {
         if (_spielpaare >= 8) {
+            movecounter = movecounter / 2;
+            console.log(movecounter);
             localStorage.setItem("moves", movecounter.toString());
-            console.log(localStorage.getItem("moves"));
             document.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
         }
     }

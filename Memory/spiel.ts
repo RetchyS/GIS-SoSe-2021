@@ -63,7 +63,7 @@ namespace MemorySpiel {
     function bildmatch(_event: Event): void {
         let imagetarget: HTMLImageElement = <HTMLImageElement>_event.target;
         bildcounter++;
-        movecounter++;
+       
         console.log(bildcounter);
         if (bildcounter == 1) {
             imagename1 = imagetarget.getAttribute("src");
@@ -91,6 +91,7 @@ namespace MemorySpiel {
             imagename2 = imagetarget.getAttribute("src");
             imageid2 = imagetarget.getAttribute("id");
             let containerid2: string;
+            
             if (imageid1.length == 6) {
                 containerid2 = "cardid" + imageid2.substr(5, 6);
                 console.log(containerid2);
@@ -105,15 +106,15 @@ namespace MemorySpiel {
         console.log(bildcounter);
 
         if (bildcounter == 2) {
-
-
+            movecounter++;
+            bildcounter = 0;
             setTimeout(function (): void {
                 if (imagename2 == imagename1) {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
                     imagecontainer1.style.backgroundColor = "white";
                     imagecontainer2.style.backgroundColor = "white";
-                    bildcounter = 0;
+                   
                     imagecss1.removeEventListener("click", bildmatch);
                     imagecss2.removeEventListener("click", bildmatch);
                     spielpaareanzahl++;
@@ -122,7 +123,7 @@ namespace MemorySpiel {
                 } else {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
-                    bildcounter = 0;
+                    
                 }
             }, 
                        1000);
@@ -132,8 +133,9 @@ namespace MemorySpiel {
     }
     function weiterleiten(_spielpaare: number): void {
         if (_spielpaare >= 8) {
+            movecounter = movecounter / 2;
+            console.log(movecounter);
             localStorage.setItem("moves", movecounter.toString());
-            console.log(localStorage.getItem("moves"));
             document.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
         }
     }
