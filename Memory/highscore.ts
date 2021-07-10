@@ -28,14 +28,10 @@ async function speichern(): Promise<void> {
 }
 
 async function scoreeinsehen(): Promise<void> {
-
-    let formular: FormData = new FormData(document.forms[0]);
-
-
-    let query: URLSearchParams = new URLSearchParams(<any>formular);
+    
     let url: RequestInfo = "https://piikachu.herokuapp.com";
     url += "/highscoreabfragen";
-    url = url + "?" + query.toString();
+    url = url + "?";
     console.log(url);
     let responsetext: Data[];
     fetch(url).then(response => {

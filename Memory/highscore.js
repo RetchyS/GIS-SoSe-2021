@@ -18,11 +18,9 @@ var MemoryHighscore;
         location.reload();
     }
     async function scoreeinsehen() {
-        let formular = new FormData(document.forms[0]);
-        let query = new URLSearchParams(formular);
         let url = "https://piikachu.herokuapp.com";
         url += "/highscoreabfragen";
-        url = url + "?" + query.toString();
+        url = url + "?";
         console.log(url);
         let responsetext;
         fetch(url).then(response => {

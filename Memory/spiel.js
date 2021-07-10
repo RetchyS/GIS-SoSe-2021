@@ -101,6 +101,11 @@ var MemorySpiel;
                     imagecss2.removeEventListener("click", bildmatch);
                     spielpaareanzahl++;
                     console.log(spielpaareanzahl);
+                    if (spielpaareanzahl.toString() >= "8") {
+                        localStorage.setItem("moves", movecounter.toString());
+                        console.log(localStorage.getItem("moves"));
+                        document.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
+                    }
                 }
                 else {
                     imagecss2.style.opacity = "0.0";
@@ -108,11 +113,6 @@ var MemorySpiel;
                     bildcounter = 0;
                 }
             }, 1000);
-        }
-        if (spielpaareanzahl.toString() >= "8") {
-            localStorage.setItem("moves", movecounter.toString());
-            console.log(localStorage.getItem("moves"));
-            window.document.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
         }
     }
     async function spielfeld() {
