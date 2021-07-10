@@ -114,7 +114,6 @@ var MemorySpiel;
         }
     }
     async function spielfeld() {
-        timer();
         let formular = new FormData(document.forms[0]);
         let bilderposi = "card";
         let query = new URLSearchParams(formular);
@@ -134,6 +133,7 @@ var MemorySpiel;
             spielkartenarrayzahlen = randomindexarray(srcarray.length);
             kartenhinzufügen(srcarray, spielkartenarrayzahlen);
         });
+        timer();
     }
     function kartenhinzufügen(_response, _spielkartenzahlen) {
         for (let i = 0; i < 16; i++) {

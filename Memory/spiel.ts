@@ -144,7 +144,7 @@ namespace MemorySpiel {
 
 
     async function spielfeld(): Promise<void> {
-        timer();
+        
 
         let formular: FormData = new FormData(document.forms[0]);
         let bilderposi: string = "card";
@@ -168,6 +168,7 @@ namespace MemorySpiel {
             spielkartenarrayzahlen = randomindexarray(srcarray.length);
             kartenhinzufügen(srcarray, spielkartenarrayzahlen);
         });
+        timer();
     }
 
     function kartenhinzufügen(_response: Data[], _spielkartenzahlen: number[]): void {
@@ -196,6 +197,8 @@ namespace MemorySpiel {
 
 
         }
+        
+        
 
     }
     function randomindexarray(_srcarray: number): number[] {

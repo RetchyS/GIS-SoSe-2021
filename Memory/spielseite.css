@@ -9,6 +9,7 @@ body {
 
 main {
     padding: 10px;
+    
     margin: auto;
     display: block;
     max-height: fit-content;
@@ -48,6 +49,7 @@ text-align: center;
 .row {   
     text-align: center;
     margin: auto;
+    
  
 
 }
