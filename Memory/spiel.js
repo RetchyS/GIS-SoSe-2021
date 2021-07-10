@@ -49,13 +49,13 @@ var MemorySpiel;
     //Match
     function bildmatch(_event) {
         let imagetarget = _event.target;
-        bildcounter++;
         console.log(bildcounter);
-        if (bildcounter == 1) {
+        if (bildcounter == 0) {
             imagename1 = imagetarget.getAttribute("src");
             imageid1 = imagetarget.getAttribute("id");
             let containerid1;
             console.log(imageid1);
+            bildcounter++;
             if (imageid1.length == 6) {
                 console.log("länge 7 =" + imageid1.substring(5, 6));
                 containerid1 = "cardid" + imageid1.substr(5, 6);
@@ -71,10 +71,11 @@ var MemorySpiel;
             imagecss1.style.opacity = "1.0";
         }
         console.log(bildcounter);
-        if (bildcounter == 2) {
+        if (bildcounter == 1) {
             imagename2 = imagetarget.getAttribute("src");
             imageid2 = imagetarget.getAttribute("id");
             let containerid2;
+            bildcounter++;
             if (imageid1.length == 6) {
                 containerid2 = "cardid" + imageid2.substr(5, 6);
                 console.log(containerid2);
