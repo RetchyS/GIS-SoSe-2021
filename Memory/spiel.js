@@ -11,6 +11,8 @@ var MemorySpiel;
     let bildcounter = 0;
     let imagecontainer1;
     let imagecontainer2;
+    let spielpaareanzahl = 0;
+    let movecounter = 0;
     //------------Spiel-------------------------------------
     let buttonstart = document.getElementById("start");
     buttonstart.addEventListener("click", spielfeld);
@@ -25,15 +27,17 @@ var MemorySpiel;
     let minutesLabel = document.getElementById("minutes");
     let secondsLabel = document.getElementById("seconds");
     //Spielkarten
-    function timer() {
+    /* function timer(): void {               //https://codepen.io/reynnor/pen/vmNaeM
         setInterval(setTime, 100000);
-        function setTime() {
+
+        function setTime(): void {
             ++totalSeconds;
             secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
             minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
         }
-        function pad(_value) {
-            let valString = _value + "";
+
+        function pad(_value: string): string {
+            let valString: string = _value + "";
             if (valString.length < 2) {
                 return "0" + valString;
             }
@@ -41,18 +45,12 @@ var MemorySpiel;
                 return valString;
             }
         }
-        /* } else {
-            localStorage.setItem("BenötigteZeit", totalSeconds.toString());
-            totalSeconds = 0;
-            minutesLabel.innerHTML = "00";
-            secondsLabel.innerHTML = "00";
-
-        } */
-    }
+    } */
     //Match
     function bildmatch(_event) {
         let imagetarget = _event.target;
         bildcounter++;
+        movecounter++;
         console.log(bildcounter);
         if (bildcounter == 1) {
             imagename1 = imagetarget.getAttribute("src");
@@ -101,6 +99,7 @@ var MemorySpiel;
                     bildcounter = 0;
                     imagecss1.removeEventListener("click", bildmatch);
                     imagecss2.removeEventListener("click", bildmatch);
+                    spielpaareanzahl++;
                 }
                 else {
                     imagecss2.style.opacity = "0.0";
@@ -108,14 +107,16 @@ var MemorySpiel;
                     bildcounter = 0;
                 }
             }, 2000);
-            //localStorage.setItem("Bildersrc", imagename);
-            //console.log(localStorage.getItem("Bildername"));
-            //console.log(localStorage.getItem("Bildernummer"));
         }
+        if (spielpaareanzahl == 8) {
+            localStorage.setItem("moves", movecounter.toString());
+            window.location.replace("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
+        }
+    }
+    function weiterleiten() {
     }
     async function spielfeld() {
         let formular = new FormData(document.forms[0]);
-        let bilderposi = "card";
         let query = new URLSearchParams(formular);
         let url = "https://piikachu.herokuapp.com";
         url += "/abfragen";
@@ -133,7 +134,7 @@ var MemorySpiel;
             spielkartenarrayzahlen = randomindexarray(srcarray.length);
             kartenhinzufügen(srcarray, spielkartenarrayzahlen);
         });
-        timer();
+        //timer();
     }
     function kartenhinzufügen(_response, _spielkartenzahlen) {
         for (let i = 0; i < 16; i++) {
@@ -141,7 +142,6 @@ var MemorySpiel;
             let kartenclass = document.createAttribute("class");
             let kartendatenbanksrc = document.createAttribute("src");
             let kartenid = document.createAttribute("id");
-            let kartendata = document.createAttribute("data-");
             kartendatenbanksrc.value = _response[_spielkartenzahlen[i]].Bilderlink;
             kartenid.value = "karte" + i;
             kartenclass.value = "karte";
@@ -174,7 +174,8 @@ var MemorySpiel;
         return allezahlenpaare;
     }
     function shuffle(_allezahlenpaare) {
-        let currentIndex = _allezahlenpaare.length, randomIndex;
+        let currentIndex = _allezahlenpaare.length;
+        let randomIndex;
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
             // Pick a remaining element...

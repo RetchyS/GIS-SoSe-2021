@@ -15,7 +15,8 @@ namespace MemorySpiel {
     let bildcounter: number = 0;
     let imagecontainer1: HTMLElement;
     let imagecontainer2: HTMLElement;
-
+    let spielpaareanzahl: number = 0;
+    let movecounter: number = 0;
 
 
     //------------Spiel-------------------------------------
@@ -28,48 +29,41 @@ namespace MemorySpiel {
     let randomzahlenkopie: number[] = [0, 0, 0, 0, 0, 0, 0, 0];    //length 8
 
     let doppelwerte: boolean = false;
-  
+
     let spielkartenarrayzahlen: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let totalSeconds: number = 0;
 
 
     //timer
-    let minutesLabel = document.getElementById("minutes");
-    let secondsLabel = document.getElementById("seconds");
+    let minutesLabel: HTMLElement = document.getElementById("minutes");
+    let secondsLabel: HTMLElement = document.getElementById("seconds");
 
 
     //Spielkarten
-    function timer(): void {               //https://codepen.io/reynnor/pen/vmNaeM
-            setInterval(setTime, 100000);
+    /* function timer(): void {               //https://codepen.io/reynnor/pen/vmNaeM
+        setInterval(setTime, 100000);
 
-            function setTime(): void {
-                ++totalSeconds;
-                secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
-                minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
+        function setTime(): void {
+            ++totalSeconds;
+            secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
+            minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
+        }
+
+        function pad(_value: string): string {
+            let valString: string = _value + "";
+            if (valString.length < 2) {
+                return "0" + valString;
             }
-
-            function pad(_value: string): string {
-                let valString: string = _value + "";
-                if (valString.length < 2) {
-                    return "0" + valString;
-                }
-                else {
-                    return valString;
-                }
+            else {
+                return valString;
             }
-        /* } else {
-            localStorage.setItem("BenötigteZeit", totalSeconds.toString());
-            totalSeconds = 0;
-            minutesLabel.innerHTML = "00";
-            secondsLabel.innerHTML = "00";
-
-        } */
-    }
+        }
+    } */
     //Match
-
     function bildmatch(_event: Event): void {
         let imagetarget: HTMLImageElement = <HTMLImageElement>_event.target;
         bildcounter++;
+        movecounter++;
         console.log(bildcounter);
         if (bildcounter == 1) {
             imagename1 = imagetarget.getAttribute("src");
@@ -112,7 +106,7 @@ namespace MemorySpiel {
 
         if (bildcounter == 2) {
 
-            
+
             setTimeout(function (): void {
                 if (imagename2 == imagename1) {
                     imagecss2.style.opacity = "0.0";
@@ -122,32 +116,35 @@ namespace MemorySpiel {
                     bildcounter = 0;
                     imagecss1.removeEventListener("click", bildmatch);
                     imagecss2.removeEventListener("click", bildmatch);
+                    spielpaareanzahl++;
                 } else {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
                     bildcounter = 0;
                 }
-            }, 2000);
-
-
-            //localStorage.setItem("Bildersrc", imagename);
-
-
-            //console.log(localStorage.getItem("Bildername"));
-            //console.log(localStorage.getItem("Bildernummer"));
-
-
-
-
+            }, 
+                       2000);
+        }
+        if (spielpaareanzahl == 8) {
+            localStorage.setItem("moves", movecounter.toString());
+            window.location.replace("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
         }
     }
 
 
+    function weiterleiten (): void {
+
+    }
+
+
+
+
+
+
     async function spielfeld(): Promise<void> {
-        
 
         let formular: FormData = new FormData(document.forms[0]);
-        let bilderposi: string = "card";
+
 
         let query: URLSearchParams = new URLSearchParams(<any>formular);
         let url: RequestInfo = "https://piikachu.herokuapp.com";
@@ -168,37 +165,33 @@ namespace MemorySpiel {
             spielkartenarrayzahlen = randomindexarray(srcarray.length);
             kartenhinzufügen(srcarray, spielkartenarrayzahlen);
         });
-        timer();
+        //timer();
     }
 
     function kartenhinzufügen(_response: Data[], _spielkartenzahlen: number[]): void {
 
         for (let i: number = 0; i < 16; i++) {
 
-            let kartendatenbank = document.createElement("img");
-            let kartenclass = document.createAttribute("class");
+            let kartendatenbank: HTMLElement = document.createElement("img");
+            let kartenclass  = document.createAttribute("class");
             let kartendatenbanksrc = document.createAttribute("src");
             let kartenid = document.createAttribute("id");
-            let kartendata = document.createAttribute("data-");
             kartendatenbanksrc.value = _response[_spielkartenzahlen[i]].Bilderlink;
 
             kartenid.value = "karte" + i;
             kartenclass.value = "karte";
 
             console.log(kartendatenbanksrc);
-            let kartendiv = document.getElementById("cardid" + i);
+            let kartendiv: HTMLElement = document.getElementById("cardid" + i);
 
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
             kartendatenbank.setAttributeNode(kartenid);
             kartendatenbank.addEventListener("click", bildmatch);
 
-
             kartendiv.appendChild(kartendatenbank);
-
-
         }
-        
-        
+
+
 
     }
     function randomindexarray(_srcarray: number): number[] {
@@ -224,8 +217,9 @@ namespace MemorySpiel {
         return allezahlenpaare;
     }
 
-    function shuffle(_allezahlenpaare: number[]) {                 //  von https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
-        let currentIndex: number = _allezahlenpaare.length, randomIndex;
+    function shuffle(_allezahlenpaare: number[]): number[] {                 //  von https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
+        let currentIndex: number = _allezahlenpaare.length;
+        let randomIndex: number;
 
         // While there remain elements to shuffle...
         while (0 !== currentIndex) {
