@@ -50,7 +50,7 @@ async function scoreeinsehen(): Promise<void> {
             console.log(srcarray[i].spielername);
             console.log(srcarray[i].spielerscore);
             spielername.innerHTML = srcarray[i].spielername;
-            spielerscore.innerHTML = srcarray[i].spielername;
+            spielerscore.innerHTML = srcarray[i].spielerscore;
     
         }
     });
