@@ -83,11 +83,11 @@ namespace MemorySpiel {
             console.log(imageid1);
             if (imageid1.length == 6) {
                 console.log("länge 7 =" + imageid1.substring(5, 6));
-                containerid1 = "karte" + imageid1.substr(5, 6);
+                containerid1 = "cardid" + imageid1.substr(5, 6);
                 console.log(containerid1);
             } else {
                 console.log("länge 7+ =" + imageid1.substring(5, 7));
-                containerid1 = "karte" + imageid1.substr(5, 7);
+                containerid1 = "cardid" + imageid1.substr(5, 7);
                 console.log(containerid1);
             }
 
@@ -103,10 +103,10 @@ namespace MemorySpiel {
             imageid2 = imagetarget.getAttribute("id");
             let containerid2: string;
             if (imageid1.length == 6) {
-                containerid2 = "karte" + imageid2.substr(5, 6);
+                containerid2 = "cardid" + imageid2.substr(5, 6);
                 console.log(containerid2);
             } else {
-                containerid2 = "karte" + imageid2.substr(5, 7);
+                containerid2 = "cardid" + imageid2.substr(5, 7);
                 console.log(containerid2);
             }
             imagecontainer2 = document.getElementById(containerid2);
@@ -122,8 +122,8 @@ namespace MemorySpiel {
                 if (imagename2 == imagename1) {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
-                    imagecontainer1.style.backgroundImage = "white";
-                    imagecontainer1.style.backgroundImage = "white";
+                    imagecontainer1.style.backgroundColor = "white";
+                    imagecontainer1.style.backgroundColor = "white";
                     bildcounter = 0;
 
                 } else {
@@ -131,7 +131,7 @@ namespace MemorySpiel {
                     imagecss1.style.opacity = "0.0";
                     bildcounter = 0;
                 }
-            }, 3000);
+            }, 2000);
 
 
             //localStorage.setItem("Bildersrc", imagename);
