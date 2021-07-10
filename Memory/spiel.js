@@ -73,7 +73,7 @@ var MemorySpiel;
         console.log(bildcounter);
         if (bildcounter == 3) {
             console.log("Es sind 3 sekunden verstrichen");
-            //setTimeout("test", 3000);
+            setTimeout("test", 3000);
             if (imagename2 == imagename1) {
                 imagecss2.style.opacity = "0.0";
                 imagecss1.style.opacity = "0.0";
@@ -90,80 +90,80 @@ var MemorySpiel;
             //console.log(localStorage.getItem("Bildername"));
             //console.log(localStorage.getItem("Bildernummer"));
         }
-        async function spielfeld() {
-            timer(spielen);
-            let formular = new FormData(document.forms[0]);
-            let bilderposi = "card";
-            let query = new URLSearchParams(formular);
-            let url = "https://piikachu.herokuapp.com";
-            url += "/abfragen";
-            url = url + "?" + query.toString();
-            let responsetext;
-            fetch(url).then(response => {
-                console.log(response);
-                return response.json();
-            }).then(responsejson => {
-                responsetext = responsejson;
-                return responsetext;
-            }).then(srcarray => {
-                console.log(srcarray.length);
-                console.log(srcarray);
-                spielkartenarrayzahlen = randomindexarray(srcarray.length);
-                kartenhinzufügen(srcarray, spielkartenarrayzahlen);
-            });
+    }
+    async function spielfeld() {
+        timer(spielen);
+        let formular = new FormData(document.forms[0]);
+        let bilderposi = "card";
+        let query = new URLSearchParams(formular);
+        let url = "https://piikachu.herokuapp.com";
+        url += "/abfragen";
+        url = url + "?" + query.toString();
+        let responsetext;
+        fetch(url).then(response => {
+            console.log(response);
+            return response.json();
+        }).then(responsejson => {
+            responsetext = responsejson;
+            return responsetext;
+        }).then(srcarray => {
+            console.log(srcarray.length);
+            console.log(srcarray);
+            spielkartenarrayzahlen = randomindexarray(srcarray.length);
+            kartenhinzufügen(srcarray, spielkartenarrayzahlen);
+        });
+    }
+    function kartenhinzufügen(_response, _spielkartenzahlen) {
+        for (let i = 0; i < 16; i++) {
+            let kartendatenbank = document.createElement("img");
+            let kartenclass = document.createAttribute("class");
+            let kartendatenbanksrc = document.createAttribute("src");
+            let kartenid = document.createAttribute("id");
+            kartendatenbanksrc.value = _response[_spielkartenzahlen[i]].Bilderlink;
+            kartenid.value = "karte" + i;
+            kartenclass.value = "karte";
+            console.log(kartendatenbanksrc);
+            let kartendiv = document.getElementById("cardid" + i);
+            kartendatenbank.setAttributeNode(kartendatenbanksrc);
+            kartendatenbank.setAttributeNode(kartenid);
+            kartendatenbank.addEventListener("click", bildmatch);
+            kartendiv.appendChild(kartendatenbank);
         }
-        function kartenhinzufügen(_response, _spielkartenzahlen) {
-            for (let i = 0; i < 16; i++) {
-                let kartendatenbank = document.createElement("img");
-                let kartenclass = document.createAttribute("class");
-                let kartendatenbanksrc = document.createAttribute("src");
-                let kartenid = document.createAttribute("id");
-                kartendatenbanksrc.value = _response[_spielkartenzahlen[i]].Bilderlink;
-                kartenid.value = "karte" + i;
-                kartenclass.value = "karte";
-                console.log(kartendatenbanksrc);
-                let kartendiv = document.getElementById("cardid" + i);
-                kartendatenbank.setAttributeNode(kartendatenbanksrc);
-                kartendatenbank.setAttributeNode(kartenid);
-                kartendatenbank.addEventListener("click", bildmatch);
-                kartendiv.appendChild(kartendatenbank);
+    }
+    function randomindexarray(_srcarray) {
+        for (let x = 0; x < 8; x++) {
+            randomzahl = Math.floor((Math.random() * _srcarray) + 0);
+            doppelwerte = randomzahlen.includes(randomzahl);
+            if (doppelwerte == false) {
+                randomzahlen[x] = randomzahl;
+                randomzahlenkopie[x] = randomzahl;
             }
-        }
-        function randomindexarray(_srcarray) {
-            for (let x = 0; x < 8; x++) {
-                randomzahl = Math.floor((Math.random() * _srcarray) + 0);
-                doppelwerte = randomzahlen.includes(randomzahl);
-                if (doppelwerte == false) {
-                    randomzahlen[x] = randomzahl;
-                    randomzahlenkopie[x] = randomzahl;
-                }
-                if (doppelwerte == true) {
-                    x--;
-                }
-                doppelwerte = false;
+            if (doppelwerte == true) {
+                x--;
             }
-            console.log("randomzahlen" + randomzahlen);
-            console.log("randomzahlen" + randomzahlenkopie);
-            let allezahlenpaare = randomzahlenkopie.concat(randomzahlen);
-            console.log("randomindex " + allezahlenpaare);
-            allezahlenpaare = shuffle(allezahlenpaare);
-            return allezahlenpaare;
+            doppelwerte = false;
         }
-        function shuffle(_allezahlenpaare) {
-            let currentIndex = _allezahlenpaare.length, randomIndex;
-            // While there remain elements to shuffle...
-            while (0 !== currentIndex) {
-                // Pick a remaining element...
-                randomIndex = Math.floor((Math.random() * currentIndex) + 0);
-                currentIndex--;
-                // And swap it with the current element.
-                [_allezahlenpaare[currentIndex], _allezahlenpaare[randomIndex]] = [
-                    _allezahlenpaare[randomIndex], _allezahlenpaare[currentIndex]
-                ];
-            }
-            console.log("shuffle " + _allezahlenpaare);
-            return _allezahlenpaare;
+        console.log("randomzahlen" + randomzahlen);
+        console.log("randomzahlen" + randomzahlenkopie);
+        let allezahlenpaare = randomzahlenkopie.concat(randomzahlen);
+        console.log("randomindex " + allezahlenpaare);
+        allezahlenpaare = shuffle(allezahlenpaare);
+        return allezahlenpaare;
+    }
+    function shuffle(_allezahlenpaare) {
+        let currentIndex = _allezahlenpaare.length, randomIndex;
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+            // Pick a remaining element...
+            randomIndex = Math.floor((Math.random() * currentIndex) + 0);
+            currentIndex--;
+            // And swap it with the current element.
+            [_allezahlenpaare[currentIndex], _allezahlenpaare[randomIndex]] = [
+                _allezahlenpaare[randomIndex], _allezahlenpaare[currentIndex]
+            ];
         }
+        console.log("shuffle " + _allezahlenpaare);
+        return _allezahlenpaare;
     }
 })(MemorySpiel || (MemorySpiel = {}));
 //# sourceMappingURL=spiel.js.map
