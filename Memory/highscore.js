@@ -31,7 +31,7 @@ async function scoreeinsehen() {
         console.log(srcarray);
         for (let i = 0; i < 10; i++) {
             let spielername = document.getElementById("name" + i);
-            let spielerscore = document.getElementById("punkt" + i);
+            let spielerscore = document.getElementById("punkte" + i);
             console.log(srcarray[i].Spielername);
             console.log(srcarray[i].moves);
             spielername.innerHTML = srcarray[i].Spielername;
