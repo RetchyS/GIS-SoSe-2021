@@ -3,6 +3,12 @@ let buttonname: HTMLElement = document.getElementById("highscorespeichern");
 buttonname.addEventListener("click", speichern);
 
 
+interface Data {
+    Object: string;
+    spielername: string;
+    spielerscore: string;
+}
+
 let score: number = Number(localStorage.getItem("moves"));
 async function speichern(): Promise<void> {
     let url: RequestInfo = "https://piikachu.herokuapp.com";
@@ -63,9 +69,4 @@ async function scoreeinsehen(): Promise<void> {
         spielerscore.innerHTML = responsetext[i].spielername;
 
     } */
-}
-interface Data {
-    Object: string;
-    spielername: string;
-    spielerscore: string;
 }
