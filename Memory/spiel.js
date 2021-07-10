@@ -61,13 +61,13 @@ var MemorySpiel;
             let containerid1;
             console.log(imageid1);
             if (imageid1.length == 6) {
-                console.log("länge 7 =" + imageid1.substring(6));
-                containerid1 = "cardid" + (imageid1.substr(6)).toString();
+                console.log("länge 7 =" + imageid1.substring(5, 6));
+                containerid1 = "cardid" + imageid1.substr(5, 6);
                 console.log(containerid1);
             }
             else {
-                console.log("länge 7+ =" + (imageid1.substring(6, 7)));
-                containerid1 = "cardid" + (imageid1.substr(6, 7)).toString();
+                console.log("länge 7+ =" + imageid1.substring(5, 7));
+                containerid1 = "cardid" + imageid1.substr(5, 7);
                 console.log(containerid1);
             }
             imagecontainer1 = document.getElementById(containerid1);
@@ -80,11 +80,11 @@ var MemorySpiel;
             imageid2 = imagetarget.getAttribute("id");
             let containerid2;
             if (imageid1.length == 6) {
-                containerid2 = "cardid" + (imageid2.substr(6)).toString();
+                containerid2 = "cardid" + imageid2.substr(5, 6);
                 console.log(containerid2);
             }
             else {
-                containerid2 = "cardid" + (imageid2.substr(6, 7)).toString();
+                containerid2 = "cardid" + imageid2.substr(5, 7);
                 console.log(containerid2);
             }
             imagecontainer2 = document.getElementById(containerid2);
