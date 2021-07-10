@@ -84,12 +84,14 @@ var MemorySpiel;
             let kartendatenbank = document.createElement("img");
             let kartenclass = document.createAttribute("class");
             let kartendatenbanksrc = document.createAttribute("src");
+            let kartenid = document.createAttribute("id");
             kartendatenbanksrc.value = _response[_spielkartenzahlen[i]].Bilderlink;
-            kartenclass.value = "karte ";
-            kartenclass.value += "kartenpaar" + _spielkartenzahlen[i];
+            kartenid.value = "karte" + i;
+            kartenclass.value = "karte";
             console.log(kartendatenbanksrc);
             let kartendiv = document.getElementById("cardid" + i);
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
+            kartendatenbank.setAttributeNode(kartenid);
             kartendiv.appendChild(kartendatenbank);
         }
     }
