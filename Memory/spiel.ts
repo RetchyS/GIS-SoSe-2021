@@ -118,11 +118,7 @@ namespace MemorySpiel {
                     imagecss2.removeEventListener("click", bildmatch);
                     spielpaareanzahl++;
                     console.log(spielpaareanzahl);
-                    if (spielpaareanzahl.toString() >= "8") {
-                        localStorage.setItem("moves", movecounter.toString());
-                        console.log(localStorage.getItem("moves"));
-                        document.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
-                    }
+                    weiterleiten(spielpaareanzahl);
                 } else {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
@@ -134,7 +130,13 @@ namespace MemorySpiel {
 
         
     }
-
+    function weiterleiten(_spielpaare: number): void {
+        if (_spielpaare >= 8) {
+            localStorage.setItem("moves", movecounter.toString());
+            console.log(localStorage.getItem("moves"));
+            document.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
+        }
+    }
     async function spielfeld(): Promise<void> {
 
         let formular: FormData = new FormData(document.forms[0]);
