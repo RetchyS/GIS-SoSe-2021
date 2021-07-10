@@ -49,8 +49,8 @@ async function scoreeinsehen(): Promise<void> {
         }
     });
 
-    console.log(responsetext.length);
-    console.log(responsetext);
+    /* console.log(responsetext.length);
+    console.log(responsetext); */
 
     /* for (let i: number = 0; i < 10; i++) {
 
