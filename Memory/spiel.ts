@@ -33,12 +33,16 @@ namespace MemorySpiel {
     let totalSeconds: number = 0;
 
 
+    //timer
+    let minutesLabel = document.getElementById("minutes");
+    let secondsLabel = document.getElementById("seconds");
+
+
     //Spielkarten
     function timer(_spielen: boolean): void {               //https://codepen.io/reynnor/pen/vmNaeM
-        let minutesLabel = document.getElementById("minutes");
-        let secondsLabel = document.getElementById("seconds");
 
-        if (_spielen) {
+
+        
 
 
             setInterval(setTime, 1000000);
@@ -58,13 +62,13 @@ namespace MemorySpiel {
                     return valString;
                 }
             }
-        } else {
+        /* } else {
             localStorage.setItem("BenötigteZeit", totalSeconds.toString());
             totalSeconds = 0;
             minutesLabel.innerHTML = "00";
             secondsLabel.innerHTML = "00";
 
-        }
+        } */
     }
     //Match
 
@@ -77,9 +81,11 @@ namespace MemorySpiel {
             imageid1 = imagetarget.getAttribute("id");
             let containerid1: string;
             if (imageid1.length == 7) {
+                console.log("länge 7 =" + imageid1.substr(7));
                 containerid1 = "cardid" + (imageid1.substr(7)).toString();
                 console.log(containerid1);
             } else {
+                console.log("länge 7+ =" + (imageid1.substr(7, 8)));
                 containerid1 = "cardid" + (imageid1.substr(7, 8)).toString();
                 console.log(containerid1);
             }

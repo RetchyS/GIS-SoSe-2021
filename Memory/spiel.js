@@ -22,33 +22,33 @@ var MemorySpiel;
     let spielen = true;
     let spielkartenarrayzahlen = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let totalSeconds = 0;
+    //timer
+    let minutesLabel = document.getElementById("minutes");
+    let secondsLabel = document.getElementById("seconds");
     //Spielkarten
     function timer(_spielen) {
-        let minutesLabel = document.getElementById("minutes");
-        let secondsLabel = document.getElementById("seconds");
-        if (_spielen) {
-            setInterval(setTime, 1000000);
-            function setTime() {
-                ++totalSeconds;
-                secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
-                minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
+        setInterval(setTime, 1000000);
+        function setTime() {
+            ++totalSeconds;
+            secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
+            minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
+        }
+        function pad(_value) {
+            let valString = _value + "";
+            if (valString.length < 2) {
+                return "0" + valString;
             }
-            function pad(_value) {
-                let valString = _value + "";
-                if (valString.length < 2) {
-                    return "0" + valString;
-                }
-                else {
-                    return valString;
-                }
+            else {
+                return valString;
             }
         }
-        else {
+        /* } else {
             localStorage.setItem("BenötigteZeit", totalSeconds.toString());
             totalSeconds = 0;
             minutesLabel.innerHTML = "00";
             secondsLabel.innerHTML = "00";
-        }
+
+        } */
     }
     //Match
     function bildmatch(_event) {
@@ -60,10 +60,12 @@ var MemorySpiel;
             imageid1 = imagetarget.getAttribute("id");
             let containerid1;
             if (imageid1.length == 7) {
+                console.log("länge 7 =" + imageid1.substr(7));
                 containerid1 = "cardid" + (imageid1.substr(7)).toString();
                 console.log(containerid1);
             }
             else {
+                console.log("länge 7+ =" + (imageid1.substr(7, 8)));
                 containerid1 = "cardid" + (imageid1.substr(7, 8)).toString();
                 console.log(containerid1);
             }
