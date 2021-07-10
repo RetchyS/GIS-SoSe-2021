@@ -120,8 +120,8 @@ namespace MemorySpiel {
                     imagecontainer1.style.backgroundColor = "white";
                     imagecontainer2.style.backgroundColor = "white";
                     bildcounter = 0;
-                    document.getElementById(imageid1).removeEventListener("click", spielfeld);
-                    document.getElementById(imageid2).removeEventListener("click", spielfeld);
+                    imagecss1.removeEventListener("click", spielfeld);
+                    imagecss2.removeEventListener("click", spielfeld);
                 } else {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
