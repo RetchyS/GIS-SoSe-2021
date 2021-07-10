@@ -75,7 +75,7 @@ namespace MemorySpiel {
         if (bildcounter == 1) {
             imagename1 = imagetarget.getAttribute("src");
             imageid1 = imagetarget.getAttribute("id");
-            imagecontainer1 = document.getElementById(imageid1);
+            imagecontainer1 = document.getElementById("cardid" + imageid1);
             imagecss1 = document.getElementById(imageid1);
             imagecss1.style.opacity = "1.0";
 
@@ -84,7 +84,7 @@ namespace MemorySpiel {
         if (bildcounter == 2) {
             imagename2 = imagetarget.getAttribute("src");
             imageid2 = imagetarget.getAttribute("id");
-            imagecontainer2 = document.getElementById(imageid2);
+            imagecontainer2 = document.getElementById("cardid" + imageid2);
             imagecss2 = document.getElementById(imageid2);
             imagecss2.style.opacity = "1.0";
         }
@@ -157,6 +157,7 @@ namespace MemorySpiel {
             let kartenclass = document.createAttribute("class");
             let kartendatenbanksrc = document.createAttribute("src");
             let kartenid = document.createAttribute("id");
+            let kartendata = document.createAttribute("data-");
             kartendatenbanksrc.value = _response[_spielkartenzahlen[i]].Bilderlink;
 
             kartenid.value = "karte" + i;
