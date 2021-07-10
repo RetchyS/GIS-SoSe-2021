@@ -11,9 +11,54 @@ var MemorySpiel;
     let randomzahlen = [0, 0, 0, 0, 0, 0, 0, 0]; //length 8
     let randomzahlenkopie = [0, 0, 0, 0, 0, 0, 0, 0]; //length 8
     let doppelwerte = false;
+    let spielen = true;
     let spielkartenarrayzahlen = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    let totalSeconds = 0;
     //Spielkarten
+    function timer(_spielen) {
+        let minutesLabel = document.getElementById("minutes");
+        let secondsLabel = document.getElementById("seconds");
+        if (_spielen) {
+            setInterval(setTime, 1000000);
+            function setTime() {
+                ++totalSeconds;
+                secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
+                minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
+            }
+            function pad(_value) {
+                let valString = _value + "";
+                if (valString.length < 2) {
+                    return "0" + valString;
+                }
+                else {
+                    return valString;
+                }
+            }
+        }
+        else {
+            localStorage.setItem("BenötigteZeit", totalSeconds.toString());
+            totalSeconds = 0;
+            minutesLabel.innerHTML = "00";
+            secondsLabel.innerHTML = "00";
+        }
+    }
+    //Match
+    let bildcounter = 0;
+    function bildmatch(_event) {
+        let imagetarget = _event.target;
+        if (bildcounter == 0) {
+            let imagename1 = imagetarget.getAttribute("src");
+            bildcounter++;
+        }
+        if (bildcounter == 1) {
+            let imagename2 = imagetarget.getAttribute("src");
+        }
+        localStorage.setItem("Bildersrc", imagename);
+        //console.log(localStorage.getItem("Bildername"));
+        //console.log(localStorage.getItem("Bildernummer"));
+    }
     async function spielfeld() {
+        timer(spielen);
         let formular = new FormData(document.forms[0]);
         let bilderposi = "card";
         let query = new URLSearchParams(formular);
@@ -40,7 +85,8 @@ var MemorySpiel;
             let kartenclass = document.createAttribute("class");
             let kartendatenbanksrc = document.createAttribute("src");
             kartendatenbanksrc.value = _response[_spielkartenzahlen[i]].Bilderlink;
-            kartenclass.value = "karte";
+            kartenclass.value = "karte ";
+            kartenclass.value += "kartenpaar" + _spielkartenzahlen[i];
             console.log(kartendatenbanksrc);
             let kartendiv = document.getElementById("cardid" + i);
             kartendatenbank.setAttributeNode(kartendatenbanksrc);

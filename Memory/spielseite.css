@@ -95,3 +95,12 @@ text-align: center;
     background-color: olivedrab;
     color: #eee;
 }
+#seconds {
+    font-size: 50px;}
+  
+  #minutes {
+    font-size: 50px;
+  }
+  #colon {
+    font-size: 50px;
+  }
