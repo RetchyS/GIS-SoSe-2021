@@ -81,13 +81,13 @@ namespace MemorySpiel {
             imageid1 = imagetarget.getAttribute("id");
             let containerid1: string;
             console.log(imageid1);
-            if (imageid1.length == 7) {
-                console.log("länge 7 =" + imageid1.substring(7));
-                containerid1 = "cardid" + (imageid1.substr(7)).toString();
+            if (imageid1.length == 6) {
+                console.log("länge 7 =" + imageid1.substring(6));
+                containerid1 = "cardid" + (imageid1.substr(6)).toString();
                 console.log(containerid1);
             } else {
-                console.log("länge 7+ =" + (imageid1.substring(7, 8)));
-                containerid1 = "cardid" + (imageid1.substr(7, 8)).toString();
+                console.log("länge 7+ =" + (imageid1.substring(6, 7)));
+                containerid1 = "cardid" + (imageid1.substr(6, 7)).toString();
                 console.log(containerid1);
             }
 
@@ -102,11 +102,11 @@ namespace MemorySpiel {
             imagename2 = imagetarget.getAttribute("src");
             imageid2 = imagetarget.getAttribute("id");
             let containerid2: string;
-            if (imageid1.length == 7) {
-                containerid2 = "cardid" + (imageid2.substr(7)).toString();
+            if (imageid1.length == 6) {
+                containerid2 = "cardid" + (imageid2.substr(6)).toString();
                 console.log(containerid2);
             } else {
-                containerid2 = "cardid" + (imageid2.substr(7, 8)).toString();
+                containerid2 = "cardid" + (imageid2.substr(6, 7)).toString();
                 console.log(containerid2);
             }
             imagecontainer2 = document.getElementById(containerid2);
