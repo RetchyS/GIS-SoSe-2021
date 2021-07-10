@@ -53,26 +53,25 @@ var MemorySpiel;
     //Match
     function bildmatch(_event) {
         let imagetarget = _event.target;
+        bildcounter++;
         console.log(bildcounter);
-        if (bildcounter == 0) {
+        if (bildcounter == 1) {
             imagename1 = imagetarget.getAttribute("src");
             imageid1 = imagetarget.getAttribute("id");
             imagecontainer1 = document.getElementById(imageid1);
             imagecss1 = document.getElementById(imageid1);
             imagecss1.style.opacity = "1.0";
-            bildcounter++;
         }
         console.log(bildcounter);
-        if (bildcounter == 1) {
+        if (bildcounter == 2) {
             imagename2 = imagetarget.getAttribute("src");
             imageid2 = imagetarget.getAttribute("id");
             imagecontainer2 = document.getElementById(imageid2);
             imagecss2 = document.getElementById(imageid2);
             imagecss2.style.opacity = "1.0";
-            bildcounter++;
         }
         console.log(bildcounter);
-        if (bildcounter == 2) {
+        if (bildcounter == 3) {
             let zeit = 0;
             for (let x = 0; x < 3000; x++) {
                 zeit++;
