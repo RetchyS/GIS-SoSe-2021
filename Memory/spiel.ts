@@ -63,76 +63,82 @@ namespace MemorySpiel {
     function bildmatch(_event: Event): void {
         let imagetarget: HTMLImageElement = <HTMLImageElement>_event.target;
         bildcounter++;
-       
+
         if (bildcounter < 3) {
-        if (bildcounter == 1) {
-            imagename1 = imagetarget.getAttribute("src");
-            imageid1 = imagetarget.getAttribute("id");
-            let containerid1: string;
-            console.log(imageid1);
-            
-            if (imageid1.length == 6) {
-                console.log("länge 7 =" + imageid1.substring(5, 6));
-                containerid1 = "cardid" + imageid1.substr(5, 6);
-                console.log(containerid1);
-            } else {
-                console.log("länge 7+ =" + imageid1.substring(5, 7));
-                containerid1 = "cardid" + imageid1.substr(5, 7);
-                console.log(containerid1);
-            }
+           
+            if (bildcounter == 1) {
+                imagename1 = imagetarget.getAttribute("src");
+                imageid1 = imagetarget.getAttribute("id");
+                let containerid1: string;
+                console.log(imageid1);
 
-
-            imagecontainer1 = document.getElementById(containerid1);
-            imagecss1 = document.getElementById(imageid1);
-            imagecss1.style.opacity = "1.0";
-
-        }
-       
-        if (bildcounter == 2) {
-            imagename2 = imagetarget.getAttribute("src");
-            imageid2 = imagetarget.getAttribute("id");
-            let containerid2: string;
-            
-            if (imageid1.length == 6) {
-                containerid2 = "cardid" + imageid2.substr(5, 6);
-                console.log(containerid2);
-            } else {
-                containerid2 = "cardid" + imageid2.substr(5, 7);
-                console.log(containerid2);
-            }
-            imagecontainer2 = document.getElementById(containerid2);
-            imagecss2 = document.getElementById(imageid2);
-            imagecss2.style.opacity = "1.0";
-        }
-       
-
-        if (bildcounter == 2) {
-            movecounter++;
-            
-            setTimeout(function (): void {
-                if (imagename2 == imagename1) {
-                    imagecss2.style.opacity = "0.0";
-                    imagecss1.style.opacity = "0.0";
-                    imagecontainer1.style.backgroundColor = "white";
-                    imagecontainer2.style.backgroundColor = "white";
-                   
-                    imagecss1.removeEventListener("click", bildmatch);
-                    imagecss2.removeEventListener("click", bildmatch);
-                    spielpaareanzahl++;
-                    console.log(spielpaareanzahl);
-                    weiterleiten(spielpaareanzahl);
-                    bildcounter = 0;
+                if (imageid1.length == 6) {
+                    console.log("länge 7 =" + imageid1.substring(5, 6));
+                    containerid1 = "cardid" + imageid1.substr(5, 6);
+                    console.log(containerid1);
                 } else {
-                    imagecss2.style.opacity = "0.0";
-                    imagecss1.style.opacity = "0.0";
-                    bildcounter = 0;
-                    
+                    console.log("länge 7+ =" + imageid1.substring(5, 7));
+                    containerid1 = "cardid" + imageid1.substr(5, 7);
+                    console.log(containerid1);
                 }
-            }, 
-                       1000);
-        }}
 
-        
+
+                imagecontainer1 = document.getElementById(containerid1);
+                imagecss1 = document.getElementById(imageid1);
+                imagecss1.removeEventListener("click", bildmatch);
+                imagecss1.style.opacity = "1.0";
+
+            }
+
+            if (bildcounter == 2) {
+                imagename2 = imagetarget.getAttribute("src");
+                imageid2 = imagetarget.getAttribute("id");
+                let containerid2: string;
+
+                if (imageid1.length == 6) {
+                    containerid2 = "cardid" + imageid2.substr(5, 6);
+                    console.log(containerid2);
+                } else {
+                    containerid2 = "cardid" + imageid2.substr(5, 7);
+                    console.log(containerid2);
+                }
+                imagecontainer2 = document.getElementById(containerid2);
+                imagecss2 = document.getElementById(imageid2);
+                imagecss2.removeEventListener("click", bildmatch);
+                imagecss2.style.opacity = "1.0";
+            }
+
+
+            if (bildcounter == 2) {
+                movecounter++;
+
+                setTimeout(function (): void {
+                    if (imagename2 == imagename1) {
+                        imagecss2.style.opacity = "0.0";
+                        imagecss1.style.opacity = "0.0";
+                        imagecontainer1.style.backgroundColor = "white";
+                        imagecontainer2.style.backgroundColor = "white";
+
+                        imagecss1.removeEventListener("click", bildmatch);
+                        imagecss2.removeEventListener("click", bildmatch);
+                        spielpaareanzahl++;
+                        console.log(spielpaareanzahl);
+                        weiterleiten(spielpaareanzahl);
+                        bildcounter = 0;
+                    } else {
+                        imagecss1.addEventListener("click", bildmatch);
+                        imagecss2.addEventListener("click", bildmatch);
+                        imagecss2.style.opacity = "0.0";
+                        imagecss1.style.opacity = "0.0";
+                        bildcounter = 0;
+
+                    }
+                },
+                    1000);
+            }
+        }
+
+
     }
     function weiterleiten(_spielpaare: number): void {
         if (_spielpaare >= 8) {
@@ -174,7 +180,7 @@ namespace MemorySpiel {
         for (let i: number = 0; i < 16; i++) {
 
             let kartendatenbank: HTMLElement = document.createElement("img");
-            let kartenclass  = document.createAttribute("class");
+            let kartenclass = document.createAttribute("class");
             let kartendatenbanksrc = document.createAttribute("src");
             let kartenid = document.createAttribute("id");
             kartendatenbanksrc.value = _response[_spielkartenzahlen[i]].Bilderlink;

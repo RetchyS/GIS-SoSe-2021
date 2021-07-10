@@ -68,6 +68,7 @@ var MemorySpiel;
                 }
                 imagecontainer1 = document.getElementById(containerid1);
                 imagecss1 = document.getElementById(imageid1);
+                imagecss1.removeEventListener("click", bildmatch);
                 imagecss1.style.opacity = "1.0";
             }
             if (bildcounter == 2) {
@@ -84,6 +85,7 @@ var MemorySpiel;
                 }
                 imagecontainer2 = document.getElementById(containerid2);
                 imagecss2 = document.getElementById(imageid2);
+                imagecss2.removeEventListener("click", bildmatch);
                 imagecss2.style.opacity = "1.0";
             }
             if (bildcounter == 2) {
@@ -102,6 +104,8 @@ var MemorySpiel;
                         bildcounter = 0;
                     }
                     else {
+                        imagecss1.addEventListener("click", bildmatch);
+                        imagecss2.addEventListener("click", bildmatch);
                         imagecss2.style.opacity = "0.0";
                         imagecss1.style.opacity = "0.0";
                         bildcounter = 0;
