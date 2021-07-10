@@ -99,8 +99,8 @@ var MemorySpiel;
                     imagecontainer1.style.backgroundColor = "white";
                     imagecontainer2.style.backgroundColor = "white";
                     bildcounter = 0;
-                    imagecss1.removeEventListener("click", spielfeld);
-                    imagecss2.removeEventListener("click", spielfeld);
+                    imagecss1.removeEventListener("click", bildmatch);
+                    imagecss2.removeEventListener("click", bildmatch);
                 }
                 else {
                     imagecss2.style.opacity = "0.0";
