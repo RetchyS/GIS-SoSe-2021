@@ -62,15 +62,15 @@ namespace MemorySpiel {
     //Match
     function bildmatch(_event: Event): void {
         let imagetarget: HTMLImageElement = <HTMLImageElement>_event.target;
-        
+        bildcounter++;
        
-        console.log(bildcounter);
-        if (bildcounter == 0) {
+        if (bildcounter < 3) {
+        if (bildcounter == 1) {
             imagename1 = imagetarget.getAttribute("src");
             imageid1 = imagetarget.getAttribute("id");
             let containerid1: string;
             console.log(imageid1);
-            bildcounter++;
+            
             if (imageid1.length == 6) {
                 console.log("länge 7 =" + imageid1.substring(5, 6));
                 containerid1 = "cardid" + imageid1.substr(5, 6);
@@ -87,12 +87,12 @@ namespace MemorySpiel {
             imagecss1.style.opacity = "1.0";
 
         }
-        console.log(bildcounter);
-        if (bildcounter == 1) {
+       
+        if (bildcounter == 2) {
             imagename2 = imagetarget.getAttribute("src");
             imageid2 = imagetarget.getAttribute("id");
             let containerid2: string;
-            bildcounter++;
+            
             if (imageid1.length == 6) {
                 containerid2 = "cardid" + imageid2.substr(5, 6);
                 console.log(containerid2);
@@ -104,11 +104,11 @@ namespace MemorySpiel {
             imagecss2 = document.getElementById(imageid2);
             imagecss2.style.opacity = "1.0";
         }
-        console.log(bildcounter);
+       
 
         if (bildcounter == 2) {
             movecounter++;
-            bildcounter = 0;
+            
             setTimeout(function (): void {
                 if (imagename2 == imagename1) {
                     imagecss2.style.opacity = "0.0";
@@ -121,14 +121,16 @@ namespace MemorySpiel {
                     spielpaareanzahl++;
                     console.log(spielpaareanzahl);
                     weiterleiten(spielpaareanzahl);
+                    bildcounter = 0;
                 } else {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
+                    bildcounter = 0;
                     
                 }
             }, 
                        1000);
-        }
+        }}
 
         
     }
