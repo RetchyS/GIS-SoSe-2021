@@ -75,7 +75,17 @@ namespace MemorySpiel {
         if (bildcounter == 1) {
             imagename1 = imagetarget.getAttribute("src");
             imageid1 = imagetarget.getAttribute("id");
-            imagecontainer1 = document.getElementById("cardid" + imageid1);
+            let containerid1: string;
+            if (imageid1.length == 7) {
+                containerid1 = "cardid" + imageid1.substr(7);
+                console.log(containerid1);
+            } else {
+                containerid1 = "cardid" + imageid1.substr(7, 8);
+                console.log(containerid1);
+            }
+
+
+            imagecontainer1 = document.getElementById(containerid1);
             imagecss1 = document.getElementById(imageid1);
             imagecss1.style.opacity = "1.0";
 
@@ -84,7 +94,15 @@ namespace MemorySpiel {
         if (bildcounter == 2) {
             imagename2 = imagetarget.getAttribute("src");
             imageid2 = imagetarget.getAttribute("id");
-            imagecontainer2 = document.getElementById("cardid" + imageid2);
+            let containerid2: string;
+            if (imageid1.length == 7) {
+                containerid2 = "cardid" + imageid1.substr(7);
+                console.log(containerid2);
+            } else {
+                containerid2 = "cardid" + imageid1.substr(7, 8);
+                console.log(containerid2);
+            }
+            imagecontainer2 = document.getElementById(containerid2);
             imagecss2 = document.getElementById(imageid2);
             imagecss2.style.opacity = "1.0";
         }
