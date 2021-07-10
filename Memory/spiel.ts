@@ -28,7 +28,7 @@ namespace MemorySpiel {
     let randomzahlenkopie: number[] = [0, 0, 0, 0, 0, 0, 0, 0];    //length 8
 
     let doppelwerte: boolean = false;
-    let spielen: boolean = true;
+  
     let spielkartenarrayzahlen: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let totalSeconds: number = 0;
 
@@ -39,13 +39,8 @@ namespace MemorySpiel {
 
 
     //Spielkarten
-    function timer(_spielen: boolean): void {               //https://codepen.io/reynnor/pen/vmNaeM
-
-
-        
-
-
-            setInterval(setTime, 1000000);
+    function timer(): void {               //https://codepen.io/reynnor/pen/vmNaeM
+            setInterval(setTime, 100000);
 
             function setTime(): void {
                 ++totalSeconds;
@@ -117,15 +112,16 @@ namespace MemorySpiel {
 
         if (bildcounter == 2) {
 
-            console.log("Es sind 3 sekunden verstrichen");
+            
             setTimeout(function (): void {
                 if (imagename2 == imagename1) {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
                     imagecontainer1.style.backgroundColor = "white";
-                    imagecontainer1.style.backgroundColor = "white";
+                    imagecontainer2.style.backgroundColor = "white";
                     bildcounter = 0;
-
+                    document.getElementById(imageid1).removeEventListener("click", spielfeld);
+                    document.getElementById(imageid2).removeEventListener("click", spielfeld);
                 } else {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
@@ -148,7 +144,7 @@ namespace MemorySpiel {
 
 
     async function spielfeld(): Promise<void> {
-        timer(spielen);
+        timer();
 
         let formular: FormData = new FormData(document.forms[0]);
         let bilderposi: string = "card";

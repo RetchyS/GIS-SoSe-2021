@@ -19,15 +19,14 @@ var MemorySpiel;
     let randomzahlen = [0, 0, 0, 0, 0, 0, 0, 0]; //length 8
     let randomzahlenkopie = [0, 0, 0, 0, 0, 0, 0, 0]; //length 8
     let doppelwerte = false;
-    let spielen = true;
     let spielkartenarrayzahlen = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     let totalSeconds = 0;
     //timer
     let minutesLabel = document.getElementById("minutes");
     let secondsLabel = document.getElementById("seconds");
     //Spielkarten
-    function timer(_spielen) {
-        setInterval(setTime, 1000000);
+    function timer() {
+        setInterval(setTime, 100000);
         function setTime() {
             ++totalSeconds;
             secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
@@ -93,14 +92,15 @@ var MemorySpiel;
         }
         console.log(bildcounter);
         if (bildcounter == 2) {
-            console.log("Es sind 3 sekunden verstrichen");
             setTimeout(function () {
                 if (imagename2 == imagename1) {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
                     imagecontainer1.style.backgroundColor = "white";
-                    imagecontainer1.style.backgroundColor = "white";
+                    imagecontainer2.style.backgroundColor = "white";
                     bildcounter = 0;
+                    document.getElementById(imageid1).removeEventListener("click", spielfeld);
+                    document.getElementById(imageid2).removeEventListener("click", spielfeld);
                 }
                 else {
                     imagecss2.style.opacity = "0.0";
@@ -114,7 +114,7 @@ var MemorySpiel;
         }
     }
     async function spielfeld() {
-        timer(spielen);
+        timer();
         let formular = new FormData(document.forms[0]);
         let bilderposi = "card";
         let query = new URLSearchParams(formular);
