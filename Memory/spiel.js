@@ -1,8 +1,16 @@
 "use strict";
 var MemorySpiel;
 (function (MemorySpiel) {
-    //Karte
-    let kartenbild = document.createElement("img");
+    //Match declares
+    let imagename1;
+    let imageid1;
+    let imagecss1;
+    let imagename2;
+    let imageid2;
+    let imagecss2;
+    let bildcounter = 0;
+    let imagecontainer1;
+    let imagecontainer2;
     //------------Spiel-------------------------------------
     let buttonstart = document.getElementById("start");
     buttonstart.addEventListener("click", spielfeld);
@@ -43,17 +51,44 @@ var MemorySpiel;
         }
     }
     //Match
-    let bildcounter = 0;
     function bildmatch(_event) {
         let imagetarget = _event.target;
         if (bildcounter == 0) {
-            let imagename1 = imagetarget.getAttribute("src");
+            imagename1 = imagetarget.getAttribute("src");
+            imageid1 = imagetarget.getAttribute("id");
+            imagecontainer1 = document.getElementById(imageid1);
+            imagecss1 = document.getElementById(imageid1);
+            imagecss1.style.opacity = "1.0";
             bildcounter++;
         }
         if (bildcounter == 1) {
-            let imagename2 = imagetarget.getAttribute("src");
+            imagename2 = imagetarget.getAttribute("src");
+            imageid2 = imagetarget.getAttribute("id");
+            imagecontainer2 = document.getElementById(imageid2);
+            imagecss2 = document.getElementById(imageid2);
+            imagecss2.style.opacity = "1.0";
+            bildcounter++;
         }
-        localStorage.setItem("Bildersrc", imagename);
+        if (bildcounter == 2) {
+            let zeit = 0;
+            for (let x = 0; x < 3000; x++) {
+                zeit++;
+            }
+            console.log("Es sind 3 sekunden verstrichen");
+            if (imagename2 == imagename1) {
+                imagecss2.style.opacity = "0.0";
+                imagecss1.style.opacity = "0.0";
+                imagecontainer1.style.backgroundImage = "white";
+                imagecontainer1.style.backgroundImage = "white";
+                bildcounter = 0;
+            }
+            else {
+                imagecss2.style.opacity = "0.0";
+                imagecss1.style.opacity = "0.0";
+                bildcounter = 0;
+            }
+        }
+        //localStorage.setItem("Bildersrc", imagename);
         //console.log(localStorage.getItem("Bildername"));
         //console.log(localStorage.getItem("Bildernummer"));
     }
@@ -92,6 +127,7 @@ var MemorySpiel;
             let kartendiv = document.getElementById("cardid" + i);
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
             kartendatenbank.setAttributeNode(kartenid);
+            kartendatenbank.addEventListener("click", bildmatch);
             kartendiv.appendChild(kartendatenbank);
         }
     }

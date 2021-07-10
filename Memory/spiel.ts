@@ -1,16 +1,20 @@
 namespace MemorySpiel {
-    //Karte
-    let kartenbild = document.createElement("img");
-    /*  kartenbild.addEventListener("click", match);
-     let kartensrc = document.createAttribute("src");
-     let kartenid = document.createAttribute("id"); */
-
     interface Data {
         Object: string;
         Bildername: string;
         Bilderlink: string;
     }
 
+    //Match declares
+    let imagename1: string;
+    let imageid1: string;
+    let imagecss1: HTMLElement;
+    let imagename2: string;
+    let imageid2: string;
+    let imagecss2: HTMLElement;
+    let bildcounter: number = 0;
+    let imagecontainer1: HTMLElement;
+    let imagecontainer2: HTMLElement;
 
 
 
@@ -63,20 +67,50 @@ namespace MemorySpiel {
         }
     }
     //Match
-    let bildcounter: number = 0;
+  
     function bildmatch(_event: Event): void {
         let imagetarget: HTMLImageElement = <HTMLImageElement>_event.target;
 
+
         if (bildcounter == 0) {
-            let imagename1: string = imagetarget.getAttribute("src");
+            imagename1 = imagetarget.getAttribute("src");
+            imageid1 = imagetarget.getAttribute("id");
+            imagecontainer1 = document.getElementById(imageid1);
+            imagecss1 = document.getElementById(imageid1);
+            imagecss1.style.opacity = "1.0";
             bildcounter++;
         }
         if (bildcounter == 1) {
-            let imagename2: string = imagetarget.getAttribute("src");
+            imagename2 = imagetarget.getAttribute("src");
+            imageid2 = imagetarget.getAttribute("id");
+            imagecontainer2 = document.getElementById(imageid2);
+
+            imagecss2 = document.getElementById(imageid2);
+            imagecss2.style.opacity = "1.0";
+            bildcounter++;
         }
 
+        if (bildcounter == 2) {
+            let zeit: number = 0;
+            for (let x: number = 0; x < 3000; x++) {
+                zeit++;
+            }
+            console.log("Es sind 3 sekunden verstrichen");
 
-        localStorage.setItem("Bildersrc", imagename);
+            if (imagename2 == imagename1) {
+                imagecss2.style.opacity = "0.0";
+                imagecss1.style.opacity = "0.0";
+                imagecontainer1.style.backgroundImage = "white";
+                imagecontainer1.style.backgroundImage = "white";
+                bildcounter = 0;
+                
+            } else {
+                imagecss2.style.opacity = "0.0";
+                imagecss1.style.opacity = "0.0";
+                bildcounter = 0;
+            }
+        }
+        //localStorage.setItem("Bildersrc", imagename);
 
 
         //console.log(localStorage.getItem("Bildername"));
@@ -86,8 +120,7 @@ namespace MemorySpiel {
 
 
     }
-
-
+  
     async function spielfeld(): Promise<void> {
         timer(spielen);
 
@@ -127,12 +160,13 @@ namespace MemorySpiel {
 
             kartenid.value = "karte" + i;
             kartenclass.value = "karte";
-        
+
             console.log(kartendatenbanksrc);
             let kartendiv = document.getElementById("cardid" + i);
 
             kartendatenbank.setAttributeNode(kartendatenbanksrc);
             kartendatenbank.setAttributeNode(kartenid);
+            kartendatenbank.addEventListener("click", bildmatch);
 
 
             kartendiv.appendChild(kartendatenbank);
