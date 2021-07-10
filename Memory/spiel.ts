@@ -126,10 +126,11 @@ namespace MemorySpiel {
             }, 
                        1000);
         }
-        if (spielpaareanzahl >= 8) {
+
+        if (spielpaareanzahl.toString() >= "8") {
             localStorage.setItem("moves", movecounter.toString());
             console.log(localStorage.getItem("moves"));
-            window.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
+            window.document.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
         }
     }
 
