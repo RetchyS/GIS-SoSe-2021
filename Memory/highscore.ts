@@ -1,3 +1,5 @@
+namespace MemoryHighscore {
+
 scoreeinsehen();
 let buttonname: HTMLElement = document.getElementById("highscorespeichern");
 buttonname.addEventListener("click", speichern);
@@ -10,6 +12,9 @@ interface Data {
 }
 
 let score: number = Number(localStorage.getItem("moves"));
+let ergebnis: HTMLElement = document.getElementById("ergebnis");
+ergebnis.innerHTML = "moves: " + score;
+
 async function speichern(): Promise<void> {
     let url: RequestInfo = "https://piikachu.herokuapp.com";
     let formular: FormData = new FormData(document.forms[0]);
@@ -18,6 +23,7 @@ async function speichern(): Promise<void> {
     url += "/speichernhighscore";
     url = url + "?" + query.toString() + "&score=" + score;
     await fetch(url);
+    score = 0;
     location.reload(); 
 }
 
@@ -37,6 +43,7 @@ async function scoreeinsehen(): Promise<void> {
         return response.json();
     }).then(responsejson => {
         responsetext = responsejson;
+       
         return responsetext;
 
     }).then(srcarray => {
@@ -69,4 +76,5 @@ async function scoreeinsehen(): Promise<void> {
         spielerscore.innerHTML = responsetext[i].spielername;
 
     } */
+}
 }
