@@ -73,26 +73,24 @@ var MemorySpiel;
         console.log(bildcounter);
         if (bildcounter == 2) {
             console.log("Es sind 3 sekunden verstrichen");
-            setTimeout(warten, 3000);
-            if (imagename2 == imagename1) {
-                imagecss2.style.opacity = "0.0";
-                imagecss1.style.opacity = "0.0";
-                imagecontainer1.style.backgroundImage = "white";
-                imagecontainer1.style.backgroundImage = "white";
-                bildcounter = 0;
-            }
-            else {
-                imagecss2.style.opacity = "0.0";
-                imagecss1.style.opacity = "0.0";
-                bildcounter = 0;
-            }
+            setTimeout(function () {
+                if (imagename2 == imagename1) {
+                    imagecss2.style.opacity = "0.0";
+                    imagecss1.style.opacity = "0.0";
+                    imagecontainer1.style.backgroundImage = "white";
+                    imagecontainer1.style.backgroundImage = "white";
+                    bildcounter = 0;
+                }
+                else {
+                    imagecss2.style.opacity = "0.0";
+                    imagecss1.style.opacity = "0.0";
+                    bildcounter = 0;
+                }
+            }, 3000);
             //localStorage.setItem("Bildersrc", imagename);
             //console.log(localStorage.getItem("Bildername"));
             //console.log(localStorage.getItem("Bildernummer"));
         }
-    }
-    function warten() {
-        console.log("3 sekunden gewarten");
     }
     async function spielfeld() {
         timer(spielen);
