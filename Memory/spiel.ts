@@ -117,6 +117,7 @@ namespace MemorySpiel {
                     imagecss1.removeEventListener("click", bildmatch);
                     imagecss2.removeEventListener("click", bildmatch);
                     spielpaareanzahl++;
+                    console.log(spielpaareanzahl);
                 } else {
                     imagecss2.style.opacity = "0.0";
                     imagecss1.style.opacity = "0.0";
@@ -130,16 +131,6 @@ namespace MemorySpiel {
             window.location.replace("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
         }
     }
-
-
-    function weiterleiten (): void {
-
-    }
-
-
-
-
-
 
     async function spielfeld(): Promise<void> {
 
