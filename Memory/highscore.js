@@ -6,7 +6,7 @@ var MemoryHighscore;
     buttonname.addEventListener("click", speichern);
     let score = Number(localStorage.getItem("moves"));
     let ergebnis = document.getElementById("ergebnis");
-    ergebnis.innerHTML = "moves: " + score;
+    ergebnis.innerHTML = "moves: " + (score / 2);
     async function speichern() {
         let url = "https://piikachu.herokuapp.com";
         let formular = new FormData(document.forms[0]);
@@ -14,7 +14,7 @@ var MemoryHighscore;
         url += "/speichernhighscore";
         url = url + "?" + query.toString() + "&moves=" + score;
         await fetch(url);
-        localStorage.setItem("moves", "Keine Moves vorhanden");
+        localStorage.clear();
         location.reload();
     }
     async function scoreeinsehen() {
