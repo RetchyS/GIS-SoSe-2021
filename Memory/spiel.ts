@@ -81,11 +81,11 @@ namespace MemorySpiel {
             imageid1 = imagetarget.getAttribute("id");
             let containerid1: string;
             if (imageid1.length == 7) {
-                console.log("länge 7 =" + imageid1.substr(7));
+                console.log("länge 7 =" + imageid1.substring(7));
                 containerid1 = "cardid" + (imageid1.substr(7)).toString();
                 console.log(containerid1);
             } else {
-                console.log("länge 7+ =" + (imageid1.substr(7, 8)));
+                console.log("länge 7+ =" + (imageid1.substring(7, 8)));
                 containerid1 = "cardid" + (imageid1.substr(7, 8)).toString();
                 console.log(containerid1);
             }
