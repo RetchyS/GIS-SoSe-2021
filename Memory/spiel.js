@@ -102,8 +102,8 @@ var MemorySpiel;
                     if (imagename2 == imagename1) {
                         imagecss2.style.opacity = "0.0";
                         imagecss1.style.opacity = "0.0";
-                        /*  imagecontainer1.style.backgroundColor = "white";
-                         imagecontainer2.style.backgroundColor = "white"; */
+                        imagecontainer1.style.backgroundColor = "white";
+                        imagecontainer2.style.backgroundColor = "white";
                         imagecss1.removeEventListener("click", bildmatch);
                         imagecss2.removeEventListener("click", bildmatch);
                         spielpaareanzahl++;
@@ -116,8 +116,6 @@ var MemorySpiel;
                         imagecss2.addEventListener("click", bildmatch);
                         imagecss2.style.opacity = "0.0";
                         imagecss1.style.opacity = "0.0";
-                        imagecss2.style.backgroundColor = "none";
-                        imagecss2.style.backgroundColor = "none";
                         bildcounter = 0;
                     }
                 }, 1000);

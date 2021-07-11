@@ -8,7 +8,7 @@ namespace MemoryHighscore {
     interface Data {
         Object: string;
         Spielername: string;
-        moves: string;
+        Zeit: string;
     }
 
     let score: string = localStorage.getItem("zeit");
@@ -21,7 +21,7 @@ namespace MemoryHighscore {
 
         let query: URLSearchParams = new URLSearchParams(<any>formular);
         url += "/speichernhighscore";
-        url = url + "?" + query.toString() + "&moves=" + score;
+        url = url + "?" + query.toString() + "&Zeit=" + score;
         await fetch(url);
         localStorage.clear();
         location.reload();
@@ -51,9 +51,9 @@ namespace MemoryHighscore {
                 let spielerscore = document.getElementById("punkte" + i);
 
                 console.log(srcarray[i].Spielername);
-                console.log(srcarray[i].moves);
+                console.log(srcarray[i].Zeit);
                 spielername.innerHTML = srcarray[i].Spielername;
-                spielerscore.innerHTML = srcarray[i].moves;
+                spielerscore.innerHTML = srcarray[i].Zeit;
 
             }
         });
