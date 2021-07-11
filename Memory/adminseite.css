@@ -53,6 +53,7 @@ main {
 }
 
 .kartencontainer img{
+  background-color: coral;
   padding: 5px;
   height: 250px;
   width: 150px;

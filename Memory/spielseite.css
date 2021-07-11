@@ -61,7 +61,7 @@ main {
 }
 .karte {
     
-    background-color: rgb(0, 0, 255);
+    background-color:coral;
     
     display: inline-block;
     height: 250px;
