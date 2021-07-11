@@ -50,7 +50,6 @@ export namespace Memory {
 
             //Url muss man parsen um es bearbeiten zu. Genauso wie im Video gemacht aber es scheint als wäre es veraltet
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            let urlhighscore = new URL(_request.url);
             
 
 
@@ -59,28 +58,22 @@ export namespace Memory {
             if (path == "/speichern") {
 
                 let jsonstring: string = JSON.stringify(url.query);
-               
                 console.log(jsonstring);
                 storeOrder(url.query);
 
             }
 
             if ( path == "/speichernhighscore") {
-            
-                let zeit: number = Number(urlhighscore.searchParams.get("Zeit"));
-                let spielername: string = urlhighscore.searchParams.get("Spielername");
-                let spielerfertig: Highscore;
-                spielerfertig.highscore = zeit;
-                spielerfertig.name = spielername;
-
-                highscore.insert(spielerfertig);
+                let jsonstring: string = JSON.stringify(url.query);
+                console.log(jsonstring);
+                scoreHighscore(url.query);
             }
 
             if ( path == "/highscoreabfragen") {
                 console.log("Datenbank wird abgefragt");
-                let answerdata: Mongo.Cursor = highscore.find().sort({Zeit: -1});   //sollte eigentlich Number sortieren, aber kein weg gefunden per URL eine Number zu übertragen, deswegen funktioniert das net ganz
+                let answerdata: Mongo.Cursor = highscore.find().sort({ Zeit: -1});
                 let answerarray: Highscore[] = await answerdata.toArray();
-                
+
                 _response.write(JSON.stringify(answerarray));
             }
 
@@ -97,16 +90,17 @@ export namespace Memory {
         _response.end();
     }
     function storeOrder(_karte: Bilder): void {
-        
         karten.insert(_karte);
     }
-
+    function scoreHighscore (_karte: Bilder): void {
+        highscore.insert(_karte);
+    }
     interface Bilder {
         [type: string]: string | string[];
     }
     interface Highscore {
         name: string;
-        highscore: number;
+        highscore: string;
     }
 
     interface Datenbankinfo {
