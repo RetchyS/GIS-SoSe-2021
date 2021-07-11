@@ -76,6 +76,7 @@ var MemorySpiel;
                 imagecss1 = document.getElementById(imageid1);
                 imagecss1.removeEventListener("click", bildmatch);
                 imagecss1.style.opacity = "1.0";
+                imagecss1.style.backgroundColor = "white";
             }
             if (bildcounter == 2) {
                 imagename2 = imagetarget.getAttribute("src");
@@ -93,6 +94,7 @@ var MemorySpiel;
                 imagecss2 = document.getElementById(imageid2);
                 imagecss2.removeEventListener("click", bildmatch);
                 imagecss2.style.opacity = "1.0";
+                imagecss2.style.backgroundColor = "white";
             }
             if (bildcounter == 2) {
                 movecounter++;
@@ -100,8 +102,8 @@ var MemorySpiel;
                     if (imagename2 == imagename1) {
                         imagecss2.style.opacity = "0.0";
                         imagecss1.style.opacity = "0.0";
-                        imagecontainer1.style.backgroundColor = "white";
-                        imagecontainer2.style.backgroundColor = "white";
+                        /*  imagecontainer1.style.backgroundColor = "white";
+                         imagecontainer2.style.backgroundColor = "white"; */
                         imagecss1.removeEventListener("click", bildmatch);
                         imagecss2.removeEventListener("click", bildmatch);
                         spielpaareanzahl++;
@@ -114,6 +116,8 @@ var MemorySpiel;
                         imagecss2.addEventListener("click", bildmatch);
                         imagecss2.style.opacity = "0.0";
                         imagecss1.style.opacity = "0.0";
+                        imagecss2.style.backgroundColor = "none";
+                        imagecss2.style.backgroundColor = "none";
                         bildcounter = 0;
                     }
                 }, 1000);
@@ -189,12 +193,12 @@ var MemorySpiel;
     function shuffle(_allezahlenpaare) {
         let currentIndex = _allezahlenpaare.length;
         let randomIndex;
-        // While there remain elements to shuffle...
+        // While für Elemente die getauscht werden müssen
         while (0 !== currentIndex) {
-            // Pick a remaining element...
+            // dann wird davon ein element rausgesucht per random
             randomIndex = Math.floor((Math.random() * currentIndex) + 0);
             currentIndex--;
-            // And swap it with the current element.
+            // und wird mit dem element mit dem randomindex getauscht
             [_allezahlenpaare[currentIndex], _allezahlenpaare[randomIndex]] = [
                 _allezahlenpaare[randomIndex], _allezahlenpaare[currentIndex]
             ];
