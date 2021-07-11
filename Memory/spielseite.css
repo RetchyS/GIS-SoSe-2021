@@ -76,6 +76,7 @@ main {
     padding: 5px;
     height: 250px;
     width: 150px;
+    border-radius: 10%;
 }
 
 .navibar {
