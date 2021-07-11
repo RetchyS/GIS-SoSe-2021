@@ -26,7 +26,7 @@ namespace MemoryHighscore {
 
         let query: URLSearchParams = new URLSearchParams(<any>formular);
         url += "/speichernhighscore";
-        url = url + "?" + query.toString() + "&Zeit=" + zeitscore;
+        url = url + "?" + query.toString() + "&Zeit=" + Number(zeitscore);  // der Cast ist für die Mongodb
         if (score != null) {
             console.log(url);
             await fetch(url);
