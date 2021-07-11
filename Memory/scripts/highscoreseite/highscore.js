@@ -15,7 +15,7 @@ var MemoryHighscore;
         let formular = new FormData(document.forms[0]);
         let query = new URLSearchParams(formular);
         url += "/speichernhighscore";
-        url = url + "?" + query.toString() + "&Zeit=" + "$numberInt:" + zeitscore; // der Cast ist für die Mongodb
+        url = url + "?" + query.toString() + "&Zeit=" + zeitscore; // der Cast ist für die Mongodb
         if (score != null) {
             console.log(url);
             await fetch(url);
