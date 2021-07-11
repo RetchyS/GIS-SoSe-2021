@@ -10,11 +10,17 @@ namespace MemoryHighscore {
         Spielername: string;
         Zeit: string;
     }
+    let totalSeconds: number = 0;
+    let totalMinutes: number = 0;
+    let zeit: string;
+    let zeitscore: number = Number(localStorage.getItem("score"));
+    console.log(zeitscore);
 
     let score: string = localStorage.getItem("zeit");
     let ergebnis: HTMLElement = document.getElementById("ergebnis");
     ergebnis.innerHTML = "Benötigte Zeit: " + score;
     console.log(score);
+    
 
     async function speichern(): Promise<void> {
         let url: RequestInfo = "https://piikachu.herokuapp.com";
@@ -22,12 +28,12 @@ namespace MemoryHighscore {
 
         let query: URLSearchParams = new URLSearchParams(<any>formular);
         url += "/speichernhighscore";
-        url = url + "?" + query.toString() + "&Zeit=" + score;
+        url = url + "?" + query.toString() + "&Zeit=" + zeitscore;
         if (score != null) {
-        console.log(url);
-        await fetch(url);
-        localStorage.clear();
-        location.reload();
+            console.log(url);
+            await fetch(url);
+            localStorage.clear();
+            location.reload();
         } else {
             ergebnis.innerHTML = "";
             ergebnis.innerHTML = "Kein Zeite vorhanden!";
@@ -56,13 +62,20 @@ namespace MemoryHighscore {
 
                 let spielername = document.getElementById("name" + i);
                 let spielerscore = document.getElementById("punkte" + i);
-
+                
                 console.log(srcarray[i].Spielername);
                 console.log(srcarray[i].Zeit);
                 spielername.innerHTML = srcarray[i].Spielername;
-                spielerscore.innerHTML = srcarray[i].Zeit;
+                spielerscore.innerHTML = scoreumwandeln(srcarray[i].Zeit);
 
             }
         });
+    }
+    function scoreumwandeln(_score: string): string {
+        let score: number = Number(_score);
+        let scoreminutes: number = score / 60;
+        let scoreseconds: number = (score % 60);
+        let zeitstring: string = scoreminutes.toString() + ":" + scoreseconds.toString();
+        return zeitstring;
     }
 }

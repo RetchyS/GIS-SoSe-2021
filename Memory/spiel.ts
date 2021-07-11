@@ -58,6 +58,7 @@ namespace MemorySpiel {
             }
             zeit = minutesLabel.innerHTML + " : " + secondsLabel.innerHTML;
             localStorage.setItem("zeit", zeit);
+            localStorage.setItem("score", totalSeconds.toString());
         }
 
         function pad(_value: string): string {

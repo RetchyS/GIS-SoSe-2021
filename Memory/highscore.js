@@ -4,6 +4,11 @@ var MemoryHighscore;
     scoreeinsehen();
     let buttonname = document.getElementById("highscorespeichern");
     buttonname.addEventListener("click", speichern);
+    let totalSeconds = 0;
+    let totalMinutes = 0;
+    let zeit;
+    let zeitscore = Number(localStorage.getItem("score"));
+    console.log(zeitscore);
     let score = localStorage.getItem("zeit");
     let ergebnis = document.getElementById("ergebnis");
     ergebnis.innerHTML = "Benötigte Zeit: " + score;
@@ -13,7 +18,7 @@ var MemoryHighscore;
         let formular = new FormData(document.forms[0]);
         let query = new URLSearchParams(formular);
         url += "/speichernhighscore";
-        url = url + "?" + query.toString() + "&Zeit=" + score;
+        url = url + "?" + query.toString() + "&Zeit=" + zeitscore;
         if (score != null) {
             console.log(url);
             await fetch(url);
@@ -46,9 +51,16 @@ var MemoryHighscore;
                 console.log(srcarray[i].Spielername);
                 console.log(srcarray[i].Zeit);
                 spielername.innerHTML = srcarray[i].Spielername;
-                spielerscore.innerHTML = srcarray[i].Zeit;
+                spielerscore.innerHTML = scoreumwandeln(srcarray[i].Zeit);
             }
         });
+    }
+    function scoreumwandeln(_score) {
+        let score = Number(_score);
+        let scoreminutes = score / 60;
+        let scoreseconds = (score % 60);
+        let zeitstring = scoreminutes.toString() + ":" + scoreseconds.toString();
+        return zeitstring;
     }
 })(MemoryHighscore || (MemoryHighscore = {}));
 //# sourceMappingURL=highscore.js.map
