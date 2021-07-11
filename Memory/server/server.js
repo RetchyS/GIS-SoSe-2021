@@ -54,7 +54,7 @@ var Memory;
             }
             if (path == "/highscoreabfragen") {
                 console.log("Datenbank wird abgefragt");
-                let answerdata = highscore.find().sort({ Zeit: -1 });
+                let answerdata = highscore.find().sort({ Zeit: -1 }); //sollte eigentlich number sortieren. aber net gewusst wie ich das über die url mitgebe
                 let answerarray = await answerdata.toArray();
                 _response.write(JSON.stringify(answerarray));
             }

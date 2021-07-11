@@ -54,7 +54,13 @@ var MemoryHighscore;
     }
     function scoreumwandeln(_score) {
         let score = Number(_score);
-        let scoreminutes = Math.round(score / 60);
+        let scoreminutes = score / 60;
+        if (scoreminutes < 1) {
+            scoreminutes = 0;
+        }
+        else {
+            scoreminutes = Math.round(scoreminutes % 60);
+        }
         let scoreseconds = score % 60;
         let zeitstring = scoreminutes.toString() + ":" + scoreseconds.toString();
         return zeitstring;

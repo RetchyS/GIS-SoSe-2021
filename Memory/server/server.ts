@@ -71,7 +71,7 @@ export namespace Memory {
 
             if ( path == "/highscoreabfragen") {
                 console.log("Datenbank wird abgefragt");
-                let answerdata: Mongo.Cursor = highscore.find().sort({ Zeit: -1});
+                let answerdata: Mongo.Cursor = highscore.find().sort({ Zeit: -1}); //sollte eigentlich number sortieren. aber net gewusst wie ich das über die url mitgebe
                 let answerarray: Highscore[] = await answerdata.toArray();
 
                 _response.write(JSON.stringify(answerarray));

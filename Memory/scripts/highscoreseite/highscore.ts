@@ -72,7 +72,13 @@ namespace MemoryHighscore {
     }
     function scoreumwandeln(_score: string): string {
         let score: number = Number(_score);
-        let scoreminutes: number = Math.round(score / 60);
+        
+        let scoreminutes: number = score / 60;
+        if ( scoreminutes < 1 ) {
+            scoreminutes = 0;
+        } else {
+            scoreminutes = Math.round(scoreminutes % 60);
+        }
         let scoreseconds: number = score % 60;
         let zeitstring: string = scoreminutes.toString() + ":" + scoreseconds.toString();
         return zeitstring;
