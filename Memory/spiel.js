@@ -22,19 +22,23 @@ var MemorySpiel;
     let randomzahlenkopie = [0, 0, 0, 0, 0, 0, 0, 0]; //length 8
     let doppelwerte = false;
     let spielkartenarrayzahlen = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let totalSeconds = 0;
     //timer
     let minutesLabel = document.getElementById("minutes");
     let secondsLabel = document.getElementById("seconds");
+    let totalSeconds = 0;
+    let totalMinutes = 0;
     //time storage
     let zeit;
     //Spielkarten
     function timer() {
         setInterval(setTime, 1000);
         function setTime() {
-            ++totalSeconds;
+            totalSeconds++;
             secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
-            minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
+            if (totalSeconds % 60 == 0) {
+                totalMinutes++;
+                minutesLabel.innerHTML = totalMinutes.toString();
+            }
             zeit = minutesLabel.innerHTML + " : " + secondsLabel.innerHTML;
             localStorage.setItem("zeit", zeit);
         }

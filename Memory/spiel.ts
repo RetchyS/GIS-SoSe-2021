@@ -31,27 +31,31 @@ namespace MemorySpiel {
     let doppelwerte: boolean = false;
 
     let spielkartenarrayzahlen: number[] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-    let totalSeconds: number = 0;
+
 
 
     //timer
     let minutesLabel: HTMLElement = document.getElementById("minutes");
     let secondsLabel: HTMLElement = document.getElementById("seconds");
-
+    let totalSeconds: number = 0;
+    let totalMinutes: number = 0;
 
     //time storage
     let zeit: string;
-    
+
 
     //Spielkarten
     function timer(): void {               //https://codepen.io/reynnor/pen/vmNaeM
-        
+
         setInterval(setTime, 1000);
 
         function setTime(): void {
-            ++totalSeconds;
+            totalSeconds++;
             secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
-            minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
+            if (totalSeconds % 60 == 0) {
+                totalMinutes++;
+                minutesLabel.innerHTML = totalMinutes.toString();
+            }
             zeit = minutesLabel.innerHTML + " : " + secondsLabel.innerHTML;
             localStorage.setItem("zeit", zeit);
         }
@@ -180,7 +184,7 @@ namespace MemorySpiel {
             spielkartenarrayzahlen = randomindexarray(srcarray.length);
             kartenhinzufügen(srcarray, spielkartenarrayzahlen);
         });
-        
+
     }
 
     function kartenhinzufügen(_response: Data[], _spielkartenzahlen: number[]): void {
