@@ -55,7 +55,9 @@ main {
 .kartencontainer img{
   background-color: coral;
   border-radius: 10%;
-  padding: 5px;
+  
+  margin: auto;
+  padding-right: 5px;
   height: 250px;
   width: 150px;
 }
