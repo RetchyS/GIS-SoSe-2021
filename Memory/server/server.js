@@ -41,6 +41,8 @@ var Memory;
         if (_request.url) {
             //Url muss man parsen um es bearbeiten zu. Genauso wie im Video gemacht aber es scheint als wäre es veraltet
             let url = Url.parse(_request.url, true);
+            let urlhighscore = new URL(_request.url);
+            let score = Number(urlhighscore.searchParams.get("Zeit"));
             let path = url.pathname; // Pathname entweder /html oder /json
             if (path == "/speichern") {
                 let jsonstring = JSON.stringify(url.query);
@@ -48,13 +50,16 @@ var Memory;
                 storeOrder(url.query);
             }
             if (path == "/speichernhighscore") {
-                let jsonstring = JSON.stringify(url.query);
-                console.log(jsonstring);
-                scoreHighscore(url.query);
+                let zeit = Number(urlhighscore.searchParams.get("Zeit"));
+                let spielername = urlhighscore.searchParams.get("Spielername");
+                let spielerfertig;
+                spielerfertig.highscore = zeit;
+                spielerfertig.name = spielername;
+                highscore.insert(spielerfertig);
             }
             if (path == "/highscoreabfragen") {
                 console.log("Datenbank wird abgefragt");
-                let answerdata = highscore.find().sort({ Zeit: -1 });
+                let answerdata = highscore.find().sort({ Zeit: -1 }); //sollte eigentlich Number sortieren, aber kein weg gefunden per URL eine Number zu übertragen, deswegen funktioniert das net ganz
                 let answerarray = await answerdata.toArray();
                 _response.write(JSON.stringify(answerarray));
             }
@@ -69,9 +74,6 @@ var Memory;
     }
     function storeOrder(_karte) {
         karten.insert(_karte);
-    }
-    function scoreHighscore(_karte) {
-        highscore.insert(_karte);
     }
 })(Memory = exports.Memory || (exports.Memory = {}));
 //# sourceMappingURL=server.js.map

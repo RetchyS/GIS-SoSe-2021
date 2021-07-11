@@ -57,6 +57,7 @@ namespace MemoryHighscore {
             console.log(srcarray.length);
             console.log(srcarray);
             for (let i: number = 0; i < 10; i++) {
+               
 
                 let spielername = document.getElementById("name" + i);
                 let spielerscore = document.getElementById("punkte" + i);
