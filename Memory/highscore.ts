@@ -10,9 +10,7 @@ namespace MemoryHighscore {
         Spielername: string;
         Zeit: string;
     }
-    let totalSeconds: number = 0;
-    let totalMinutes: number = 0;
-    let zeit: string;
+    
     let zeitscore: number = Number(localStorage.getItem("score"));
     console.log(zeitscore);
 

@@ -1,0 +1,32 @@
+body {
+    background-image: url(Bilder/hintergrundessen.jpg);
+    height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 19%;
+    margin-left: 44%;
+    margin-right: 30%;
+  }
+  
+  .container > a {
+    background-color: coral;
+    border-radius: 20px;
+    width: 50%;
+    margin: 10px;
+    text-align: center;
+    
+    font-size: 30px;
+    display: inline;
+    font-weight: bold;
+    font-size: 50px;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }

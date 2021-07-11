@@ -8,9 +8,6 @@
     let buttonzeigen: HTMLButtonElement = <HTMLButtonElement>document.getElementById("bilderzeigen");
     buttonzeigen.addEventListener("click", bildereinsehen);
 
-    
-
-
 
     async function bildspeichern(): Promise<void> {
         let url: RequestInfo = "https://piikachu.herokuapp.com";
@@ -33,13 +30,9 @@
     //Karten für die Datenbank
     async function bildereinsehen(): Promise<void> {
 
-        let formular: FormData = new FormData(document.forms[0]);
-
-
-        let query: URLSearchParams = new URLSearchParams(<any>formular);
         let url: RequestInfo = "https://piikachu.herokuapp.com";
         url += "/abfragen";
-        url = url + "?" + query.toString();
+        
         console.log(url);
         let response: Response = await fetch(url);
         let responsetext: Data[] = await response.json();

@@ -24,11 +24,8 @@ var MemoryAdmin;
     }
     //Karten für die Datenbank
     async function bildereinsehen() {
-        let formular = new FormData(document.forms[0]);
-        let query = new URLSearchParams(formular);
         let url = "https://piikachu.herokuapp.com";
         url += "/abfragen";
-        url = url + "?" + query.toString();
         console.log(url);
         let response = await fetch(url);
         let responsetext = await response.json();
