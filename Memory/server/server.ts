@@ -51,7 +51,7 @@ export namespace Memory {
             //Url muss man parsen um es bearbeiten zu. Genauso wie im Video gemacht aber es scheint als wäre es veraltet
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
             let urlhighscore = new URL(_request.url);
-            let score: number = Number(urlhighscore.searchParams.get("Zeit"));
+            
 
 
             let path: string = url.pathname; // Pathname entweder /html oder /json

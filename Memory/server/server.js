@@ -42,7 +42,6 @@ var Memory;
             //Url muss man parsen um es bearbeiten zu. Genauso wie im Video gemacht aber es scheint als wäre es veraltet
             let url = Url.parse(_request.url, true);
             let urlhighscore = new URL(_request.url);
-            let score = Number(urlhighscore.searchParams.get("Zeit"));
             let path = url.pathname; // Pathname entweder /html oder /json
             if (path == "/speichern") {
                 let jsonstring = JSON.stringify(url.query);
