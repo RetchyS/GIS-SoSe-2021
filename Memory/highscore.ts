@@ -11,9 +11,9 @@ namespace MemoryHighscore {
         moves: string;
     }
 
-    let score: number = Number(localStorage.getItem("moves"));
+    let score: string = localStorage.getItem("zeit");
     let ergebnis: HTMLElement = document.getElementById("ergebnis");
-    ergebnis.innerHTML = "moves: " + (score / 2);
+    ergebnis.innerHTML = "Benötigte Zeit: " + score;
 
     async function speichern(): Promise<void> {
         let url: RequestInfo = "https://piikachu.herokuapp.com";

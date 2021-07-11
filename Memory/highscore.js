@@ -4,9 +4,9 @@ var MemoryHighscore;
     scoreeinsehen();
     let buttonname = document.getElementById("highscorespeichern");
     buttonname.addEventListener("click", speichern);
-    let score = Number(localStorage.getItem("moves"));
+    let score = localStorage.getItem("zeit");
     let ergebnis = document.getElementById("ergebnis");
-    ergebnis.innerHTML = "moves: " + (score / 2);
+    ergebnis.innerHTML = "Benötigte Zeit: " + score;
     async function speichern() {
         let url = "https://piikachu.herokuapp.com";
         let formular = new FormData(document.forms[0]);

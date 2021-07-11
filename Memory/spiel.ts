@@ -39,14 +39,21 @@ namespace MemorySpiel {
     let secondsLabel: HTMLElement = document.getElementById("seconds");
 
 
+    //time storage
+    let zeit: string;
+    
+
     //Spielkarten
-    /* function timer(): void {               //https://codepen.io/reynnor/pen/vmNaeM
-        setInterval(setTime, 100000);
+    function timer(): void {               //https://codepen.io/reynnor/pen/vmNaeM
+        
+        setInterval(setTime, 1000);
 
         function setTime(): void {
             ++totalSeconds;
             secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
             minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
+            zeit = minutesLabel.innerHTML + " : " + secondsLabel.innerHTML;
+            localStorage.setItem("zeit", zeit);
         }
 
         function pad(_value: string): string {
@@ -58,14 +65,15 @@ namespace MemorySpiel {
                 return valString;
             }
         }
-    } */
+
+    }
     //Match
     function bildmatch(_event: Event): void {
         let imagetarget: HTMLImageElement = <HTMLImageElement>_event.target;
         bildcounter++;
 
         if (bildcounter < 3) {
-           
+
             if (bildcounter == 1) {
                 imagename1 = imagetarget.getAttribute("src");
                 imageid1 = imagetarget.getAttribute("id");
@@ -144,19 +152,19 @@ namespace MemorySpiel {
         if (_spielpaare >= 8) {
             movecounter = movecounter / 2;
             console.log(movecounter);
-            localStorage.setItem("moves", movecounter.toString());
+            //localStorage.setItem("moves", movecounter.toString());
             document.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
         }
     }
     async function spielfeld(): Promise<void> {
+        timer();
+        //let formular: FormData = new FormData(document.forms[0]);
 
-        let formular: FormData = new FormData(document.forms[0]);
 
-
-        let query: URLSearchParams = new URLSearchParams(<any>formular);
+        //let query: URLSearchParams = new URLSearchParams(<any>formular);
         let url: RequestInfo = "https://piikachu.herokuapp.com";
         url += "/abfragen";
-        url = url + "?" + query.toString();
+        //url = url + "?"; //+ query.toString();
 
         let responsetext: Data[];
         fetch(url).then(response => {
@@ -172,7 +180,7 @@ namespace MemorySpiel {
             spielkartenarrayzahlen = randomindexarray(srcarray.length);
             kartenhinzufügen(srcarray, spielkartenarrayzahlen);
         });
-        //timer();
+        
     }
 
     function kartenhinzufügen(_response: Data[], _spielkartenzahlen: number[]): void {

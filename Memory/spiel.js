@@ -26,18 +26,20 @@ var MemorySpiel;
     //timer
     let minutesLabel = document.getElementById("minutes");
     let secondsLabel = document.getElementById("seconds");
+    //time storage
+    let zeit;
     //Spielkarten
-    /* function timer(): void {               //https://codepen.io/reynnor/pen/vmNaeM
-        setInterval(setTime, 100000);
-
-        function setTime(): void {
+    function timer() {
+        setInterval(setTime, 1000);
+        function setTime() {
             ++totalSeconds;
             secondsLabel.innerHTML = pad((totalSeconds % 60).toString());
             minutesLabel.innerHTML = pad((totalSeconds / 60).toString());
+            zeit = minutesLabel.innerHTML + " : " + secondsLabel.innerHTML;
+            localStorage.setItem("zeit", zeit);
         }
-
-        function pad(_value: string): string {
-            let valString: string = _value + "";
+        function pad(_value) {
+            let valString = _value + "";
             if (valString.length < 2) {
                 return "0" + valString;
             }
@@ -45,7 +47,7 @@ var MemorySpiel;
                 return valString;
             }
         }
-    } */
+    }
     //Match
     function bildmatch(_event) {
         let imagetarget = _event.target;
@@ -118,16 +120,17 @@ var MemorySpiel;
         if (_spielpaare >= 8) {
             movecounter = movecounter / 2;
             console.log(movecounter);
-            localStorage.setItem("moves", movecounter.toString());
+            //localStorage.setItem("moves", movecounter.toString());
             document.location.assign("https://retchys.github.io/GIS-SoSe-2021/Memory/highscore");
         }
     }
     async function spielfeld() {
-        let formular = new FormData(document.forms[0]);
-        let query = new URLSearchParams(formular);
+        timer();
+        //let formular: FormData = new FormData(document.forms[0]);
+        //let query: URLSearchParams = new URLSearchParams(<any>formular);
         let url = "https://piikachu.herokuapp.com";
         url += "/abfragen";
-        url = url + "?" + query.toString();
+        //url = url + "?"; //+ query.toString();
         let responsetext;
         fetch(url).then(response => {
             console.log(response);
@@ -141,7 +144,6 @@ var MemorySpiel;
             spielkartenarrayzahlen = randomindexarray(srcarray.length);
             kartenhinzufügen(srcarray, spielkartenarrayzahlen);
         });
-        //timer();
     }
     function kartenhinzufügen(_response, _spielkartenzahlen) {
         for (let i = 0; i < 16; i++) {
