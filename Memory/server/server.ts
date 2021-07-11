@@ -100,7 +100,7 @@ export namespace Memory {
     }
     interface Highscore {
         name: string;
-        highscore: string;
+        highscore: number;
     }
 
     interface Datenbankinfo {
