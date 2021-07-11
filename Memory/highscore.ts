@@ -14,6 +14,7 @@ namespace MemoryHighscore {
     let score: string = localStorage.getItem("zeit");
     let ergebnis: HTMLElement = document.getElementById("ergebnis");
     ergebnis.innerHTML = "Benötigte Zeit: " + score;
+    console.log(score);
 
     async function speichern(): Promise<void> {
         let url: RequestInfo = "https://piikachu.herokuapp.com";
@@ -22,9 +23,15 @@ namespace MemoryHighscore {
         let query: URLSearchParams = new URLSearchParams(<any>formular);
         url += "/speichernhighscore";
         url = url + "?" + query.toString() + "&Zeit=" + score;
+        if (score != null) {
+        console.log(url);
         await fetch(url);
         localStorage.clear();
         location.reload();
+        } else {
+            ergebnis.innerHTML = "";
+            ergebnis.innerHTML = "Kein Zeite vorhanden!";
+        }
     }
 
     async function scoreeinsehen(): Promise<void> {
@@ -57,20 +64,5 @@ namespace MemoryHighscore {
 
             }
         });
-
-        /* console.log(responsetext.length);
-        console.log(responsetext); */
-
-        /* for (let i: number = 0; i < 10; i++) {
-    
-            let spielername = document.getElementById("name" + i);
-            let spielerscore = document.getElementById("punkt" + i);
-    
-            console.log(responsetext[i].spielername);
-            console.log(responsetext[i].spielerscore);
-            spielername.innerHTML = responsetext[i].spielername;
-            spielerscore.innerHTML = responsetext[i].spielername;
-    
-        } */
     }
 }

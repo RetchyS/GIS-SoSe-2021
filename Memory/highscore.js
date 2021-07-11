@@ -7,15 +7,23 @@ var MemoryHighscore;
     let score = localStorage.getItem("zeit");
     let ergebnis = document.getElementById("ergebnis");
     ergebnis.innerHTML = "Benötigte Zeit: " + score;
+    console.log(score);
     async function speichern() {
         let url = "https://piikachu.herokuapp.com";
         let formular = new FormData(document.forms[0]);
         let query = new URLSearchParams(formular);
         url += "/speichernhighscore";
         url = url + "?" + query.toString() + "&Zeit=" + score;
-        await fetch(url);
-        localStorage.clear();
-        location.reload();
+        if (score != null) {
+            console.log(url);
+            await fetch(url);
+            localStorage.clear();
+            location.reload();
+        }
+        else {
+            ergebnis.innerHTML = "";
+            ergebnis.innerHTML = "Kein Zeite vorhanden!";
+        }
     }
     async function scoreeinsehen() {
         let url = "https://piikachu.herokuapp.com";
@@ -41,19 +49,6 @@ var MemoryHighscore;
                 spielerscore.innerHTML = srcarray[i].Zeit;
             }
         });
-        /* console.log(responsetext.length);
-        console.log(responsetext); */
-        /* for (let i: number = 0; i < 10; i++) {
-    
-            let spielername = document.getElementById("name" + i);
-            let spielerscore = document.getElementById("punkt" + i);
-    
-            console.log(responsetext[i].spielername);
-            console.log(responsetext[i].spielerscore);
-            spielername.innerHTML = responsetext[i].spielername;
-            spielerscore.innerHTML = responsetext[i].spielername;
-    
-        } */
     }
 })(MemoryHighscore || (MemoryHighscore = {}));
 //# sourceMappingURL=highscore.js.map
