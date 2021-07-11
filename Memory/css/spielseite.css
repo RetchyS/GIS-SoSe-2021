@@ -1,8 +1,8 @@
 body {
-    background-image: url(Bilder/hintergrundessen.jpg);
+    background-image: url(../Bilder/hintergrundessen.jpg);
     height: 1000px;
     background-position: center;
-    background-repeat: no-repeat;
+    background-repeat: no-repseat;
     background-size: cover;
 }
 
