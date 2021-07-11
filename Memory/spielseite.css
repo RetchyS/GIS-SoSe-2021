@@ -18,31 +18,37 @@ main {
 }
 
 .optionen {
-margin: auto;
-text-align: center;
+    max-width: 40%;
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    margin-left: 30%;
+    text-align: center;
+}
+.optionen > div {
+    background-color:rgba(255, 127, 80, 0);
+    width: 25%;
+    margin: auto;
+    line-height: 75px;
+    font-size: 30px;
+    border-radius: 10px;
 }
 
 .optionen button {
-    background-color: #98af4c;
+    background-color: rgba(255, 127, 80, 0);
     border-radius: 10px;
     border: none;
     color: black;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-    margin: 4px 2px;
-    cursor: pointer;
-}
-.optionen h1 {
+    padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 30px;
     font-weight: bold;
+    
+    cursor: pointer;
 }
+
 
 
 
